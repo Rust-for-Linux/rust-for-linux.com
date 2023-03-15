@@ -156,8 +156,5 @@ def main():
     os.remove("book/favicon.svg")
     os.remove("book/favicon.png")
 
-    # Copy logo.
-    shutil.copyfile("Rust-for-Linux.svg", "book/Rust-for-Linux.svg")
-
 if __name__ == "__main__":
     main()
