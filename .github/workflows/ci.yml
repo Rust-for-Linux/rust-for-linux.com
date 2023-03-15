@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install `mdbook`
+        run: |
+          curl --no-progress-meter --location --output mdbook.tar.gz https://github.com/rust-lang/mdBook/releases/download/v0.4.25/mdbook-v0.4.25-x86_64-unknown-linux-gnu.tar.gz
+          echo "2d049e4d0a1ef739a1218cf209c99cdc0d1c66aa43a15e2183770f6e1d333324  mdbook.tar.gz" > mdbook.tar.gz.sha256
+          sha256sum --check --strict mdbook.tar.gz.sha256
+          tar --extract --file mdbook.tar.gz
+
+      - name: Build book
+        run: |
+          ./pre.py
+          ./mdbook build
+          ./post.py
+
+      - name: Deploy to GitHub Pages
+        run: |
+          cd book
+          git init
+          git config user.name CI
+          git config user.email ""
+          git add .
+          git commit -m "Deploy $GITHUB_SHA to branch `gh-pages`"
+          git push --force "https://x-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY" HEAD:gh-pages

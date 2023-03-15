@@ -1,0 +1,17 @@
+[book]
+title = "Rust for Linux"
+author = "Rust for Linux Contributors"
+description = "Adding support for the Rust language to the Linux kernel"
+language = "en"
+
+[build]
+create-missing = false
+
+[output.html]
+git-repository-url = ""
+edit-url-template = ""
+no-section-label = true
+
+[output.html.fold]
+enable = true
+level = 0
