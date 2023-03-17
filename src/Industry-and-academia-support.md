@@ -32,6 +32,11 @@ A good example is Arm’s RFC contribution to the Rust language which made Linux
 
 — Esteban Blanc, Arthur Cohen and Martin Schmidt, LSE (Systems Research Laboratory) at EPITA (École pour l'informatique et les techniques avancées), 2022-06-23.
 
+
+> “Being able to use Rust in the Linux kernel is an incredible milestone on the road to a more secure future for the Internet and everything else that depends heavily on Linux.”
+
+— [ISRG's Prossimo Project](https://www.memorysafety.org/blog/rust-in-linux-just-the-beginning/), 2022-10-18.
+
 ---
 
 If your company, organization, university or team is using or plans to use Rust for Linux and would like to release a statement, then please [contact us](Contact.md). Thank you!
