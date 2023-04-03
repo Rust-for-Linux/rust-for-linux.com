@@ -53,7 +53,7 @@
   - [Kernel documentation (next)](https://docs.kernel.org/next/rust/index.html)
   - [`rustdoc` code docs (v6.3-rc2)](https://rust-for-linux.github.io/docs/v6.3-rc2/kernel/)
   - [`rustdoc` code docs (`rust` 2023-03-13)](https://rust-for-linux.github.io/docs/rust/kernel/)
-  - [`rustdoc` code docs (`pinned-init` v2)](https://rust-for-linux.github.io/docs/pinned-init/kernel/init/)
+  - [`rustdoc` code docs (`pinned-init` v5)](https://rust-for-linux.github.io/docs/pinned-init/kernel/init/)
   - [`rustdoc` code docs (pre-merge v8 patch)](https://rust-for-linux.github.io/docs/kernel/)
   - [Out-of-tree module template](https://github.com/Rust-for-Linux/rust-out-of-tree-module)
 
