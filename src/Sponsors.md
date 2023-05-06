@@ -16,8 +16,8 @@
 </blockquote>
 
 <div style="background: white; margin-top: 2.5em; border-radius: 10px; padding: 20px; display: flex; align-items: center; justify-content: center; column-gap: 4%;">
-    <img style="flex: 14 1 0; object-fit: contain; width: 100%;" src="Google.svg" alt="Google Logo">
-    <img style="flex:  9 1 0; object-fit: contain; width: 100%;" src="Futurewei.png" alt="Futurewei Logo">
+    <div style="flex: 14 1 0;"><img style="width: 100%; height: auto;" src="Google.svg" alt="Google Logo"></div>
+    <div style="flex:  9 1 0;"><img style="width: 100%; height: auto;" src="Futurewei.png" alt="Futurewei Logo"></div>
 </div>
 
 ## Zulip
