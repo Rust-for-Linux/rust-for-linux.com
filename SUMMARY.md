@@ -8,6 +8,7 @@
   - [Rust version policy](Rust-version-policy.md)
   - [Unstable features](Unstable-features.md)
   - [Backporting and stable/LTS releases](Backporting-and-stable-LTS-releases.md)
+  - [Third-party crates](Third-party-crates.md)
   - [Industry and academia support](Industry-and-academia-support.md)
   - [Sponsors](Sponsors.md)
 
