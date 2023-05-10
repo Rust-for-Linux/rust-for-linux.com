@@ -2,7 +2,9 @@
 
 ## Supported versions
 
-The kernel documents the [minimal requirements](https://docs.kernel.org/process/changes.html) to compile it. However, in the case of Rust, currently we only support a single stable version: newer versions are allowed for convenience (with a warning from the build system), but they may or may not work. Older versions are disallowed.
+The kernel documents the [minimal requirements](https://docs.kernel.org/process/changes.html) to compile it. In the case of Rust, currently only a single version is supported (i.e. rather than a minimum):
+
+> A particular version of the Rust toolchain is required. Newer versions may or may not work because the kernel depends on some unstable Rust features, for the moment.
 
 The reason is that we cannot guarantee newer Rust versions will work due to the [unstable features](Unstable-features.md) in use. Removing the need for them is a priority in order to be able to eventually declare a minimum Rust version for the kernel.
 
