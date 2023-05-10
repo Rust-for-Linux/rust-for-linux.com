@@ -10,6 +10,10 @@ The reason is that we cannot guarantee newer Rust versions will work due to the 
 
 Having said that, generally speaking, newer versions should work, as long as one patches any potential compilation errors coming from changes in unstable features.
 
+### Distribution toolchains
+
+Some Linux distributions provide Rust toolchains (i.e. built by the distribution maintainers, rather than redistributing the ones from https://www.rust-lang.org). These toolchains should be fine to use, as long as they have not been modified in unexpected ways (and keeping in mind the versioning limitations).
+
 ## Update policy
 
 ### Before a minimum version can be declared
