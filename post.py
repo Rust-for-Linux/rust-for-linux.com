@@ -82,6 +82,14 @@ def process(path, content, html_menu, html_index_toc):
             margin-bottom: -0.3em !important;
             margin-top: 1em !important;
         }
+
+        .quote-highlight:target {
+            /*
+             * `--table-header-bg` is used as an existing color in the themes
+             * that is good enough for highlighting the `blockquote`s.
+             */
+            background-color: var(--table-header-bg);
+        }
         </style>
     """)
 
