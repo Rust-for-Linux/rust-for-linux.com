@@ -1,5 +1,17 @@
 # Industry and academia support
 
+> Samsung is actively engaged in supporting the integration of Rust code into the
+> Linux Kernel. Recognizing the significant benefits that Rust brings to kernel
+> and system software development, particularly in terms of enhancing security and
+> reducing critical bugs, Samsung is committed to enabling kernel developers to
+> write block layer device drivers using the Rust programming language. By
+> embracing modern programming languages like Rust, Samsung aims to attract new
+> talent to systems development and promote memory safety within the Linux storage
+> stack.
+
+— Samsung, 2023-05-17.
+
+
 > “Google supports and contributes directly to the Rust for Linux project. Our Android team is evaluating a new Binder implementation and considering other drivers where Rust could be adopted.”
 
 — [Google](https://lore.kernel.org/lkml/20210704202756.29107-1-ojeda@kernel.org/), 2021.
