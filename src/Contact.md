@@ -18,6 +18,12 @@ For chat, we use [Zulip](https://rust-for-linux.zulipchat.com).
 
 Please feel free to use it for general questions, discussion, help, feedback, etc.
 
+## Open Meeting
+
+Everybody is welcome to join our [Open Meeting](https://meet.google.com/vii-meij-xpw).
+
+It takes place once every kernel cycle, the first Wednesday after `-rc1` is tagged, at 18:00 UTC.
+
 ## GitHub issue tracker
 
 [GitHub](https://github.com/Rust-for-Linux/linux/issues) is used for issue reporting, tracking and discussion.
