@@ -40,7 +40,7 @@ For this reason, early on, there are a few extra notes to have in mind when cont
 
 All patches containing Rust code should be sent to both the maintainers/reviewers/mailing lists of the relevant kernel subsystem they touch as well as the Rust one.
 
-This applies even if the files that the patch modifies are all under `rust/` (e.g. currently all abstractions live under `rust/`, but the plan is to change this in the future as Rust grows in the kernel) and the files are referenced by the `MAINTAINERS` entry of the relevant subsystem.
+This applies even if the files that the patch modifies are all under `rust/` (e.g. currently all abstractions live under `rust/`, but the plan is to change this in the future as Rust grows in the kernel) and the files are referenced by the `MAINTAINERS` entry of the relevant subsystem. Scripts like `scripts/get_maintainers.pl` may not provide the complete list.
 
 The goal with this procedure is that everybody interested in Rust can follow what is going on with Rust in the entire kernel in the early stages, to avoid duplicate work, and to make it easier for everybody to coordinate.
 
