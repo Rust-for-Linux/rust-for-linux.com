@@ -67,3 +67,16 @@ For new abstractions and modules, and especially for those that require new kern
     This way, you can get early design feedback before the actual patch submission later, and the discussion is focused on the given subsystem (rather than the prerequisites).
 
   - In general, the kernel does not allow to integrate code without users, but exceptions can potentially be made for Rust code to simplify the upstreaming process early on. Please contact the Rust maintainers for help, especially if you find yourself with a lot of dependencies or patches for unrelated subsystems.
+
+## Submitting patches
+
+If you are using a CLI tool like [`git-send-email`](https://git-scm.com/docs/git-send-email) or [`b4`](https://b4.docs.kernel.org), then you may find the following commands useful for generating the options needed for submitting patches to the Rust subsystem:
+
+```sh
+awk '/^RUST$/,/^$/' MAINTAINERS | grep '^M:'    | cut -f2- | xargs -IP echo --to \'P\' \\
+awk '/^RUST$/,/^$/' MAINTAINERS | grep '^[RL]:' | cut -f2- | xargs -IP echo --cc \'P\' \\
+```
+
+This list includes the maintainers (`M:`), reviewers (`R:`) and mailing list (`L:`) of the "RUST" subsystem in the `MAINTAINERS` file.
+
+However, please keep in mind that this does not cover additional subsystems that you may need to submit your patches to, as explained in the other sections.
