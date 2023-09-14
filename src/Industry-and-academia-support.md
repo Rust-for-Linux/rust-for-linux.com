@@ -57,6 +57,13 @@ A good example is Arm’s RFC contribution to the Rust language which made Linux
 
 — Samsung, 2023-05-17.
 
+
+<blockquote id="Cisco" class="quote-highlight">
+<p>“Cisco supports the inclusion and development of Rust in the Linux kernel as a way of eliminating memory safety bugs and vulnerabilities. We are developing a next-generation container filesystem in Rust and, to this end, we are contributing time, code, and the testing effort to the Rust for Linux project.”</p>
+</blockquote>
+
+— Cisco, 2023-09-14.
+
 ---
 
 If your company, organization, university or team is using or plans to use Rust for Linux and would like to release a statement, then please [contact us](Contact.md). Thank you!
