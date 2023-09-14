@@ -6,8 +6,12 @@ for development of safe Rust abstractions and to prove feasibility of Rust as an
 implementation language for high performance device drivers.
 
 The Linux Rust NVMe driver lives
-[here](https://github.com/metaspace/linux/tree/nvme). Please be aware that the
-nvme branch is force pushed without notice. The Rust NVMe driver was originally
+[here](https://github.com/metaspace/linux/tree/nvme). This branch is routinely
+rebased on upstream Linux releases. Please be aware that the `nvme` branch is
+force pushed without notice. The version based on the deprecated `rust` branch
+is available [here](https://github.com/metaspace/linux/tree/nvme-rust).
+
+The Rust NVMe driver was originally
 authored by Wedson Almeida Filho and is now maintained by Andreas Hindborg
 (Samsung).
 
@@ -18,9 +22,29 @@ The driver is not currently suitable for general use.
    [slides](https://lpc.events/event/16/contributions/1180/attachments/1017/1961/deck.pdf)
    and [video](https://lpc.events/event/16/contributions/1180/attachments/1017/2249/go)
 
-# Performance
+# Performance September 2023
 
-Performance evaluation as of January 2023. 
+The driver was
+[rebased](https://github.com/metaspace/linux/tree/7353a81d566510080f91099b1a2b31895c716c9d)
+on top of
+[`rust-next`](https://github.com/Rust-for-Linux/linux/commit/37152d4a7c6400a4250134e601eca8be1a2bbc16)
+PR for 6.6 in September 2023.
+
+## Setup
+
+ - 12th Gen Intel(R) Core(TM) i5-12600
+ - 32 GB DRAM
+ - 1x INTEL MEMPEK1W016GA (PCIe 3.0 x2)
+ - Debian Bullseye userspace
+
+## Results
+
+![iops-512](./nvme-512.svg)
+![iops-all](./nvme-all.svg)
+
+# Performance January 2023
+
+Performance evaluation as of January 2023.
 
 ## Setup
 
@@ -44,12 +68,12 @@ For 512 B block size, the C driver outperforms the Rust driver by up to 6%. In
 this configuration the drive is not bandwidth limited, but the benchmark becomes
 compute limited. The Rust driver has a higher overhead and thus performs worse.
 
-# Planned Work Items
+# Work Items
 
   - Remove all unsafe code from the driver
   - Support device removal
   - Verify functionality by executing `blktests` and `xfstests` in CI
-  - Add sys-fs nodes to allow use of nvme-cli with Rust NVMe driver
+  - Add sys-fs nodes to allow use of `nvme-cli` with Rust NVMe driver
   - Support more kernel configurations by deferring initialization to a task queue
   - Improve performance of Rust NVMe driver
 
