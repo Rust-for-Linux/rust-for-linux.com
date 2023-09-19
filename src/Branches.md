@@ -18,6 +18,18 @@ Changes to this branch land via patches sent to the mailing list.
 
 It is part of [`linux-next`](https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/).
 
+## `rust-dev`
+
+[`rust-dev`](https://github.com/Rust-for-Linux/linux/tree/rust-dev) is an experimental branch for integration purposes. It is a queue for patches that "look good enough".
+
+Its intended use cases are:
+
+  - Finding merge/apply conflicts as early as possible.
+  - Providing a common base for development that requires features that are not yet in mainline or `rust-next`, i.e. giving early access to features. This may include Rust-related changes from other subsystems.
+  - Providing extra testing to patches by making them easily available to more developers.
+
+Note that this branch may be updated/rebased frequently and it might be gone in the future.
+
 ## `rust`
 
 [`rust`](https://github.com/Rust-for-Linux/linux/tree/rust) was the original branch where development happened for two years before Rust support was merged into the kernel.
