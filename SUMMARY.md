@@ -63,6 +63,7 @@
 
   - [Kangrejos](https://kangrejos.com)
   - [Linux Plumbers Conference (LPC)](https://lpc.events)
+  - [Rust MC at LPC 2023](https://lpc.events/event/17/sessions/170/)
   - [Rust MC at LPC 2022](https://lpc.events/event/16/sessions/150/)
 
 ## LWN
