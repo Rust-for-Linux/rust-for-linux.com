@@ -53,7 +53,7 @@
 
   - [Kernel documentation (mainline)](https://docs.kernel.org/rust/)
   - [Kernel documentation (next)](https://docs.kernel.org/next/rust/)
-  - [`rustdoc` code docs (v6.3-rc2)](https://rust-for-linux.github.io/docs/v6.3-rc2/kernel/)
+  - [`rustdoc` code docs (v6.6-rc2)](https://rust-for-linux.github.io/docs/v6.6-rc2/kernel/)
   - [`rustdoc` code docs (`rust` 2023-03-13)](https://rust-for-linux.github.io/docs/rust/kernel/)
   - [Out-of-tree module template](https://github.com/Rust-for-Linux/rust-out-of-tree-module)
 
