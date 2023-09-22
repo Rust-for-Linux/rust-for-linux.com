@@ -8,7 +8,7 @@ language = "en"
 create-missing = false
 
 [output.html]
-git-repository-url = ""
+git-repository-url = "https://github.com/Rust-for-Linux/rust-for-linux.com"
 edit-url-template = ""
 no-section-label = true
 
