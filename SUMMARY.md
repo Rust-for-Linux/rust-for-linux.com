@@ -51,8 +51,8 @@
 
 ## Documentation
 
-  - [Kernel documentation (mainline)](https://docs.kernel.org/rust/index.html)
-  - [Kernel documentation (next)](https://docs.kernel.org/next/rust/index.html)
+  - [Kernel documentation (mainline)](https://docs.kernel.org/rust/)
+  - [Kernel documentation (next)](https://docs.kernel.org/next/rust/)
   - [`rustdoc` code docs (v6.3-rc2)](https://rust-for-linux.github.io/docs/v6.3-rc2/kernel/)
   - [`rustdoc` code docs (`rust` 2023-03-13)](https://rust-for-linux.github.io/docs/rust/kernel/)
   - [`rustdoc` code docs (`pinned-init`)](https://rust-for-linux.github.io/docs/pinned-init/kernel/init/)
