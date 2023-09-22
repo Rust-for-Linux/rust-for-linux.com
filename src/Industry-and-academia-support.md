@@ -64,6 +64,13 @@ A good example is Arm’s RFC contribution to the Rust language which made Linux
 
 — Cisco, 2023-09-14.
 
+
+<blockquote id="Collabora" class="quote-highlight">
+<p>“Collabora feels privileged to partner with customers who envision Rust as an integral part of the Linux kernel's future. We are committed to supporting the integration of Rust into as many Linux subsystems as appropriate over the coming years. By doing so, this will enable our customers, and many more developers, to increase the reliability of their Linux kernel contributions. We extend our gratitude for the activities undertaken by the Rust for Linux Initiative.”</p>
+</blockquote>
+
+— Collabora, 2023-09-22.
+
 ---
 
 If your company, organization, university or team is using or plans to use Rust for Linux and would like to release a statement, then please [contact us](Contact.md). Thank you!
