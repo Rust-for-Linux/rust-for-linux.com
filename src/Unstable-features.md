@@ -2,7 +2,9 @@
 
 ## Introduction
 
-The kernel uses some Rust unstable features. These features can only be accessed by opting into them. They are typically used as a way to introduce new features into the language, library and toolchain to allow end users to experiment with them and provide feedback before committing to them.
+The Rust language is stable, i.e. it promises [backwards compatibility](https://blog.rust-lang.org/2014/10/30/Stability.html) within the same [edition](https://doc.rust-lang.org/edition-guide/editions/), with a few exceptions, such as reserving the right to patch safety holes. The kernel currently uses Edition 2021, which is the latest.
+
+On top of that, the kernel uses some Rust unstable features. These features can only be accessed by opting into them. They are typically used as a way to introduce new features into the language, library and toolchain to allow end users to experiment with them and provide feedback before committing to them.
 
 "Unstable" in this context means the feature may change in future versions, i.e. backwards compatibility is not promised for those features. It does not necessarily imply that the features are broken.
 
