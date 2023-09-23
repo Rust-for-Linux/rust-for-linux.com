@@ -6,9 +6,11 @@ The kernel documents the [minimal requirements](https://docs.kernel.org/process/
 
 > A particular version of the Rust toolchain is required. Newer versions may or may not work because the kernel depends on some unstable Rust features, for the moment.
 
-The reason is that we cannot guarantee newer Rust versions will work due to the [unstable features](Unstable-features.md) in use. Removing the need for them is a priority in order to be able to eventually declare a minimum Rust version for the kernel.
+The reason is that we cannot guarantee newer Rust versions will work due to the [unstable features](Unstable-features.md) in use[^rust-is-stable]. Removing the need for them is a priority in order to be able to eventually declare a minimum Rust version for the kernel.
 
 Having said that, generally speaking, newer versions should work, as long as one patches any potential compilation errors coming from changes in unstable features.
+
+[^rust-is-stable]: Note that the Rust language is stable, i.e. it promises backwards compatibility. See the [Unstable features](Unstable-features.md) page for details.
 
 ### Distribution toolchains
 
