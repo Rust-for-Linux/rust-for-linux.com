@@ -9,6 +9,7 @@
   - [Unstable features](Unstable-features.md)
   - [Backporting and stable/LTS releases](Backporting-and-stable-LTS-releases.md)
   - [Third-party crates](Third-party-crates.md)
+  - [Out-of-tree modules](Out-of-tree-modules.md)
   - [Industry and academia support](Industry-and-academia-support.md)
   - [Sponsors](Sponsors.md)
 
