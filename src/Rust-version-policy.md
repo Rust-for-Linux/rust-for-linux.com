@@ -14,7 +14,7 @@ Having said that, generally speaking, newer versions should work, as long as one
 
 ### Distribution toolchains
 
-Some Linux distributions provide Rust toolchains (i.e. built by the distribution maintainers, rather than redistributing the ones from https://www.rust-lang.org). These toolchains should be fine to use, as long as they have not been modified in unexpected ways (and keeping in mind the versioning limitations).
+Some Linux distributions provide Rust toolchains (i.e. built by the distribution maintainers, rather than redistributing the ones from [rust-lang.org](https://www.rust-lang.org)). These toolchains should be fine to use, as long as they have not been modified in unexpected ways (and keeping in mind the versioning limitations).
 
 ## Update policy
 
