@@ -10,6 +10,8 @@ On top of that, the kernel uses some Rust unstable features. These features can 
 
 When unstable features are deemed mature enough, they may get promoted into stable Rust. In other cases, they may get dropped altogether. Some features are internal to the compiler or perma-unstable.
 
+There are ongoing discussions around stability within the Rust project, such as potentially defining [extra phases](https://smallcultfollowing.com/babysteps/blog/2023/09/18/stability-without-stressing-the-out/). These finer-grained levels could be useful for the kernel.
+
 ## Usage in the kernel
 
 The unstable features used in the kernel are tracked at [issue #2](https://github.com/Rust-for-Linux/linux/issues/2).
