@@ -86,4 +86,4 @@
   - [Bootlin's Elixir](https://elixir.bootlin.com/linux/latest/source/rust)
   - [Compiler Explorer](https://godbolt.org/z/oM99voaPT)
   - [Rust Playground](https://play.rust-lang.org/?version=nightly&mode=debug&edition=2021)
-  - [Rust `core` docs](https://doc.rust-lang.org/1.62.0/core/)
+  - [Rust `core` docs](https://doc.rust-lang.org/core/)
