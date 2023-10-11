@@ -25,6 +25,7 @@
   - [NVMe Driver](NVMe-driver.md)
   - [Null Block Driver](Null-Block-Driver.md)
   - [Android Binder Driver](Android-Binder-Driver.md)
+  - [PuzzleFS filesystem driver](PuzzleFS-filesystem-driver.md)
 
 # Links
 
