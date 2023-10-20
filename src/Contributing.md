@@ -79,6 +79,6 @@ awk '/^RUST$/,/^$/' MAINTAINERS | grep '^M:'    | cut -f2- | xargs -IP echo --to
 awk '/^RUST$/,/^$/' MAINTAINERS | grep '^[RL]:' | cut -f2- | xargs -IP echo --cc \'P\' \\
 ```
 
-This list includes the maintainers (`M:`), reviewers (`R:`) and mailing list (`L:`) of the "RUST" subsystem in the `MAINTAINERS` file.
+This list includes the maintainers (`M:`), reviewers (`R:`) and mailing list (`L:`) of the ["RUST" subsystem](https://docs.kernel.org/process/maintainers.html#rust) in the `MAINTAINERS` file.
 
 However, please keep in mind that this does not cover additional subsystems that you may need to submit your patches to, as explained in the other sections.
