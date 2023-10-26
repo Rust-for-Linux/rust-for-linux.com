@@ -8,6 +8,8 @@ The [`rust-for-linux@vger.kernel.org`](mailto:rust-for-linux@vger.kernel.org) ma
   - [Subscription instructions](http://vger.kernel.org/majordomo-info.html).
   - [Lore (archive)](https://lore.kernel.org/rust-for-linux/).
 
+Please read the [Mailing list etiquette](https://subspace.kernel.org/etiquette.html) document if it is the first time you send an email to a Linux kernel mailing list.
+
 For general questions, please use the Zulip chat instead.
 
 ## Zulip chat
