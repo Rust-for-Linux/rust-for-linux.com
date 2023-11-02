@@ -20,6 +20,8 @@
   - Hidden [The Safe Pinned Initialization Problem](The-Safe-Pinned-Initialization-Problem.md)
   - Hidden [Ksquirrel](Ksquirrel.md)
 
+## Tools
+
 ## Users
 
   - [NVMe Driver](NVMe-driver.md)
