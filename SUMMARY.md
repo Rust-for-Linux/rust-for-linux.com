@@ -22,6 +22,8 @@
 
 ## Tools
 
+  - [Coccinelle for Rust](Coccinelle-for-Rust.md)
+
 ## Users
 
   - [NVMe Driver](NVMe-driver.md)
