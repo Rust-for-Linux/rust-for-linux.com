@@ -23,6 +23,7 @@
 ## Tools
 
   - [Coccinelle for Rust](Coccinelle-for-Rust.md)
+  - [`rustc_codegen_gcc`](rustc_codegen_gcc.md)
 
 ## Users
 
