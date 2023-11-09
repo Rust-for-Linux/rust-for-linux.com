@@ -41,7 +41,7 @@
 
 ## Security
 
-  - [Report a security bug](https://docs.kernel.org/admin-guide/security-bugs.html)
+  - [Report a security bug](https://docs.kernel.org/process/security-bugs.html)
 
 ## Issue tracking
 
