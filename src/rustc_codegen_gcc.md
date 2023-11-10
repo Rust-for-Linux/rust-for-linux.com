@@ -25,10 +25,13 @@ rustup override set nightly-2023-10-21 # Adjust to the version used by the GCC c
 Now, you need to set some variables to build Rust for Linux with the GCC codegen (do not forget to adjust your path to `rustc_codegen_gcc`):
 
 ```sh
-make -j20 KRUSTFLAGS="-Zcodegen-backend=/path/to/rustc_codegen_gcc/target/debug/librustc_codegen_gcc.so --sysroot /path/to/rustc_codegen_gcc/build_sysroot/sysroot" HOSTRUSTFLAGS="-Zcodegen-backend=/path/to/rustc_codegen_gcc/target/debug/librustc_codegen_gcc.so --sysroot /path/to/rustc_codegen_gcc/build_sysroot/sysroot -Clto=no"
+make -j20 KRUSTFLAGS="-Zcodegen-backend=/path/to/rustc_codegen_gcc/target/debug/librustc_codegen_gcc.so \
+    --sysroot /path/to/rustc_codegen_gcc/build_sysroot/sysroot" \
+    HOSTRUSTFLAGS="-Zcodegen-backend=/path/to/rustc_codegen_gcc/target/debug/librustc_codegen_gcc.so \
+    --sysroot /path/to/rustc_codegen_gcc/build_sysroot/sysroot -Clto=no"
 ```
 
-Since we use a differently nightly version, you might need to adjust the code of the `alloc` crate built by Rust for Linux.
+Since we use a different nightly version, you might need to adjust the code of the `alloc` crate built by Rust for Linux.
 You'll see some errors when running the above command in this case.
 
 ## Troubleshooting
@@ -42,3 +45,8 @@ That should give you the correct error, which could be one of those:
    - In this case, make sure you set `LD_LIBRARY_PATH` and `LIBRARY_PATH`.
  * `Source code for the 'core' standard library could not be found`
    - In this case, make sure you used a recent enough version of `rustc_codegen_gcc` (c6bc7ecd65046ee502118664f42637ca318cdfb5 or more recent should be good) that copies the source of the sysroot at the correct location.
+
+## Contact
+
+Please contact Antoni Boucher (antoyo) on
+[IRC](https://web.libera.chat/#rustc_codegen_gcc).
