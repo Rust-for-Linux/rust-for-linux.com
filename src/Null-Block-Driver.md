@@ -33,7 +33,9 @@ contained in the abstractions that wrap the C APIs.
 Implemented features:
 
  - `blk-mq` support
- - Direct completion of IO
+ - Direct completion
+ - SoftIRQ completion
+ - Timer completion
  - Read and write requests
  - Optional memory backing
 
@@ -45,7 +47,6 @@ in this work:
  - Block size configuration
  - Multiple devices
  - Dynamic device creation/destruction
- - Soft-IRQ and timer mode
  - Queue depth configuration
  - Queue count configuration
  - Discard operation support
@@ -61,11 +62,29 @@ in this work:
 
 ## Resources
 
- - [Patches for 6.6](https://github.com/metaspace/linux/tree/null_blk-next-for-6.6)
+ - [Latest patches](https://github.com/metaspace/linux/tree/null_blk)
  - [Original RFC Patches](https://github.com/metaspace/linux/tree/null_block-RFC)
  - [Mailing List Post](https://lore.kernel.org/all/20230503090708.2524310-1-nmi@metaspace.dk/)
 
-# Performance
+# Performance September 2023 ([`null_blk-6.6`](https://github.com/metaspace/linux/tree/null_blk-6.6))
+
+## Setup
+
+ - 12th Gen Intel(R) Core(TM) i5-12600
+ - 32 GB DRAM
+ - 1x INTEL MEMPEK1W016GA (PCIe 3.0 x2)
+ - Debian Bullseye userspace
+
+## Results
+
+- Plot shows `(mean_iops_r - mean_iops_c) / mean_iops_c`
+- 40 samples
+- Difference of means modeled with t-distribution
+- P95 confidence intervals
+
+![](rnull/null_blk-6.6.svg)
+
+# Performance September 2023
 
 ## Setup
 
