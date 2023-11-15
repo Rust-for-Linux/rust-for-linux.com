@@ -5,6 +5,7 @@ for use in the Linux Kernel. The purpose of the driver is to provide a vehicle
 for development of safe Rust abstractions and to prove feasibility of Rust as an
 implementation language for high performance device drivers.
 
+
 The Linux Rust NVMe driver lives
 [here](https://github.com/metaspace/linux/tree/nvme). This branch is routinely
 rebased on upstream Linux releases. Please be aware that the `nvme` branch is
@@ -21,6 +22,34 @@ The driver is not currently suitable for general use.
  - LPC 2022
    [slides](https://lpc.events/event/16/contributions/1180/attachments/1017/1961/deck.pdf)
    and [video](https://lpc.events/event/16/contributions/1180/attachments/1017/2249/go)
+
+# Performance November 2023 ([`nvme-6.6`](https://github.com/metaspace/linux/tree/nvme-6.6))
+
+## Setup
+
+ - 12th Gen Intel(R) Core(TM) i5-12600
+ - 32 GB DRAM
+ - 1x INTEL MEMPEK1W016GA (PCIe 3.0 x2)
+ - Debian Bullseye userspace
+ - LTO results are enabled by a build system patch (a hack) that was not yet published.
+
+## Results
+
+- 30 samples
+- Difference of means modeled with t-distribution
+- P99 confidence intervals
+
+![](rnvme/nvme-all-6.6.svg)
+
+### Difference
+
+![](rnvme/nvme-diff-6.6.svg)
+
+### Difference Relative
+
+Plot shows `(mean_iops_r - mean_iops_c) / mean_iops_c`'
+
+![](rnvme/nvme-diff-relative-6.6.svg)
 
 # Performance September 2023
 
