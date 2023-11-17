@@ -10,6 +10,7 @@
   - [Backporting and stable/LTS releases](Backporting-and-stable-LTS-releases.md)
   - [Third-party crates](Third-party-crates.md)
   - [Out-of-tree modules](Out-of-tree-modules.md)
+  - [Existing patches and abstractions](Patch-registry.md)
   - [Industry and academia support](Industry-and-academia-support.md)
   - [Sponsors](Sponsors.md)
 
