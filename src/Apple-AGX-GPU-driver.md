@@ -15,7 +15,7 @@ The current development team is:
     the instruction set with Alyssa.
   - [Ella Stanforth](https://tech.lgbt/@ella) is working on a Vulkan driver.
 
-# References
+## References
 
   - [Apple GPU drivers now in Asahi Linux](https://asahilinux.org/2022/12/gpu-drivers-now-in-asahi-linux/)
   - [Tales of the M1 GPU](https://asahilinux.org/2022/11/tales-of-the-m1-gpu/)
