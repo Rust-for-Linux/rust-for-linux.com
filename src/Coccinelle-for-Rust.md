@@ -19,7 +19,7 @@ Changing a method call sequence in the Rust implementation:
 <span class="hljs-addition">+ tcx.bound_type_of(arg).subst_identity()</span>
 </code></pre>
 
-Merging some lifetimes in tokio:
+Replace Generic Bound with Impl Trait:
 
 <pre><code class="language-diff hljs"><span class="hljs-title">@@</span>
 <span class="hljs-keyword">identifier</span> f, P, p;
