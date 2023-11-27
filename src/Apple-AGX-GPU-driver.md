@@ -1,7 +1,7 @@
-# M1 GPU Driver
+# Apple AGX GPU driver
 
 As part of the [Asahi Linux](https://asahilinux.org/about/) project, the Apple
-M1 GPU driver has been implemented in Rust for the Linux kernel, along with
+AGX GPU driver has been implemented in Rust for the Linux kernel, along with
 creating DRM bindings and associated userspace pieces.
 
 The driver lives [here](https://github.com/AsahiLinux/linux/tree/bits/210-gpu).

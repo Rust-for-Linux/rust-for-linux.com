@@ -31,7 +31,7 @@
   - [Null Block Driver](Null-Block-Driver.md)
   - [Android Binder Driver](Android-Binder-Driver.md)
   - [PuzzleFS filesystem driver](PuzzleFS-filesystem-driver.md)
-  - [Apple M1 GPU Driver](M1-GPU-Driver.md)
+  - [Apple AGX GPU driver](Apple-AGX-GPU-driver.md)
 
 # Links
 
