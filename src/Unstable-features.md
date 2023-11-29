@@ -31,3 +31,11 @@ Therefore, the set of unstable features used in the kernel needs to be carefully
 Moreover, most of the features are only allowed within the `kernel` crate, i.e. for abstractions. Elsewhere (e.g. drivers), only a minimal set is allowed (see the `rust_allowed_features` variable in [`scripts/Makefile.build`](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/scripts/Makefile.build)).
 
 If you would like to use a new Rust unstable feature in the kernel, then please [contact us](Contact.md).
+
+### `alloc`
+
+[`alloc`](https://doc.rust-lang.org/alloc/) is part of the Rust standard library and its implementation uses many unstable features. Normally, this library (as well as [`core`](https://doc.rust-lang.org/core/) and others) is provided by the compiler, and thus those unstable features do not break users' code.
+
+Currently, the kernel contains a fork of `alloc` (matched to the supported Rust version by the kernel) with some additions on top. This complicates compiling the kernel with a different compiler version due to those unstable features, but this fork is meant to be temporary: the original plan for `alloc` discussed with upstream Rust (and others) is documented in-tree in the [`rust/alloc/README.md`](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/rust/alloc/README.md?h=v6.6) file.
+
+Discussions with upstream Rust are ongoing to see what the eventual solution for `alloc` will be.
