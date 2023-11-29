@@ -20,7 +20,7 @@ Some Linux distributions provide Rust toolchains (i.e. built by the distribution
 
 ### Before a minimum version can be declared
 
-It remains to be decided how often the Rust version upgrades will land. Ideally we would track the latest Rust release, but it remains to be seen how other kernel developers feel about it.
+It remains to be decided how often the Rust version upgrades will land. Currently, we are tracking the latest Rust release as closely as possible, but it remains to be seen how other kernel developers feel about it.
 
 On top of that, if the [`klint`](klint.md) support is merged and starts to be routinely used, then we will also need to be mindful of its schedule.
 
