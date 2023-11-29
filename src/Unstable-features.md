@@ -6,7 +6,7 @@ The Rust language is stable, i.e. it promises [backwards compatibility](https://
 
 On top of that, the kernel uses some Rust unstable features. These features can only be accessed by opting into them. They are typically used as a way to introduce new features into the language, library and toolchain to allow end users to experiment with them and provide feedback before committing to them.
 
-"Unstable" in this context means the feature may change in future versions, i.e. backwards compatibility is not promised for those features. It does not necessarily imply that the features are broken.
+"Unstable" in this context means the feature may change in future versions, i.e. backwards compatibility is not promised for those features. It does not imply that the features are broken. For instance, unstable features may be production-ready and ready for stabilization or they may be experimental, incomplete or internal to the compiler.
 
 When unstable features are deemed mature enough, they may get promoted into stable Rust. In other cases, they may get dropped altogether. Some features are internal to the compiler or perma-unstable.
 
