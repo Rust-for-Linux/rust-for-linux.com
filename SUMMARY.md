@@ -55,7 +55,7 @@
 
   - [`rust-next`](https://github.com/Rust-for-Linux/linux/tree/rust-next)
   - [`rust-fixes`](https://github.com/Rust-for-Linux/linux/tree/rust-fixes)
-  - [`rust`](https://github.com/Rust-for-Linux/linux/tree/rust)
+  - [`rust-dev`](https://github.com/Rust-for-Linux/linux/tree/rust-dev)
 
 ## Documentation
 
