@@ -4,8 +4,8 @@
 
 The [`rust-for-linux@vger.kernel.org`](mailto:rust-for-linux@vger.kernel.org) mailing list is primarily meant for patch submission and reviewing, as well as announcements and technical discussions on mainline development:
 
-  - [Subscription link](mailto:majordomo@vger.kernel.org?body=subscribe%20rust-for-linux).
-  - [Subscription instructions](http://vger.kernel.org/majordomo-info.html).
+  - [Subscription link](mailto:rust-for-linux+subscribe@vger.kernel.org).
+  - [Subscription instructions](https://subspace.kernel.org/subscribing.html).
   - [Lore (archive)](https://lore.kernel.org/rust-for-linux/).
 
 Please read the [Mailing list etiquette](https://subspace.kernel.org/etiquette.html) document if it is the first time you send an email to a Linux kernel mailing list.
