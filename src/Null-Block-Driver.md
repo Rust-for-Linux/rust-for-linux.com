@@ -62,9 +62,33 @@ in this work:
 
 ## Resources
 
- - [Latest patches](https://github.com/metaspace/linux/tree/null_blk)
+ - [Latest patches](https://github.com/metaspace/linux/tree/rnull)
  - [Original RFC Patches](https://github.com/metaspace/linux/tree/null_block-RFC)
  - [Mailing List Post](https://lore.kernel.org/all/20230503090708.2524310-1-nmi@metaspace.dk/)
+
+# 6.7 Rebase ([`rnull-6.7`](https://github.com/metaspace/linux/tree/rnull-6.7))
+
+Changes from null_blk-6.6:
+
+ - Move to `Folio` for memory backing instead of `Page`
+ - Move to `XArray` for memory backing instead of `RaddixTree`
+
+## Performance
+
+### Setup
+
+ - 12th Gen Intel(R) Core(TM) i5-12600
+ - 32 GB DRAM
+ - Debian Bullseye userspace
+
+### Results
+
+- Plot shows `(mean_iops_r - mean_iops_c) / mean_iops_c`
+- 40 samples
+- Difference of means modeled with t-distribution
+- P95 confidence intervals
+
+![](rnull/rnull-6.7.svg)
 
 # Performance September 2023 ([`null_blk-6.6`](https://github.com/metaspace/linux/tree/null_blk-6.6))
 
