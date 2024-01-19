@@ -23,6 +23,30 @@ The driver is not currently suitable for general use.
    [slides](https://lpc.events/event/16/contributions/1180/attachments/1017/1961/deck.pdf)
    and [video](https://lpc.events/event/16/contributions/1180/attachments/1017/2249/go)
 
+# 6.7 Rebase Performance ([`nvme-6.7`](https://github.com/metaspace/linux/tree/nvme-6.7))
+
+## Setup
+
+ - 12th Gen Intel(R) Core(TM) i5-12600
+ - 32 GB DRAM
+ - 1x INTEL MEMPEK1W016GA (PCIe 3.0 x2)
+ - Debian Bullseye userspace
+ - LTO results are enabled by a build system patch (a hack) that was not yet published.
+
+## Results
+
+- 30 samples
+- Difference of means modeled with t-distribution
+- P99 confidence intervals
+
+![](rnvme/nvme-all-6.7.svg)
+
+### Difference Relative
+
+Plot shows `(mean_iops_r - mean_iops_c) / mean_iops_c`'
+
+![](rnvme/nvme-diff-relative-6.7.svg)
+
 # Performance November 2023 ([`nvme-6.6`](https://github.com/metaspace/linux/tree/nvme-6.6))
 
 ## Setup
