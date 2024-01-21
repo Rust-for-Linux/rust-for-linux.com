@@ -1,5 +1,21 @@
 # Contributing
 
+There are many ways to contribute to Rust for Linux. One way is to contribute to the kernel itself — the rest of this page focuses on that. But there are other ways as well:
+
+  - In Rust:
+
+    + Helping to stabilize [unstable features](Unstable-features.md) the kernel requires.
+
+    + Adding support for features we would like in the kernel: in the language, in the standard library, in the compiler, in `rustdoc`, in Clippy, in `bindgen`... Please see the various ["wanted features & bugfixes" lists](https://github.com/Rust-for-Linux/linux/issues/2) for each topic.
+
+  - Contributing to the subprojects: [`klint`](klint.md) and [`pinned-init`](pinned-init.md).
+
+  - Contributing to the [Coccinelle for Rust](Coccinelle-for-Rust.md) project.
+
+  - Contributing to the [`rustc_codegen_gcc`](rustc_codegen_gcc.md) project, which will be used by the kernel for GCC builds.
+
+  - Contributing to the [GCC Rust](https://rust-gcc.github.io) project, which eventually will provide a second toolchain for GCC builds.
+
 ## The kernel development process
 
 The Rust support is part of the Linux kernel, and thus contributing works the same way as for the latter. That implies, among other things:
