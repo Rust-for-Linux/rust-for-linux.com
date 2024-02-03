@@ -1,8 +1,10 @@
 # Branches
 
-Currently we maintain the following branches.
+## Main branches
 
-## `rust-next`
+Currently we maintain the following main branches.
+
+### `rust-next`
 
 [`rust-next`](https://github.com/Rust-for-Linux/linux/tree/rust-next) is the branch that contains new Rust features to be submitted during the next merge window of the Linux kernel.
 
@@ -10,7 +12,7 @@ Changes to this branch land via patches sent to the mailing list.
 
 It is part of [`linux-next`](https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/).
 
-## `rust-fixes`
+### `rust-fixes`
 
 [`rust-fixes`](https://github.com/Rust-for-Linux/linux/tree/rust-fixes) is the branch that contains Rust fixes for the current cycle of the Linux kernel.
 
@@ -18,7 +20,7 @@ Changes to this branch land via patches sent to the mailing list.
 
 It is part of [`linux-next`](https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/).
 
-## `rust-dev`
+### `rust-dev`
 
 [`rust-dev`](https://github.com/Rust-for-Linux/linux/tree/rust-dev) is an experimental branch for integration purposes. It is a queue for patches that "look good enough".
 
@@ -30,7 +32,11 @@ Its intended use cases are:
 
 Note that this branch may be updated/rebased frequently and it might be gone in the future.
 
-## `rust`
+## Past branches
+
+These branches are unmaintained, archived, deprecated, frozen or do not exist anymore in the repository.
+
+### `rust`
 
 [`rust`](https://github.com/Rust-for-Linux/linux/tree/rust) was the original branch where development happened for two years before Rust support was merged into the kernel.
 
