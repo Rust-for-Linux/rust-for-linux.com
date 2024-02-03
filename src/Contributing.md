@@ -16,6 +16,8 @@ There are many ways to contribute to Rust for Linux. One way is to contribute to
 
   - Contributing to the [GCC Rust](https://rust-gcc.github.io) project, which eventually will provide a second toolchain for GCC builds.
 
+  - Improve support for Rust in [`pahole`](https://github.com/acmel/dwarves).
+
 ## The kernel development process
 
 The Rust support is part of the Linux kernel, and thus contributing works the same way as for the latter. That implies, among other things:
