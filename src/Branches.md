@@ -40,6 +40,14 @@ Changes to these branches land via GitHub PRs. Nevertheless, contributions shoul
 
 If you are interested in maintaining a new topic branch, then please [contact us](Contact.md). Thank you!
 
+### `rust-pci`
+
+This branch is dedicated to PCI-related abstractions, which are used by e.g. the [NVMe driver](NVMe-driver.md).
+
+The branch is kept in a compilable state (rebased regularly on top of `rust-next` or mainline). Fixes and features are welcome.
+
+It is maintained by Andreas Hindborg. Please contact him through [Zulip](Contact.md#zulip-chat).
+
 ## Past branches
 
 These branches are unmaintained, archived, deprecated, frozen or do not exist anymore in the repository.
