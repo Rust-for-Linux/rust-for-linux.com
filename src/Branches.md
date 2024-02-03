@@ -32,6 +32,14 @@ Its intended use cases are:
 
 Note that this branch may be updated/rebased frequently and it might be gone in the future.
 
+## Topic branches
+
+These branches are focused on a particular topic and are meant to enable collaboration on code that is targeted for upstreaming but has not reached mainline yet.
+
+Changes to these branches land via GitHub PRs. Nevertheless, contributions should still follow the usual Linux kernel development process — see [Contributing](Contributing.md) for details.
+
+If you are interested in maintaining a new topic branch, then please [contact us](Contact.md). Thank you!
+
 ## Past branches
 
 These branches are unmaintained, archived, deprecated, frozen or do not exist anymore in the repository.
