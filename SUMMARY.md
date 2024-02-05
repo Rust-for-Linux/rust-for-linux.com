@@ -51,11 +51,15 @@
   - [Unstable features](https://github.com/Rust-for-Linux/linux/issues/2)
   - [Good first issues](https://github.com/Rust-for-Linux/linux/contribute)
 
-## Branches
+## Main branches
 
   - [`rust-next`](https://github.com/Rust-for-Linux/linux/tree/rust-next)
   - [`rust-fixes`](https://github.com/Rust-for-Linux/linux/tree/rust-fixes)
   - [`rust-dev`](https://github.com/Rust-for-Linux/linux/tree/rust-dev)
+
+## Topic branches
+
+  - [`rust-pci`](https://github.com/Rust-for-Linux/linux/tree/rust-pci)
 
 ## Documentation
 
