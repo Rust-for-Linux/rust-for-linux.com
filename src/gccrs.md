@@ -8,7 +8,7 @@ While `gccrs` is not yet able to compile Rust code, it is progressing fast — w
 
 Once that milestone is achieved, we will begin catching up to the Rust version used by Rust-for-Linux — in the hopes of being useful quickly!
 
-You can follow the project's progress on [our blog](https://rust-gcc.github.io)
+You can follow the project's progress on [our blog](https://rust-gcc.github.io).
 
 ## References
 
