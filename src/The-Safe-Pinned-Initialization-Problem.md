@@ -50,8 +50,8 @@ impl ListHead {
     /// # Safety
     ///
     /// Before using this [`ListHead`] the caller has to call [`ListHead::init`].
-    unsafe fn new() -> ListHead {
-        ListHead {
+    unsafe fn new() -> Self {
+        Self {
             next: ptr::null_mut(),
             prev: ptr::null_mut(),
         }
@@ -86,8 +86,8 @@ impl DoubleList {
     /// # Safety
     ///
     /// Before using this [`DoubleList`] the caller has to call [`DoubleList::init`].
-    unsafe fn new() -> ListHead {
-        DoubleList {
+    unsafe fn new() -> Self {
+        Self {
             // SAFETY: We call `ListHead::init` in our own initializer.
             list_a: unsafe { ListHead::new() },
             // SAFETY: We call `ListHead::init` in our own initializer.
