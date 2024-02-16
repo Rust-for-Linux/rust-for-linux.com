@@ -27,7 +27,7 @@ It is part of [`linux-next`](https://git.kernel.org/pub/scm/linux/kernel/git/nex
 Its intended use cases are:
 
   - Finding merge/apply conflicts as early as possible.
-  - Providing a common base for development that requires features that are not yet in mainline or `rust-next`, i.e. giving early access to features. This may include Rust-related changes from other subsystems.
+  - Providing a common base for development that requires features that are not yet in mainline or `rust-next`, i.e. giving early access to features. This may include Rust-related changes from other subsystems, but it is not intended to cover our topic branches.
   - Providing extra testing to patches by making them easily available to more developers.
 
 Note that this branch may be updated/rebased frequently and it might be gone in the future.
