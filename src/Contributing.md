@@ -78,6 +78,8 @@ For new abstractions and modules, and especially for those that require new kern
 
   - As early as possible, please get in touch with the maintainers of the relevant subsystem in order to make them aware of the work you are doing or planning to do. That way, they can give you input and feedback on the process. Please feel free to Cc the Rust maintainers too.
 
+  - Consider whether a [Rust reference driver](Rust-reference-drivers.md) could be a good idea to bootstrap Rust into the subsystem.
+
   - When you are getting closer to patch submission, please consider sending an RFC series first, especially if it is a major contribution, or if it is a long patch series, or if you require a lot of prerequisite patches (e.g. for abstractions of other subsystems) that are not yet upstreamed.
 
     The RFC can be based on top of a branch placed somewhere else that contains the prerequisite patches, so that the RFC patches themselves do not cover those, and therefore is focused on the parts that the maintainers will eventually review.

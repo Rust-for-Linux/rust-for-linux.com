@@ -5,6 +5,7 @@
   - [Contact](Contact.md)
   - [Contributing](Contributing.md)
   - [Branches](Branches.md)
+  - [Rust reference drivers](Rust-reference-drivers.md)
   - [Rust version policy](Rust-version-policy.md)
   - [Unstable features](Unstable-features.md)
   - [Backporting and stable/LTS releases](Backporting-and-stable-LTS-releases.md)
