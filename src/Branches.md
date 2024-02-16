@@ -48,6 +48,14 @@ The branch is kept in a compilable state (rebased regularly on top of `rust-next
 
 It is maintained by Andreas Hindborg. Please contact him through [Zulip](Contact.md#zulip-chat).
 
+### `rust-net`
+
+[`rust-net`](https://github.com/Rust-for-Linux/linux/tree/rust-net) is dedicated to networking-related abstractions.
+
+The branch is kept in a compilable state (rebased regularly on top of `rust-next` or mainline). Fixes and features are welcome.
+
+It is maintained by Trevor Gross and Valentin Obst. Please contact them through [Zulip](Contact.md#zulip-chat).
+
 ## Past branches
 
 These branches are unmaintained, archived, deprecated, frozen or do not exist anymore in the repository.
