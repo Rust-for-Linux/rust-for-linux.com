@@ -66,6 +66,55 @@ in this work:
  - [Original RFC Patches](https://github.com/metaspace/linux/tree/null_block-RFC)
  - [Mailing List Post](https://lore.kernel.org/all/20230503090708.2524310-1-nmi@metaspace.dk/)
 
+# 6.8 Rebase ([`rnull-v6.8`](https://github.com/metaspace/linux/tree/rnull-v6.8))
+
+Changes from `rnull-v6.8-rc6`:
+
+ - Slight refactoring of patch order
+
+## Performance
+
+### Setup
+
+ - 12th Gen Intel(R) Core(TM) i5-12600
+ - 32 GB DRAM
+ - Debian Bullseye userspace
+
+### Results
+
+- Plot shows `(mean_iops_r - mean_iops_c) / mean_iops_c`
+- 5 samples for each configuration
+- Difference of means modeled with t-distribution
+- P95 confidence intervals
+
+![](rnull/rnull-v6.8.svg)
+
+# 6.8-rc6 Rebase ([`rnull-v6.8-rc6`](https://github.com/metaspace/linux/tree/rnull-v6.8-rc6))
+
+Changes from `rnull-6.8`:
+
+ - Change lock alignment mechanics
+ - Apply reference counting to `Request`
+ - Drop some inline directives
+
+## Performance
+
+### Setup
+
+ - 12th Gen Intel(R) Core(TM) i5-12600
+ - 32 GB DRAM
+ - Debian Bullseye userspace
+
+### Results
+
+- Plot shows `(mean_iops_r - mean_iops_c) / mean_iops_c`
+- 5 samples for each configuration
+- Difference of means modeled with t-distribution
+- P95 confidence intervals
+
+![](rnull/rnull-v6.8-rc6.svg)
+
+
 # 6.7 Rebase ([`rnull-6.7`](https://github.com/metaspace/linux/tree/rnull-6.7))
 
 Changes from null_blk-6.6:
