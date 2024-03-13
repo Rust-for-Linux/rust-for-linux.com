@@ -66,21 +66,21 @@ in this work:
  - [Original RFC Patches](https://github.com/metaspace/linux/tree/null_block-RFC)
  - [Mailing List Post](https://lore.kernel.org/all/20230503090708.2524310-1-nmi@metaspace.dk/)
 
-# 6.8 Rebase ([`rnull-v6.8`](https://github.com/metaspace/linux/tree/rnull-v6.8))
+## 6.8 Rebase ([`rnull-v6.8`](https://github.com/metaspace/linux/tree/rnull-v6.8))
 
 Changes from `rnull-v6.8-rc6`:
 
  - Slight refactoring of patch order
 
-## Performance
+### Performance
 
-### Setup
+#### Setup
 
  - 12th Gen Intel(R) Core(TM) i5-12600
  - 32 GB DRAM
  - Debian Bullseye userspace
 
-### Results
+#### Results
 
 - Plot shows `(mean_iops_r - mean_iops_c) / mean_iops_c`
 - 5 samples for each configuration
@@ -89,7 +89,7 @@ Changes from `rnull-v6.8-rc6`:
 
 ![](rnull/rnull-v6.8.svg)
 
-# 6.8-rc6 Rebase ([`rnull-v6.8-rc6`](https://github.com/metaspace/linux/tree/rnull-v6.8-rc6))
+## 6.8-rc6 Rebase ([`rnull-v6.8-rc6`](https://github.com/metaspace/linux/tree/rnull-v6.8-rc6))
 
 Changes from `rnull-6.8`:
 
@@ -97,15 +97,15 @@ Changes from `rnull-6.8`:
  - Apply reference counting to `Request`
  - Drop some inline directives
 
-## Performance
+### Performance
 
-### Setup
+#### Setup
 
  - 12th Gen Intel(R) Core(TM) i5-12600
  - 32 GB DRAM
  - Debian Bullseye userspace
 
-### Results
+#### Results
 
 - Plot shows `(mean_iops_r - mean_iops_c) / mean_iops_c`
 - 5 samples for each configuration
@@ -115,19 +115,37 @@ Changes from `rnull-6.8`:
 ![](rnull/rnull-v6.8-rc6.svg)
 
 
-# 6.7 Rebase ([`rnull-6.7`](https://github.com/metaspace/linux/tree/rnull-6.7))
+## 6.7 Rebase ([`rnull-6.7`](https://github.com/metaspace/linux/tree/rnull-6.7))
 
 Changes from null_blk-6.6:
 
  - Move to `Folio` for memory backing instead of `Page`
  - Move to `XArray` for memory backing instead of `RaddixTree`
 
-## Performance
+### Performance
+
+#### Setup
+
+ - 12th Gen Intel(R) Core(TM) i5-12600
+ - 32 GB DRAM
+ - Debian Bullseye userspace
+
+#### Results
+
+- Plot shows `(mean_iops_r - mean_iops_c) / mean_iops_c`
+- 40 samples
+- Difference of means modeled with t-distribution
+- P95 confidence intervals
+
+![](rnull/rnull-6.7.svg)
+
+## Performance September 2023 ([`null_blk-6.6`](https://github.com/metaspace/linux/tree/null_blk-6.6))
 
 ### Setup
 
  - 12th Gen Intel(R) Core(TM) i5-12600
  - 32 GB DRAM
+ - 1x INTEL MEMPEK1W016GA (PCIe 3.0 x2)
  - Debian Bullseye userspace
 
 ### Results
@@ -137,36 +155,18 @@ Changes from null_blk-6.6:
 - Difference of means modeled with t-distribution
 - P95 confidence intervals
 
-![](rnull/rnull-6.7.svg)
-
-# Performance September 2023 ([`null_blk-6.6`](https://github.com/metaspace/linux/tree/null_blk-6.6))
-
-## Setup
-
- - 12th Gen Intel(R) Core(TM) i5-12600
- - 32 GB DRAM
- - 1x INTEL MEMPEK1W016GA (PCIe 3.0 x2)
- - Debian Bullseye userspace
-
-## Results
-
-- Plot shows `(mean_iops_r - mean_iops_c) / mean_iops_c`
-- 40 samples
-- Difference of means modeled with t-distribution
-- P95 confidence intervals
-
 ![](rnull/null_blk-6.6.svg)
 
-# Performance September 2023
+## Performance September 2023
 
-## Setup
+### Setup
 
  - 12th Gen Intel(R) Core(TM) i5-12600
  - 32 GB DRAM
  - 1x INTEL MEMPEK1W016GA (PCIe 3.0 x2)
  - Debian Bullseye userspace
 
-## Results
+### Results
 
 In most cases there is less than 2% difference between the Rust and C drivers.
 
@@ -177,7 +177,7 @@ In most cases there is less than 2% difference between the Rust and C drivers.
 ![](./rnull/readwrite-iops.svg)
 ![](./rnull/randrw-iops.svg)
 
-# Contact
+## Contact
 
 Please contact Andreas Hindborg through
 [Zulip](Contact.md#zulip-chat).
