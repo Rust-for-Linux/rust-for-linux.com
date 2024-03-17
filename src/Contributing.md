@@ -90,6 +90,30 @@ For new abstractions and modules, and especially for those that require new kern
 
     Please contact the Rust maintainers for help, especially if you find yourself with a lot of dependencies or patches for unrelated subsystems.
 
+### Submit checklist addendum
+
+  - Please run your patch through the `scripts/checkpatch.pl` script. In particular, the `--codespell` option is useful to check patches for typos.
+
+  - Please format the code by running the `rustfmt` target.
+
+  - Please keep the code Clippy-clean by compiling with `CLIPPY=1`.
+
+  - When submitting changes to Rust code documentation, please render them using the `rustdoc` target and ensure the result looks as expected.
+
+  - When submitting changes to examples inside Rust code documentation (i.e. "doctests"), which are transformed into KUnit tests, please test them by [running them](https://docs.kernel.org/rust/general-information.html#testing).
+
+  - When submitting changes to the Rust folder of the kernel documentation (i.e. `Documentation/rust/`), which are written in reStructuredText and handled by Sphinx, please [render them](https://docs.kernel.org/doc-guide/sphinx.html) (typically using the `htmldocs` target) to ensure there are no warnings and that the result looks as expected.
+
+  - When submitting changes to `#[test]`s, please test them by running the `rusttest` target.
+
+### Key cycle dates
+
+  - Patches can be sent anytime.
+
+  - We aim to send early PRs to Linus, to have patches for at least a week in linux-next and to give patches at least a week of review time.
+
+    Therefore, in general, the last version of a patch series with new features (i.e. aimed at the next merge window) should arrive before -rc5.
+
 ## Submitting patches
 
 If you are using a CLI tool like [`git-send-email`](https://git-scm.com/docs/git-send-email) or [`b4`](https://b4.docs.kernel.org), then you may find the following commands useful for generating the options needed for submitting patches to the Rust subsystem:
