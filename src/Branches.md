@@ -36,6 +36,8 @@ Note that this branch may be updated/rebased frequently and it might be gone in 
 
 These branches are focused on a particular topic and are meant to enable collaboration on code that is targeted for upstreaming but has not reached mainline yet.
 
+Some of these branches may contain work-in-progress code (similar to [staging trees](https://docs.kernel.org/process/2.Process.html?highlight=staging#staging-trees)) that may not be suitable for upstreaming or general usage yet. Please check the details of each branch.
+
 Changes to these branches land via GitHub PRs. Nevertheless, contributions should still follow the usual Linux kernel development process — see [Contributing](Contributing.md) for details.
 
 If you are interested in maintaining a new topic branch, then please [contact us](Contact.md). Thank you!
