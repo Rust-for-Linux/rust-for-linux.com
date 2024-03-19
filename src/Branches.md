@@ -58,6 +58,14 @@ The branch is kept in a compilable state (rebased regularly on top of `rust-next
 
 It is maintained by Trevor Gross and Valentin Obst. Please contact them through [Zulip](Contact.md#zulip-chat).
 
+### `staging/rust-device`
+
+[`staging/rust-device`](https://github.com/Rust-for-Linux/linux/tree/staging/rust-device) is dedicated to device/driver-related abstractions.
+
+The branch is kept in a compilable state (rebased regularly on top of `rust-next` or mainline). Fixes and features are welcome.
+
+It is maintained by Danilo Krummrich and Philipp Stanner. Please contact them through [Zulip](Contact.md#zulip-chat).
+
 ## Past branches
 
 These branches are unmaintained, archived, deprecated, frozen or do not exist anymore in the repository.
