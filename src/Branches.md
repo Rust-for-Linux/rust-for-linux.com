@@ -42,9 +42,9 @@ Changes to these branches land via GitHub PRs. Nevertheless, contributions shoul
 
 If you are interested in maintaining a new topic branch, then please [contact us](Contact.md). Thank you!
 
-### `rust-pci`
+### `staging/rust-pci`
 
-[`rust-pci`](https://github.com/Rust-for-Linux/linux/tree/rust-pci) is dedicated to PCI-related abstractions, which are used by e.g. the [NVMe driver](NVMe-driver.md).
+[`staging/rust-pci`](https://github.com/Rust-for-Linux/linux/tree/staging/rust-pci) is dedicated to PCI-related abstractions, which are used by e.g. the [NVMe driver](NVMe-driver.md).
 
 The branch is kept in a compilable state (rebased regularly on top of `rust-next` or mainline). Fixes and features are welcome.
 
