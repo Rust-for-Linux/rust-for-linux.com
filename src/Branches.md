@@ -66,6 +66,12 @@ The branch is kept in a compilable state (rebased regularly on top of `rust-next
 
 It is maintained by Danilo Krummrich and Philipp Stanner. Please contact them through [Zulip](Contact.md#zulip-chat).
 
+### `staging/dev`
+
+[`staging/dev`](https://github.com/Rust-for-Linux/linux/tree/staging/dev) is a branch intended to integrate the other topic branches (similar to the role of `rust-dev` for the main branches).
+
+It is maintained by Danilo Krummrich and Philipp Stanner. Please contact them through [Zulip](Contact.md#zulip-chat).
+
 ## Past branches
 
 These branches are unmaintained, archived, deprecated, frozen or do not exist anymore in the repository.
