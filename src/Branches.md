@@ -50,9 +50,9 @@ The branch is kept in a compilable state (rebased regularly on top of `rust-next
 
 It is maintained by Andreas Hindborg. Please contact him through [Zulip](Contact.md#zulip-chat).
 
-### `rust-net`
+### `staging/rust-net`
 
-[`rust-net`](https://github.com/Rust-for-Linux/linux/tree/rust-net) is dedicated to networking-related abstractions.
+[`staging/rust-net`](https://github.com/Rust-for-Linux/linux/tree/staging/rust-net) is dedicated to networking-related abstractions.
 
 The branch is kept in a compilable state (rebased regularly on top of `rust-next` or mainline). Fixes and features are welcome.
 
