@@ -46,9 +46,13 @@ If you are interested in maintaining a new topic branch, then please [contact us
 
 [`staging/rust-pci`](https://github.com/Rust-for-Linux/linux/tree/staging/rust-pci) is dedicated to PCI-related abstractions, which are used by e.g. the [NVMe driver](NVMe-driver.md).
 
+Please note that this GitHub branch is a mirror of our main [development branch](https://git.sr.ht/~metaspace/linux-rust-pci). Both branches are permanently in sync, so feel free to pull from any of them.
+
 The branch is kept in a compilable state (rebased regularly on top of `rust-next` or mainline). Fixes and features are welcome.
 
-It is maintained by Andreas Hindborg. Please contact him through [Zulip](Contact.md#zulip-chat).
+For submitting patches and for contacting us in general, please use the project's [mailing list](https://lists.sr.ht/~metaspace/linux-rust-pci). You can, however, open issues on GitHub if you wish to.
+
+Andreas Hindborg is `rust-pci`'s maintainer. You can also contact him through [Zulip](Contact.md#zulip-chat).
 
 ### `staging/rust-net`
 
