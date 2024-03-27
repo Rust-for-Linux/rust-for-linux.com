@@ -24,7 +24,7 @@ Please feel free to use it for general questions, discussion, help, feedback, et
 
 Everybody is welcome to join our [Open Meeting](https://meet.google.com/vii-meij-xpw).
 
-It takes place once every kernel cycle, the first Wednesday after `-rc1` is tagged, at 18:00 UTC.
+It takes place once every kernel cycle, the first Wednesday after `-rc1` is tagged, at 20:00 CET or CEST (i.e., CET at "summer time")
 
 ## GitHub issue tracker
 
