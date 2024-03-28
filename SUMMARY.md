@@ -35,6 +35,7 @@
   - [Android Binder Driver](Android-Binder-Driver.md)
   - [PuzzleFS filesystem driver](PuzzleFS-filesystem-driver.md)
   - [Apple AGX GPU driver](Apple-AGX-GPU-driver.md)
+  - [Nova GPU Driver](Nova-GPU-Driver.md)
 
 # Links
 
