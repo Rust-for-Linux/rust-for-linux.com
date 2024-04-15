@@ -7,7 +7,7 @@ implementation language for high performance device drivers.
 
 
 The Linux Rust NVMe driver lives
-[here](https://github.com/metaspace/linux/tree/nvme). This branch is routinely
+[here](https://github.com/metaspace/linux/tree/rnvme). This branch is routinely
 rebased on upstream Linux releases. Please be aware that the `nvme` branch is
 force pushed without notice. The version based on the deprecated `rust` branch
 is available [here](https://github.com/metaspace/linux/tree/nvme-rust).
@@ -22,6 +22,25 @@ The driver is not currently suitable for general use.
  - LPC 2022
    [slides](https://lpc.events/event/16/contributions/1180/attachments/1017/1961/deck.pdf)
    and [video](https://lpc.events/event/16/contributions/1180/attachments/1017/2249/go)
+
+## 6.8 Rebase Performance ([`rnvme-v6.8`](https://github.com/metaspace/linux/tree/rnvme-v6.8))
+
+### Setup
+
+ - AMD Ryzen 5 7600
+ - 32 GB 4800 MT/s DDR5 on one channel
+ - 1x Samsung 990 Pro 1TB (PCIe 4.0 x4 16 GT/S)
+ - NixOS 23.11
+
+### Results
+
+- 40 samples
+- Difference of means modeled with t-distribution
+- P95 confidence intervals
+
+![](rnvme/nvme-v6.8-absolute.svg)
+
+![](rnvme/nvme-v6.8-relative.svg)
 
 ## 6.7 Rebase Performance ([`nvme-6.7`](https://github.com/metaspace/linux/tree/nvme-6.7))
 
