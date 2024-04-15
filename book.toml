@@ -11,6 +11,7 @@ create-missing = false
 git-repository-url = "https://github.com/Rust-for-Linux/rust-for-linux.com"
 edit-url-template = ""
 no-section-label = true
+mathjax-support = true
 
 [output.html.fold]
 enable = true

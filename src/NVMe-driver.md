@@ -42,6 +42,10 @@ The driver is not currently suitable for general use.
 
 ![](rnvme/nvme-v6.8-relative.svg)
 
+The graph shows \\( \frac{R-C}{C} \\) where C is IO/s for the C driver and R is
+IO/s for the Rust driver. Thus, negative means the C driver is faster while
+positive means the Rust driver is faster.
+
 ## 6.7 Rebase Performance ([`nvme-6.7`](https://github.com/metaspace/linux/tree/nvme-6.7))
 
 ### Setup
