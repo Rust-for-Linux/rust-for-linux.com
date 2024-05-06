@@ -65,6 +65,8 @@
 
   - [`staging/rust-pci`](https://github.com/Rust-for-Linux/linux/tree/staging/rust-pci)
   - [`staging/rust-net`](https://github.com/Rust-for-Linux/linux/tree/staging/rust-net)
+  - [`staging/rust-device`](https://github.com/Rust-for-Linux/linux/tree/staging/rust-device)
+  - [`staging/dev`](https://github.com/Rust-for-Linux/linux/tree/staging/dev)
 
 ## Documentation
 
