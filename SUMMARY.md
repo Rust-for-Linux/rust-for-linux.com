@@ -63,8 +63,8 @@
 
 ## Topic branches
 
-  - [`rust-pci`](https://github.com/Rust-for-Linux/linux/tree/rust-pci)
-  - [`rust-net`](https://github.com/Rust-for-Linux/linux/tree/rust-net)
+  - [`staging/rust-pci`](https://github.com/Rust-for-Linux/linux/tree/staging/rust-pci)
+  - [`staging/rust-net`](https://github.com/Rust-for-Linux/linux/tree/staging/rust-net)
 
 ## Documentation
 
