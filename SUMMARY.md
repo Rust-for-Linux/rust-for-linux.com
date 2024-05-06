@@ -89,8 +89,9 @@
   - [Rust index](https://lwn.net/Kernel/Index/#Development_tools-Rust)
   - [Kangrejos index](https://lwn.net/Archives/ConferenceIndex/#Kangrejos)
 
-## Toolchain projects
+## Toolchains
 
+  - [kernel.org prebuilt LLVM+Rust](https://kernel.org/pub/tools/llvm/rust/)
   - [`rustc_codegen_gcc`](https://github.com/rust-lang/rustc_codegen_gcc)
   - [Rust GCC](https://rust-gcc.github.io)
 
