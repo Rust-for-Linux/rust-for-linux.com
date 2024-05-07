@@ -45,7 +45,7 @@ flow is not yet supported.
 
 ## Support
 
-We would like to thank [Collabora](https://www.collabora.com/) for their support for
+We would like to thank [Collabora](https://www.collabora.com) for supporting
 the development of Coccinelle for Rust.
 
 ## Contact
