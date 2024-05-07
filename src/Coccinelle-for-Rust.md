@@ -43,6 +43,11 @@ flow is not yet supported.
 
 [A recent talk about Coccinelle for Rust](https://gitlab.inria.fr/coccinelle/coccinelleforrust/-/blob/main/talks/rfl.pdf)
 
+## Support
+
+We would like to thank [Collabora](https://www.collabora.com/) for their support for
+the development of Coccinelle for Rust.
+
 ## Contact
 
 - Julia Lawall: [Julia.Lawall@inria.fr](mailto:Julia.Lawall@inria.fr)
