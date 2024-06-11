@@ -22,7 +22,7 @@ Therefore, in general, whether a third-party crate is suitable for the kernel ne
 
 ## Importing crates
 
-The kernel currently integrates some dependencies (e.g. some of the compression algorithms or our Rust `alloc` fork) by importing the files into its source tree, adapted as needed. In other words, they are not fetched/patched on demand.
+The kernel currently integrates some dependencies (e.g. some of the compression algorithms or, in older releases, our Rust `alloc` fork) by importing the files into its source tree, adapted as needed. In other words, they are not fetched/patched on demand.
 
 There have been discussions about potentially incorporating a system where crates/libraries are fetched dynamically given a list of crates, versions, hashes, etc.; however, it remains to be seen whether such a system would be preferred and accepted.
 
