@@ -32,6 +32,16 @@ Moreover, most of the features are only allowed within the `kernel` crate, i.e. 
 
 If you would like to use a new Rust unstable feature in the kernel, then please [contact us](Contact.md).
 
+## Rust for Linux in the Rust pre-merge CI
+
+Rust for Linux is currently being built-tested in Rust's pre-merge CI, i.e. the process that checks every change that is attempting to land into the Rust project in order to always keep it in a valid state.
+
+This allows both Rust for Linux and the Rust project to catch very early any unexpected changes that would break the kernel's usage of unstable features, as well as any other change that may affect it.
+
+The CI job may still need to be temporarily disabled for different reasons, but the intention is to help bring Rust for Linux into stable Rust.
+
+Thanks to the Rust project for adding the Linux kernel to their CI!
+
 ### `alloc` (older releases)
 
 [`alloc`](https://doc.rust-lang.org/alloc/) is part of the Rust standard library and its implementation uses many unstable features. Normally, this library (as well as [`core`](https://doc.rust-lang.org/core/) and others) is provided by the compiler, and thus those unstable features do not break users' code.
