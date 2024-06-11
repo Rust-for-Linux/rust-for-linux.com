@@ -32,10 +32,8 @@ Moreover, most of the features are only allowed within the `kernel` crate, i.e. 
 
 If you would like to use a new Rust unstable feature in the kernel, then please [contact us](Contact.md).
 
-### `alloc`
+### `alloc` (older releases)
 
 [`alloc`](https://doc.rust-lang.org/alloc/) is part of the Rust standard library and its implementation uses many unstable features. Normally, this library (as well as [`core`](https://doc.rust-lang.org/core/) and others) is provided by the compiler, and thus those unstable features do not break users' code.
 
-Currently, the kernel contains a fork of `alloc` (matched to the supported Rust version by the kernel) with some additions on top. This complicates compiling the kernel with a different compiler version due to those unstable features, but this fork is meant to be temporary: the original plan for `alloc` discussed with upstream Rust (and others) is documented in-tree in the [`rust/alloc/README.md`](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/rust/alloc/README.md?h=v6.6) file.
-
-Discussions with upstream Rust are ongoing to see what the eventual solution for `alloc` will be.
+In older releases, the kernel contained a fork of `alloc` (matched to the supported Rust version by the kernel) with some additions on top. This complicated compiling the kernel with a different compiler version due to those unstable features, but this fork was meant to be temporary, and eventually it got dropped in v6.10. The original plan for `alloc` discussed with upstream Rust (and others) was documented in-tree in the [`rust/alloc/README.md`](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/rust/alloc/README.md?h=v6.6) file.
