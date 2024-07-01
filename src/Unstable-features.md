@@ -34,7 +34,7 @@ If you would like to use a new Rust unstable feature in the kernel, then please 
 
 ## Rust for Linux in the Rust pre-merge CI
 
-Rust for Linux is currently being built-tested in Rust's pre-merge CI, i.e. the process that checks every change that is attempting to land into the Rust project in order to always keep it in a valid state.
+Rust for Linux is currently being [built-tested](https://rustc-dev-guide.rust-lang.org/tests/rust-for-linux.html) in Rust's pre-merge CI, i.e. the process that checks every change that is attempting to land into the Rust project in order to always keep it in a valid state.
 
 This allows both Rust for Linux and the Rust project to catch very early any unexpected changes that would break the kernel's usage of unstable features, as well as any other change that may affect it.
 
