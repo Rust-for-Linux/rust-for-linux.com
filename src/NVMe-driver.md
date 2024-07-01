@@ -23,6 +23,76 @@ The driver is not currently suitable for general use.
    [slides](https://lpc.events/event/16/contributions/1180/attachments/1017/1961/deck.pdf)
    and [video](https://lpc.events/event/16/contributions/1180/attachments/1017/2249/go)
 
+## 6.10-rc5 Rebase Performance ([`rnvme-v6.10-rc5`](https://github.com/metaspace/linux/tree/rnvme-v6.10-rc5))
+
+### Setup
+
+ - AMD Ryzen 5 7600
+ - 32 GB 4800 MT/s DDR5 on one channel
+ - 1x Samsung 990 Pro 1TB (PCIe 4.0 x4 16 GT/S)
+ - NixOS 24.05
+
+### Results
+
+- 40 samples
+- Difference of means modeled with t-distribution
+- P95 confidence intervals
+
+![](rnvme/nvme-v6.10-rc5-absolute.svg)
+
+![](rnvme/nvme-v6.10-rc5-relative.svg)
+
+The graph shows
+    <math>
+        <mfrac>
+            <mrow>
+                <mi>R</mi>
+                <mo>-</mo>
+                <mi>C</mi>
+            </mrow>
+            <mrow>
+                <mi>C</mi>
+            </mrow>
+        </mfrac>
+    </math>
+where C is IO/s for the C driver and R is IO/s for the Rust driver. Thus, negative
+means the C driver is faster while positive means the Rust driver is faster.
+
+## 6.9 Rebase Performance ([`rnvme-v6.9`](https://github.com/metaspace/linux/tree/rnvme-v6.9))
+
+### Setup
+
+ - AMD Ryzen 5 7600
+ - 32 GB 4800 MT/s DDR5 on one channel
+ - 1x Samsung 990 Pro 1TB (PCIe 4.0 x4 16 GT/S)
+ - NixOS 24.05
+
+### Results
+
+- 40 samples
+- Difference of means modeled with t-distribution
+- P95 confidence intervals
+
+![](rnvme/nvme-v6.9-absolute.svg)
+
+![](rnvme/nvme-v6.9-relative.svg)
+
+The graph shows
+    <math>
+        <mfrac>
+            <mrow>
+                <mi>R</mi>
+                <mo>-</mo>
+                <mi>C</mi>
+            </mrow>
+            <mrow>
+                <mi>C</mi>
+            </mrow>
+        </mfrac>
+    </math>
+where C is IO/s for the C driver and R is IO/s for the Rust driver. Thus, negative
+means the C driver is faster while positive means the Rust driver is faster.
+
 ## 6.8 Rebase Performance ([`rnvme-v6.8`](https://github.com/metaspace/linux/tree/rnvme-v6.8))
 
 ### Setup
