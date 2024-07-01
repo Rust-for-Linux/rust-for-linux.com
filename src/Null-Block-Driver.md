@@ -66,6 +66,68 @@ in this work:
  - [Original RFC Patches](https://github.com/metaspace/linux/tree/null_block-RFC)
  - [Mailing List Post](https://lore.kernel.org/all/20230503090708.2524310-1-nmi@metaspace.dk/)
 
+## 6.10-rc3 Rebase ([`rnull-v6.10-rc3`](https://github.com/metaspace/linux/tree/rnull-v6.10-rc3))
+
+Changes from `rnull-v6.9`:
+
+ - Add `ForeignBorrowed`.
+ - Move `GenDisk` to a builder pattern instead of typestate pattern.
+ - Move block size validation from driver to abstractions.
+ - Pin `NullBlkModuel`.
+ - Refactor `Request::try_set_end`.
+ - Rewrite atomic functions in terms of `core` library functions.
+ - Fix a bug in timer completions where an offset was not calculated correctly.
+ - Refactor `TagSet` initialization in terms of `core::mem::zeroed()` instead of `Opaque::try_ffi_init`
+
+### Performance
+
+#### Setup
+
+ - AMD Ryzen 5 7600
+ - 32 GB 4800 MT/s DDR5 on one channel
+ - 1x Samsung 990 Pro 1TB (PCIe 4.0 x4 16 GT/S)
+ - NixOS 24.05
+
+#### Results
+
+- Plot shows `(mean_iops_r - mean_iops_c) / mean_iops_c`
+- 40 samples for each configuration
+- Difference of means modeled with t-distribution
+- P95 confidence intervals
+
+![](rnull/rnull-v6.10-rc3.svg)
+
+## 6.9 Rebase ([`rnull-v6.9`](https://github.com/metaspace/linux/tree/rnull-v6.9))
+
+Changes from `rnull-v6.8`:
+
+ - Do not rely on C refcounting of `Request`
+ - Use `ARef` to track `Request` lifetime
+ - Use `Page` instead of `Folio` to track memory for memory backed mode
+ - Use typestate pattern to track state of `GenDisk`
+ - Panic when requests cannot be completed
+ - Remove associated type `RequestDataInit` and use return position impl trait instead
+ - Call `Request::start` implicitly
+ - Split helper function C file
+
+### Performance
+
+#### Setup
+
+ - AMD Ryzen 5 7600
+ - 32 GB 4800 MT/s DDR5 on one channel
+ - 1x Samsung 990 Pro 1TB (PCIe 4.0 x4 16 GT/S)
+ - NixOS 24.05
+
+#### Results
+
+- Plot shows `(mean_iops_r - mean_iops_c) / mean_iops_c`
+- 5 samples for each configuration
+- Difference of means modeled with t-distribution
+- P95 confidence intervals
+
+![](rnull/rnull-v6.9.svg)
+
 ## 6.8 Rebase ([`rnull-v6.8`](https://github.com/metaspace/linux/tree/rnull-v6.8))
 
 Changes from `rnull-v6.8-rc6`:
