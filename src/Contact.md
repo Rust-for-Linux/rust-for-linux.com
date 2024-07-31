@@ -36,6 +36,8 @@ It takes place once every kernel cycle, the first Wednesday after `-rc1` is tagg
 
 Please do ___not___ report security bugs in the GitHub issue tracker. Instead, please read the [Security bugs](https://docs.kernel.org/admin-guide/security-bugs.html) page in the kernel documentation.
 
+For general questions, please use the Zulip chat instead.
+
 ## Email
 
 For other matters, please feel free to contact the [maintainers](https://docs.kernel.org/process/maintainers.html#rust) via email.
