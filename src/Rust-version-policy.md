@@ -2,42 +2,36 @@
 
 ## Supported versions
 
-The kernel documents the [minimal requirements](https://docs.kernel.org/process/changes.html) to compile it. In the case of Rust, currently only a single version is supported (i.e. rather than a minimum):
+The kernel documents the [minimal requirements](https://docs.kernel.org/process/changes.html) to compile it. Since v6.11, the kernel supports a minimum version of Rust, starting with Rust 1.78.0.
 
-> A particular version of the Rust toolchain is required. Newer versions may or may not work because the kernel depends on some unstable Rust features, for the moment.
+For the moment, we cannot guarantee newer Rust versions will always work due to the [unstable features](Unstable-features.md) in use[^rust-is-stable]. Removing the need for them is a priority of the project.
 
-The reason is that we cannot guarantee newer Rust versions will work due to the [unstable features](Unstable-features.md) in use[^rust-is-stable]. Removing the need for them is a priority in order to be able to eventually declare a minimum Rust version for the kernel.
+To ameliorate that, the kernel is now being built-tested by Rust's pre-merge CI. That is, every change that is attempting to land into the Rust compiler is tested against the kernel, and it is merged only if it passes. Similarly, the `bindgen` tool has agreed to build the kernel in their CI too.
 
-Having said that, generally speaking, newer versions should work, as long as one patches any potential compilation errors coming from changes in unstable features.
+Thus, with the pre-merge CI in place, those projects hope to avoid unintentional changes to Rust that break the kernel. This means that, in general, apart from intentional changes on their side (that we will need to workaround conditionally on our side), the upcoming Rust
+compiler versions should generally work. This applies to beta and nightly versions of Rust as well.
 
-[^rust-is-stable]: Note that the Rust language is stable, i.e. it promises backwards compatibility. See the [Unstable features](Unstable-features.md) page for details.
+In addition, the Rust project has proposed getting the kernel into stable Rust (at least solving the main blockers) as one of its three [flagship goals for 2024H2](https://rust-lang.github.io/rust-project-goals/2024h2/index.html#flagship-goals).
 
-### Distribution toolchains
+[^rust-is-stable]: To clarify, the Rust language is stable, i.e. it promises backwards compatibility, except for those unstable features.
 
-Some Linux distributions provide Rust toolchains (i.e. built by the distribution maintainers, rather than redistributing the ones from [rust-lang.org](https://www.rust-lang.org)). These toolchains should be fine to use, as long as they have not been modified in unexpected ways (and keeping in mind the versioning limitations).
+## Supported toolchains
 
-## Update policy
+The Rust versions currently supported should already be enough for kernel developers in distributions that provide recent Rust compilers routinely, such as:
 
-### Before a minimum version can be declared
+  - Arch Linux.
+  - Debian Testing and Unstable (outside the freeze period).
+  - Fedora Linux.
+  - Gentoo Linux.
+  - Nix (unstable).
+  - openSUSE Slowroll and Tumbleweed.
 
-It remains to be decided how often the Rust version upgrades will land. Currently, we are tracking the latest Rust release as closely as possible, but it remains to be seen how other kernel developers feel about it.
+In addition, we support the toolchains distributed by Rust, installed via [`rustup`](https://rust-lang.github.io/rustup/) or the [standalone installers](https://forge.rust-lang.org/infra/other-installation-methods.html#standalone-installers).
 
-On top of that, if the [`klint`](klint.md) support is merged and starts to be routinely used, then we will also need to be mindful of its schedule.
+Finally, slim and fast LLVM+Rust toolchains are provided at [kernel.org](https://kernel.org/pub/tools/llvm/rust/).
 
-### After a minimum version is declared
+Please see the [Quick Start guide](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/rust/quick-start.rst?h=v6.11-rc1) for details.
 
-If we follow a similar model to the GCC and LLVM support in the kernel (which is likely), then we will not track the latest Rust release (i.e. as a minimum), though how wide the window will be remains to be seen. It is possible we may start with a small window and then widen it, similar to what was originally decided for the LLVM support in the kernel.
+## Minimum upgrade policy
 
-## Submitting upgrades
-
-Please do not submit patches to upgrade the Rust version. If you want to discuss upgrading the Rust version in the kernel, then please [contact us](Contact.md).
-
-## Feedback
-
-We are looking for [feedback](Contact.md) from Linux distributions, companies and other users and maintainers of downstream kernel releases.
-
-In particular, it would be useful to know:
-
-  - What versions/policy would work best your distribution/company.
-
-  - If the kernel cannot satisfy exactly that (which is likely, given the current constraints), whether you would prefer to maintain a given compiler version for a while or to backport support from a newer version from mainline.
+We will start with a small window of supported Rust releases and then widen it progressively. However, we are still determining how often we will move the minimum to newer Rust versions, since we will have to balance different factors. For instance, we are following the evolution of which Rust version the upcoming Debian Stable distribution (i.e. Trixie) will package.
