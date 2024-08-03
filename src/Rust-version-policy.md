@@ -30,7 +30,7 @@ In addition, we support the toolchains distributed by Rust, installed via [`rust
 
 Finally, slim and fast LLVM+Rust toolchains are provided at [kernel.org](https://kernel.org/pub/tools/llvm/rust/).
 
-Please see the [Quick Start guide](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/rust/quick-start.rst?h=v6.11-rc1) for details.
+Please see the [Quick Start guide](https://docs.kernel.org/rust/quick-start.html) for details.
 
 ## Minimum upgrade policy
 
