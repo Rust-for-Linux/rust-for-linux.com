@@ -59,7 +59,8 @@
 
   - [Kernel documentation (mainline)](https://docs.kernel.org/rust/)
   - [Kernel documentation (next)](https://docs.kernel.org/next/rust/)
-  - [Rust code documentation (v6.8)](https://rust.docs.kernel.org/6.8/)
+  - [Rust code documentation (mainline)](https://rust.docs.kernel.org)
+  - [Rust code documentation (next)](https://rust.docs.kernel.org/next/)
   - [Out-of-tree module template](https://github.com/Rust-for-Linux/rust-out-of-tree-module)
 
 ## Main branches
