@@ -7,10 +7,11 @@ implementation language for high performance device drivers.
 
 
 The Linux Rust NVMe driver lives
-[here](https://github.com/metaspace/linux/tree/rnvme). This branch is routinely
-rebased on upstream Linux releases. Please be aware that the `nvme` branch is
-force pushed without notice. The version based on the deprecated `rust` branch
-is available [here](https://github.com/metaspace/linux/tree/nvme-rust).
+[here](https://git.kernel.org/pub/scm/linux/kernel/git/a.hindborg/linux.git/log/?h=rnvme).
+This branch is routinely rebased on upstream Linux releases. Please be aware
+that the `nvme` branch is force pushed without notice. The version based on the
+deprecated `rust` branch is available
+[here](https://github.com/metaspace/linux/tree/nvme-rust).
 
 The Rust NVMe driver was originally
 authored by Wedson Almeida Filho and is now maintained by Andreas Hindborg
@@ -22,6 +23,76 @@ The driver is not currently suitable for general use.
  - LPC 2022
    [slides](https://lpc.events/event/16/contributions/1180/attachments/1017/1961/deck.pdf)
    and [video](https://lpc.events/event/16/contributions/1180/attachments/1017/2249/go)
+
+## 6.11-rc2 Rebase Performance ([`rnvme-v6.11-rc2`](https://git.kernel.org/pub/scm/linux/kernel/git/a.hindborg/linux.git/log/?h=rnvme-v6.11-rc2))
+
+### Setup
+
+ - AMD Ryzen 5 7600
+ - 32 GB 4800 MT/s DDR5 on one channel
+ - 1x Samsung 990 Pro 1TB (PCIe 4.0 x4 16 GT/S)
+ - NixOS 24.05
+
+### Results
+
+- 40 samples
+- Difference of means modeled with t-distribution
+- P95 confidence intervals
+
+![](rnvme/nvme-v6.11-rc2-absolute.svg)
+
+![](rnvme/nvme-v6.11-rc2-relative.svg)
+
+The graph shows
+    <math>
+        <mfrac>
+            <mrow>
+                <mi>R</mi>
+                <mo>-</mo>
+                <mi>C</mi>
+            </mrow>
+            <mrow>
+                <mi>C</mi>
+            </mrow>
+        </mfrac>
+    </math>
+where C is IO/s for the C driver and R is IO/s for the Rust driver. Thus, negative
+means the C driver is faster while positive means the Rust driver is faster.
+
+## 6.10 Rebase Performance ([`rnvme-v6.10`](https://git.kernel.org/pub/scm/linux/kernel/git/a.hindborg/linux.git/log/?h=rnvme-v6.10))
+
+### Setup
+
+ - AMD Ryzen 5 7600
+ - 32 GB 4800 MT/s DDR5 on one channel
+ - 1x Samsung 990 Pro 1TB (PCIe 4.0 x4 16 GT/S)
+ - NixOS 24.05
+
+### Results
+
+- 40 samples
+- Difference of means modeled with t-distribution
+- P95 confidence intervals
+
+![](rnvme/nvme-v6.10-absolute.svg)
+
+![](rnvme/nvme-v6.10-relative.svg)
+
+The graph shows
+    <math>
+        <mfrac>
+            <mrow>
+                <mi>R</mi>
+                <mo>-</mo>
+                <mi>C</mi>
+            </mrow>
+            <mrow>
+                <mi>C</mi>
+            </mrow>
+        </mfrac>
+    </math>
+where C is IO/s for the C driver and R is IO/s for the Rust driver. Thus, negative
+means the C driver is faster while positive means the Rust driver is faster.
 
 ## 6.10-rc5 Rebase Performance ([`rnvme-v6.10-rc5`](https://github.com/metaspace/linux/tree/rnvme-v6.10-rc5))
 
@@ -197,8 +268,8 @@ PR for 6.6 in September 2023.
 
 ### Results
 
-![iops-512](./nvme-512.svg)
-![iops-all](./nvme-all.svg)
+![iops-512](./rnvme/nvme-512-sep23.svg)
+![iops-all](./rnvme/nvme-all-sep23.svg)
 
 ## Performance January 2023
 
@@ -214,8 +285,8 @@ Performance evaluation as of January 2023.
 
 ### Results
 
-![iops](./iops.svg)
-![relative](./relative.svg)
+![iops](./rnvme/iops-jan23.svg)
+![relative](./rnvme/relative-jan23.svg)
 
 ### Analysis
 
