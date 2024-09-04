@@ -197,8 +197,8 @@ PR for 6.6 in September 2023.
 
 ### Results
 
-![iops-512](./nvme-512.svg)
-![iops-all](./nvme-all.svg)
+![iops-512](./rnvme/nvme-512-sep23.svg)
+![iops-all](./rnvme/nvme-all-sep23.svg)
 
 ## Performance January 2023
 
@@ -214,8 +214,8 @@ Performance evaluation as of January 2023.
 
 ### Results
 
-![iops](./iops.svg)
-![relative](./relative.svg)
+![iops](./rnvme/iops-jan23.svg)
+![relative](./rnvme/relative-jan23.svg)
 
 ### Analysis
 
