@@ -23,6 +23,41 @@ The driver is not currently suitable for general use.
    [slides](https://lpc.events/event/16/contributions/1180/attachments/1017/1961/deck.pdf)
    and [video](https://lpc.events/event/16/contributions/1180/attachments/1017/2249/go)
 
+## 6.11-rc2 Rebase Performance ([`rnvme-v6.11-rc2`](https://git.kernel.org/pub/scm/linux/kernel/git/a.hindborg/linux.git/log/?h=rnvme-v6.11-rc2))
+
+### Setup
+
+ - AMD Ryzen 5 7600
+ - 32 GB 4800 MT/s DDR5 on one channel
+ - 1x Samsung 990 Pro 1TB (PCIe 4.0 x4 16 GT/S)
+ - NixOS 24.05
+
+### Results
+
+- 40 samples
+- Difference of means modeled with t-distribution
+- P95 confidence intervals
+
+![](rnvme/nvme-v6.11-rc2-absolute.svg)
+
+![](rnvme/nvme-v6.11-rc2-relative.svg)
+
+The graph shows
+    <math>
+        <mfrac>
+            <mrow>
+                <mi>R</mi>
+                <mo>-</mo>
+                <mi>C</mi>
+            </mrow>
+            <mrow>
+                <mi>C</mi>
+            </mrow>
+        </mfrac>
+    </math>
+where C is IO/s for the C driver and R is IO/s for the Rust driver. Thus, negative
+means the C driver is faster while positive means the Rust driver is faster.
+
 ## 6.10 Rebase Performance ([`rnvme-v6.10`](https://git.kernel.org/pub/scm/linux/kernel/git/a.hindborg/linux.git/log/?h=rnvme-v6.10))
 
 ### Setup
