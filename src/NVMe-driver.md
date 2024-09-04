@@ -7,10 +7,11 @@ implementation language for high performance device drivers.
 
 
 The Linux Rust NVMe driver lives
-[here](https://github.com/metaspace/linux/tree/rnvme). This branch is routinely
-rebased on upstream Linux releases. Please be aware that the `nvme` branch is
-force pushed without notice. The version based on the deprecated `rust` branch
-is available [here](https://github.com/metaspace/linux/tree/nvme-rust).
+[here](https://git.kernel.org/pub/scm/linux/kernel/git/a.hindborg/linux.git/log/?h=rnvme).
+This branch is routinely rebased on upstream Linux releases. Please be aware
+that the `nvme` branch is force pushed without notice. The version based on the
+deprecated `rust` branch is available
+[here](https://github.com/metaspace/linux/tree/nvme-rust).
 
 The Rust NVMe driver was originally
 authored by Wedson Almeida Filho and is now maintained by Andreas Hindborg

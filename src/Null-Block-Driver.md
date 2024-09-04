@@ -62,7 +62,7 @@ in this work:
 
 ## Resources
 
- - [Latest patches](https://github.com/metaspace/linux/tree/rnull)
+ - [Latest patches](https://git.kernel.org/pub/scm/linux/kernel/git/a.hindborg/linux.git/log/?h=rnull)
  - [Original RFC Patches](https://github.com/metaspace/linux/tree/null_block-RFC)
  - [Mailing List Post](https://lore.kernel.org/all/20230503090708.2524310-1-nmi@metaspace.dk/)
  - [Subset merged in v6.11-rc1](https://lore.kernel.org/all/20240611114551.228679-1-nmi@metaspace.dk/)
