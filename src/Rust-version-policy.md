@@ -34,4 +34,4 @@ Please see the [Quick Start guide](https://docs.kernel.org/rust/quick-start.html
 
 ## Minimum upgrade policy
 
-We will start with a small window of supported Rust releases and then widen it progressively. However, we are still determining how often we will move the minimum to newer Rust versions, since we will have to balance different factors. For instance, we are following the evolution of which Rust version the upcoming Debian Stable distribution (i.e. Trixie) will package.
+We will start with a small window of supported Rust releases and then widen it progressively. However, we are still determining how often we will move the minimum to newer Rust versions, since we will have to balance different factors. For instance, we are [following](https://alioth-lists.debian.net/pipermail/pkg-rust-maintainers/2024-July/044870.html) the evolution of which Rust version the upcoming Debian Stable distribution (i.e. Trixie) will package.
