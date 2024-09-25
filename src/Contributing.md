@@ -48,6 +48,12 @@ There are many ways to contribute to the Rust support in the kernel:
 
   - Helping others on Zulip. For instance, getting them started with the Rust support in the kernel.
 
+## Getting started with Rust kernel development
+
+Please read the documentation under [`Documentation/rust`](https://docs.kernel.org/rust/). In particular, the [Quick Start guide](https://docs.kernel.org/rust/quick-start.html).
+
+Reading the rest of this website is also recommended.
+
 ## The Rust subsystem
 
 The Rust subsystem takes care of the core Rust abstractions as well as the general infrastructure for Rust in the kernel. It is a bit special in that it potentially intersects with every other subsystem in the kernel, especially in the beginning of the Rust support in the kernel.
