@@ -28,7 +28,7 @@ The Rust support is part of the Linux kernel, and thus contributing works the sa
 
   - Contributions are signed under the [Developer's Certificate of Origin](https://docs.kernel.org/process/submitting-patches.html#developer-s-certificate-of-origin-1-1).
 
-To learn more about the kernel development process, please read the documentation under [`Documentation/process`](https://docs.kernel.org/process/index.html). In particular, please make sure to read [`submitting-patches.rst`](https://docs.kernel.org/process/submitting-patches.html).
+To learn more about the kernel development process, please read the documentation under [`Documentation/process`](https://docs.kernel.org/process/). In particular, please make sure to read [`submitting-patches.rst`](https://docs.kernel.org/process/submitting-patches.html).
 
 In addition, it may be a good idea to contribute a small cleanup or fix somewhere in the kernel (not necessarily to Rust code), in order to get accustomed to the patch-based workflow. From time to time we add ["good first issues"](https://github.com/Rust-for-Linux/linux/contribute) to our GitHub issue tracker for that purpose.
 
