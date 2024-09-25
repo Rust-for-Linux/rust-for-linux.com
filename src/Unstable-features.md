@@ -36,7 +36,7 @@ If you would like to use a new Rust unstable feature in the kernel, then please 
 
 In order to catch any unexpected changes that would break the kernel's usage of unstable features, the kernel is build-tested in the pre-merge CI of the Rust project. Please see the [Rust version policy](Rust-version-policy.md) page for details.
 
-### `alloc` (older releases)
+## `alloc` (older releases)
 
 [`alloc`](https://doc.rust-lang.org/alloc/) is part of the Rust standard library and its implementation uses many unstable features. Normally, this library (as well as [`core`](https://doc.rust-lang.org/core/) and others) is provided by the compiler, and thus those unstable features do not break users' code.
 
