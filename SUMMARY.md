@@ -57,6 +57,7 @@
 
 ## Documentation
 
+  - [Quick Start guide](https://docs.kernel.org/rust/quick-start.html)
   - [Kernel documentation (mainline)](https://docs.kernel.org/rust/)
   - [Kernel documentation (next)](https://docs.kernel.org/next/rust/)
   - [Rust code documentation (mainline)](https://rust.docs.kernel.org)
