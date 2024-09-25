@@ -6,7 +6,7 @@ The kernel documents the [minimal requirements](https://docs.kernel.org/process/
 
 For the moment, we cannot guarantee newer Rust versions will always work due to the [unstable features](Unstable-features.md) in use[^rust-is-stable]. Removing the need for them is a priority of the project.
 
-To ameliorate that, the kernel is now being built-tested by Rust's pre-merge CI. That is, every change that is attempting to land into the Rust compiler is tested against the kernel, and it is merged only if it passes. Similarly, the `bindgen` tool has agreed to build the kernel in their CI too.
+To ameliorate that, the kernel is now being built-tested by Rust's pre-merge CI. That is, every change that is attempting to land into the Rust compiler is tested against the kernel, and it is merged only if it passes. Similarly, the `bindgen` tool is also building the kernel in their pre-merge CI too.
 
 Thus, with the pre-merge CI in place, those projects hope to avoid unintentional changes to Rust that break the kernel. This means that, in general, apart from intentional changes on their side (that we will need to workaround conditionally on our side), the upcoming Rust
 compiler versions should generally work. This applies to beta and nightly versions of Rust as well.
