@@ -4,15 +4,15 @@
 
 Rust provides a package manager and build system called [Cargo](https://doc.rust-lang.org/cargo/). Rust also provides [crates.io](https://crates.io), its default package registry. In userspace, all these form a solution that a lot of open-source Rust projects use.
 
-Some of those open-source libraries are potentially usable in the kernel because they only depend on `core` and `alloc` (rather than `std`), or because they only provide macro facilities.
+Some of those open-source libraries are potentially usable in the kernel because they only depend on `core` (and possibly `alloc`) rather than `std`, or because they only provide macro facilities.
 
 Thus it is natural to consider whether some of these libraries could be reused for the kernel.
 
 ## Suitability of a crate
 
-Even if a library only depends on `core` and `alloc`, it may still not be usable within the kernel for other reasons.
+Even if a library only depends on `core` (and possibly `alloc`), it may still not be usable within the kernel for other reasons.
 
-For instance, its license may be incompatible, it may not support fallible allocations, the kernel may only need a very small subset of what it supports (even if it supports configuring out some of its features), the kernel may already provide the same functionality on the C side (which could be abstracted), etc.
+For instance, its license may be incompatible, its use of the Rust standard library `alloc` crate (if any) may not be easy to adapt to the kernel's `alloc` module, the kernel may only need a very small subset of what it supports (even if it supports configuring out some of its features), the kernel may already provide the same functionality on the C side (which could be abstracted), etc.
 
 On top of that, the code of a crate may require some changes to be adapted for the kernel anyway. For instance, adding SPDX license identifiers, removing a dependency, tweaking some code, enabling an unstable feature, etc.
 
