@@ -106,7 +106,7 @@ For new abstractions and modules, and especially for those that require new kern
 
   - When submitting changes to Rust code documentation, please render them using the `rustdoc` target and ensure the result looks as expected.
 
-  - When submitting changes to examples inside Rust code documentation (i.e. "doctests"), which are transformed into KUnit tests, please test them by [running them](https://docs.kernel.org/rust/general-information.html#testing).
+  - When submitting changes to examples inside Rust code documentation (i.e. "doctests"), which are transformed into KUnit tests, please test them by [running them](https://docs.kernel.org/rust/testing.html).
 
   - When submitting changes to the Rust folder of the kernel documentation (i.e. `Documentation/rust/`), which are written in reStructuredText and handled by Sphinx, please [render them](https://docs.kernel.org/doc-guide/sphinx.html) (typically using the `htmldocs` target) to ensure there are no warnings and that the result looks as expected.
 
