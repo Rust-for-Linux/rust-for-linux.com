@@ -41,7 +41,18 @@ flow is not yet supported.
 
 [Coccinelle for Rust](https://gitlab.inria.fr/coccinelle/coccinelleforrust.git)
 
-[A recent talk about Coccinelle for Rust](https://gitlab.inria.fr/coccinelle/coccinelleforrust/-/blob/main/talks/rfl.pdf)
+[LWN article from Kangregos 2024](https://lwn.net/Articles/991399/)
+
+[A recent talk about Coccinelle for Rust](https://gitlab.inria.fr/coccinelle/coccinelleforrust/-/raw/ctl2/talks/lpc24.pdf?ref_type=heads)
+
+## Feedback
+
+Coccinelle For Rust relies on user feedback for its improvement.
+Several bugs have been fixed thanks to helpful feedback from users. 
+If you are interested in using Coccinelle For Rust please feel free to
+reach out to us at Julia.Lawall@inria.fr and tathagata.roy1278@gmail.com
+with your questions or feedback.
+
 
 ## Support
 
