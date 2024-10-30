@@ -47,11 +47,10 @@ flow is not yet supported.
 
 ## Feedback
 
-Coccinelle For Rust relies on user feedback for its improvement.
+Coccinelle for Rust relies on user feedback for its improvement.
 Several bugs have been fixed thanks to helpful feedback from users. 
-If you are interested in using Coccinelle For Rust please feel free to
-reach out to us at Julia.Lawall@inria.fr and tathagata.roy1278@gmail.com
-with your questions or feedback.
+If you are interested in using Coccinelle for Rust please feel free to
+reach out to us at [Contact](#Contact) with your questions or feedback.
 
 
 ## Support
