@@ -50,7 +50,7 @@ flow is not yet supported.
 Coccinelle for Rust relies on user feedback for its improvement.
 Several bugs have been fixed thanks to helpful feedback from users.
 If you are interested in using Coccinelle for Rust please feel free to
-reach out to us at [Contact](#Contact) with your questions or feedback.
+reach out to us at [Contact](#contact) with your questions or feedback.
 
 
 ## Support
