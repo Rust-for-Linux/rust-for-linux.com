@@ -112,6 +112,8 @@ For new abstractions and modules, and especially for those that require new kern
 
   - When submitting changes to `#[test]`s, please test them by running the `rusttest` target.
 
+  - Ideally, please check your changes with both the latest stable Rust compiler as well as the minimum supported version (`scripts/min-tool-version.sh rustc`), including Clippy.
+
 ### Key cycle dates
 
   - Patches can be sent anytime.
