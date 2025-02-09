@@ -59,7 +59,7 @@ Ideally, and eventually, yes. However, when they are starting out, not necessari
 
 The intention is that maintainers are not pressured to reject Rust, even if they wanted to try it, just because they may feel they will not be able to provide timely fixes and so on the same way they do for C.
 
-Thus Rust should be generally seen as a new thing, and new things can break. In fact, ideally it should be fun for maintainers to try Rust.
+Thus, depending on the subsystem, Rust may be seen as a new thing, and new things can break. In fact, ideally it should be fun for maintainers to try Rust.
 
 
 ## Didn't you promise Rust wouldn't be extra work for maintainers?
