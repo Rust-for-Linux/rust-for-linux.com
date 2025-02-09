@@ -1,15 +1,11 @@
 # Backporting and stable/LTS releases
 
-The [_stable_ and _longterm_ (LTS) kernel releases](https://www.kernel.org/category/releases.html) only receive fixes, and thus [do not accept new features](https://docs.kernel.org/process/stable-kernel-rules.html). Therefore, it is not possible to backport Rust support into those kernel releases. Moreover, there is a significant cost in maintaining a stable branch.
+The [_stable_ and _longterm_ (LTS) kernel releases](https://www.kernel.org/category/releases.html) only receive fixes, and thus [do not accept new features](https://docs.kernel.org/process/stable-kernel-rules.html). Therefore, it is generally not possible to backport new Rust features or abstractions from mainline. However, exceptions may apply.
 
-Having said that, we are aware that there is growing interest in backported Rust support for, at least, 5.15 and 6.1. There are several questions around the possibility of supporting an stable/LTS release on Rust for Linux's side:
+We do our best to maintain the existing Rust support in Linux v6.1 LTS, v6.6 LTS and v6.12 LTS:
 
-  - Whether the support is best-effort or intended to be used in production, and the security and scheduling implications.
+  - Linux v6.1 LTS and v6.6 LTS have the Rust compiler version pinned, i.e. a single version of Rust works with each of those releases.
 
-  - Whether all new abstractions, drivers and overall features appearing in mainline are backported, and whether those that require extra backports on the C side to support them should be included.
+  - Linux v6.12 LTS is the first LTS that had a minimum supported Rust version, i.e. unpinned.
 
-  - Whether the Rust version policy would be different than the one in mainline, e.g. whether the version would be fixed.
-
-  - Whether to provide it as a rebasing branch (i.e. as a set of patches) on top of the stable/LTS ones or as an actual stable branch.
-
-If your company, organization or team would be interested in such releases with backported Rust support, then please [contact us](Contact.md).
+    We will do our best to avoid having to establish a maximum Rust version for that LTS, i.e. to support future Rust releases. However, given the use of unstable features back then, we cannot guarantee it.
