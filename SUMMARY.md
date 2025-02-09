@@ -4,6 +4,7 @@
 
   - [Contact](Contact.md)
   - [Contributing](Contributing.md)
+  - [Rust kernel policy](Rust-kernel-policy.md)
   - [Branches](Branches.md)
   - [Rust reference drivers](Rust-reference-drivers.md)
   - [Rust version policy](Rust-version-policy.md)
