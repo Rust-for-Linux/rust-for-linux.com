@@ -12,6 +12,10 @@ git-repository-url = "https://github.com/Rust-for-Linux/rust-for-linux.com"
 edit-url-template = ""
 no-section-label = true
 
+[output.html.redirect]
+"/pinned-init" = "/pin-init"
+"/pinned-init.html" = "/pin-init"
+
 [output.html.fold]
 enable = true
 level = 0
