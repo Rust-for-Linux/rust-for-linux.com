@@ -18,7 +18,7 @@
 ## Subprojects
 
   - [`klint`](klint.md)
-  - [`pinned-init`](pinned-init.md)
+  - [`pin-init`](pin-init.md)
   - Hidden [The Safe Pinned Initialization Problem](The-Safe-Pinned-Initialization-Problem.md)
   - Hidden [`Arc` in the Linux kernel](Arc-in-the-Linux-kernel.md)
   - Hidden [Ksquirrel](Ksquirrel.md)
