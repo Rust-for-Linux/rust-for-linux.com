@@ -8,7 +8,7 @@ There are many ways to contribute to Rust for Linux. One way is to contribute to
 
     + Adding support for features we would like in the kernel: in the language, in the standard library, in the compiler, in `rustdoc`, in Clippy, in `bindgen`... Please see the various ["wanted features & bugfixes" lists](https://github.com/Rust-for-Linux/linux/issues/2) for each topic.
 
-  - Contributing to the subprojects: [`klint`](klint.md) and [`pinned-init`](pinned-init.md).
+  - Contributing to the subprojects: [`klint`](klint.md) and [`pin-init`](pin-init.md).
 
   - Contributing to the [Coccinelle for Rust](Coccinelle-for-Rust.md) project.
 
