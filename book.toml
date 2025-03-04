@@ -13,7 +13,10 @@ edit-url-template = ""
 no-section-label = true
 
 [output.html.redirect]
-"/pinned-init" = "/pin-init"
+# Do not provide a `/pinned-init` redirect here, since we do not want a file
+# without an extension (e.g. Netlify takes care of serving the `/pinned-init`
+# path from the file automatically, like for the rest of the files, and having
+# a file there would be served by default as `text/plain` which would not work).
 "/pinned-init.html" = "/pin-init"
 
 [output.html.fold]
