@@ -31,6 +31,7 @@
 
 ## Users — in-tree
 
+  - [ASIX PHY Driver](ASIX-PHY-Driver.md)
   - [Null Block Driver](Null-Block-Driver.md)
 
 ## Users — out-of-tree
