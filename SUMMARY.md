@@ -29,12 +29,15 @@
   - [`rustc_codegen_gcc`](rustc_codegen_gcc.md)
   - [`gccrs`](gccrs.md)
 
-## Users
+## Users — in-tree
+
+  - [Null Block Driver](Null-Block-Driver.md)
+
+## Users — out-of-tree
 
   - [Android Binder Driver](Android-Binder-Driver.md)
   - [Apple AGX GPU driver](Apple-AGX-GPU-driver.md)
   - [Nova GPU Driver](Nova-GPU-Driver.md)
-  - [Null Block Driver](Null-Block-Driver.md)
   - [NVMe Driver](NVMe-driver.md)
   - [PuzzleFS filesystem driver](PuzzleFS-filesystem-driver.md)
 
