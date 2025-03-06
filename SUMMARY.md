@@ -31,6 +31,7 @@
 
 ## Users — in-tree
 
+  - [AMCC QT2025 PHY Driver](AMCC-QT2025-PHY-Driver.md)
   - [ASIX PHY Driver](ASIX-PHY-Driver.md)
   - [Null Block Driver](Null-Block-Driver.md)
 
