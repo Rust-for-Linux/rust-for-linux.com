@@ -33,6 +33,7 @@
 
   - [AMCC QT2025 PHY Driver](AMCC-QT2025-PHY-Driver.md)
   - [ASIX PHY Driver](ASIX-PHY-Driver.md)
+  - [DRM Panic QR code generator](DRM-Panic-QR-code-generator.md)
   - [Null Block Driver](Null-Block-Driver.md)
 
 ## Users — out-of-tree
