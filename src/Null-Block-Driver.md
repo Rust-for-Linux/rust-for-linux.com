@@ -28,6 +28,12 @@ candidate for rewriting in Rust.
 The driver is implemented entirely in safe Rust, with all unsafe code fully
 contained in the abstractions that wrap the C APIs.
 
+Please note that the performance measurements on this page might be misleading
+due to the results not being normally distributed. [This
+analysis](https://metaspace.github.io/2024/12/02/problems-in-benchmark-land.html)
+has more details. We observe that issue is resovled for v6.14-rc5, but we are
+monitoring the situation going forward.
+
 ## Features
 
 Implemented features:
@@ -38,17 +44,17 @@ Implemented features:
  - Timer completion
  - Read and write requests
  - Optional memory backing
-
-Features available in the C `null_blk` driver that are currently not implemented
-in this work:
-
  - Bio-based submission
  - NUMA support
  - Block size configuration
  - Multiple devices
  - Dynamic device creation/destruction
- - Queue depth configuration
  - Queue count configuration
+
+Features available in the C `null_blk` driver that are currently not implemented
+in this work:
+
+ - Queue depth configuration
  - Discard operation support
  - Cache emulation
  - Bandwidth throttling
@@ -67,9 +73,93 @@ in this work:
  - [Mailing List Post](https://lore.kernel.org/all/20230503090708.2524310-1-nmi@metaspace.dk/)
  - [Subset merged in v6.11-rc1](https://lore.kernel.org/all/20240611114551.228679-1-nmi@metaspace.dk/)
 
+## 6.14-rc5 Rebase ([`rnull-v6.14-rc5`](https://git.kernel.org/pub/scm/linux/kernel/git/a.hindborg/linux.git/log/?h=rnull-v6.14-rc5))
+
+Changes from `rnull-v6.13`:
+
+ - Change reference counting scheme for `Request`.
+ - Move `rnull` driver to separate directory.
+ - Rename `RawWriter` to `BufferWriter` and move it.
+ - Enable configuration of `rnull` via `configfs`.
+   - Enable dynamic createion/destruction of devices via `configfs`.
+ - Use `Owned` for rust managed `Page` objects.
+ - Change segment iterator to prevent concurrent mutable access to pages.
+ - Use `GFP_NOIO` flag for backing rnull pages.
+ - Add `user_per_node_hctx` rnull config option.
+ - Add NUMA home node rnull config option.
+ - Add submit queue count rnull config option.
+ - Fix a bug where unwritten bytes were not zeroed on read.
+ - Properly handle IO requests that are not equal in size to one block.
+
+### Performance
+
+#### Setup
+
+ - AMD Ryzen 5 7600
+ - 32 GB 4800 MT/s DDR5 on one channel
+ - 1x Samsung 990 Pro 1TB (PCIe 4.0 x4 16 GT/S)
+ - NixOS 24.11
+
+#### Results
+
+- Plot shows `(mean_iops_r - mean_iops_c) / mean_iops_c`
+- 40 samples for each configuration
+- Difference of means modeled with t-distribution
+- P95 confidence intervals
+
+![](rnull/rnull-v6.14-rc5.svg)
+
+## 6.13 Rebase ([`rnull-v6.13`](https://git.kernel.org/pub/scm/linux/kernel/git/a.hindborg/linux.git/log/?h=rnull-v6.13))
+
+Changes from `rnull-v6.12`:
+
+ - None
+
+### Performance
+
+#### Setup
+
+ - AMD Ryzen 5 7600
+ - 32 GB 4800 MT/s DDR5 on one channel
+ - 1x Samsung 990 Pro 1TB (PCIe 4.0 x4 16 GT/S)
+ - NixOS 24.05
+
+#### Results
+
+- Plot shows `(mean_iops_r - mean_iops_c) / mean_iops_c`
+- 40 samples for each configuration
+- Difference of means modeled with t-distribution
+- P95 confidence intervals
+
+![](rnull/rnull-v6.13.svg)
+
+## 6.12 Rebase ([`rnull-v6.12`](https://git.kernel.org/pub/scm/linux/kernel/git/a.hindborg/linux.git/log/?h=rnull-v6.12))
+
+Changes from `rnull-v6.12-rc2`:
+
+ - None
+
+### Performance
+
+#### Setup
+
+ - AMD Ryzen 5 7600
+ - 32 GB 4800 MT/s DDR5 on one channel
+ - 1x Samsung 990 Pro 1TB (PCIe 4.0 x4 16 GT/S)
+ - NixOS 24.05
+
+#### Results
+
+- Plot shows `(mean_iops_r - mean_iops_c) / mean_iops_c`
+- 40 samples for each configuration
+- Difference of means modeled with t-distribution
+- P95 confidence intervals
+
+![](rnull/rnull-v6.12.svg)
+
 ## 6.12-rc2 Rebase ([`rnull-v6.12-rc2`](https://git.kernel.org/pub/scm/linux/kernel/git/a.hindborg/linux.git/log/?h=rnull-v6.12-rc2))
 
-Changes from `rnull-v6.10`:
+Changes from `rnull-v6.11`:
 
  - Make `QueueData` references pinned.
 
