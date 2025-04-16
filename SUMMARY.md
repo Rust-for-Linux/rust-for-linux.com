@@ -85,6 +85,10 @@
   - [`staging/rust-device`](https://github.com/Rust-for-Linux/linux/tree/staging/rust-device)
   - [`staging/dev`](https://github.com/Rust-for-Linux/linux/tree/staging/dev)
 
+## Patchwork
+
+  - [Patchwork](https://patchwork.kernel.org/project/rust-for-linux/list/)
+
 ## Conferences
 
   - [Kangrejos](https://kangrejos.com)
