@@ -8,13 +8,13 @@ Rust for Linux can be compiled with `rustc_codegen_gcc` which allows to have a G
 
 ## Building `rustc_codegen_gcc` and the sysroot
 
-The following have been tested with GCC commit [b334f15ed21c95868059a16484a1948be08e26a3](https://github.com/antoyo/gcc/commit/b334f15ed21c95868059a16484a1948be08e26a3) and `rustc_codegen_gcc` commit [c6bc7ecd65046ee502118664f42637ca318cdfb5](https://github.com/rust-lang/rustc_codegen_gcc/commit/c6bc7ecd65046ee502118664f42637ca318cdfb5).
-
-Follow the build instructions [here](https://github.com/rust-lang/rustc_codegen_gcc#building).
+Follow the build instructions [here](https://github.com/rust-lang/rustc_codegen_gcc#quick-start).
 
 ## Building Rust for Linux
 
 Follow the [Rust for Linux Quick Start instructions](https://docs.kernel.org/rust/quick-start.html) with a few changes as explained below.
+
+First, disable `MITIGATION_RETPOLINE` in `menuconfig` at: Mitigations for CPU vulnerabilities -> Avoid speculative indirect branches in kernel.
 
 Since the GCC codegen might not work on every nightly version (that should soon be fixed now that we run some tests in the Rust CI), we're going to use [the same nightly version as the GCC codegen](https://github.com/rust-lang/rustc_codegen_gcc/blob/master/rust-toolchain) instead of using the version recommended by Rust for Linux:
 
@@ -25,14 +25,14 @@ rustup override set nightly-2023-10-21 # Adjust to the version used by the GCC c
 Now, you need to set some variables to build Rust for Linux with the GCC codegen (do not forget to adjust your path to `rustc_codegen_gcc`):
 
 ```sh
-make -j20 KRUSTFLAGS="-Zcodegen-backend=/path/to/rustc_codegen_gcc/target/debug/librustc_codegen_gcc.so \
-    --sysroot /path/to/rustc_codegen_gcc/build_sysroot/sysroot" \
+make -j20 KRUSTFLAGS="-Zcodegen-backend=/path/to/rustc_codegen_gcc/target/debug/librustc_codegen_gcc.so" \
     HOSTRUSTFLAGS="-Zcodegen-backend=/path/to/rustc_codegen_gcc/target/debug/librustc_codegen_gcc.so \
     --sysroot /path/to/rustc_codegen_gcc/build_sysroot/sysroot -Clto=no"
 ```
 
-Since we use a different nightly version, you might need to adjust the code of the `alloc` crate built by Rust for Linux.
-You'll see some errors when running the above command in this case.
+## CI
+
+We have a [repo](https://github.com/Rust-for-Linux/ci-rustc_codegen_gcc) that runs some tests of Rust for Linux compiled with `rustc_codegen_gcc`.
 
 ## Troubleshooting
 
@@ -49,4 +49,4 @@ That should give you the correct error, which could be one of those:
 ## Contact
 
 Please contact Antoni Boucher (antoyo) on
-[IRC](https://web.libera.chat/#rustc_codegen_gcc).
+[Matrix](https://matrix.to/#/#rustc_codegen_gcc:matrix.org) or post a message on [Zulip](https://rust-lang.zulipchat.com/#narrow/channel/386786-rustc-codegen-gcc).
