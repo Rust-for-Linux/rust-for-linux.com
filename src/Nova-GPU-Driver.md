@@ -4,7 +4,7 @@ Nova is a driver for GSP-based Nvidia GPUs that is currently under development
 and is being written in Rust.
 
 Currently, the objective is to upstream Rust abstractions for the relevant
-subsystems a prerequisite for the actual driver. Hence, the first mainline
+subsystems as a prerequisite for the actual driver. Hence, the first mainline
 version of Nova will be a stub driver which helps establishing the necessary
 infrastructure in other subsystems (notably PCI and DRM).
 
