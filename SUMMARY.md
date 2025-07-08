@@ -36,6 +36,7 @@
   - [DRM Panic QR code generator](DRM-Panic-QR-code-generator.md)
   - [Nova GPU Driver](Nova-GPU-Driver.md)
   - [Null Block Driver](Null-Block-Driver.md)
+  - [Tyr GPU Driver](Tyr-GPU-Driver.md)
 
 ## Users — outside mainline
 
