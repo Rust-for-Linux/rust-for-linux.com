@@ -77,14 +77,13 @@
 
   - [`rust-next`](https://github.com/Rust-for-Linux/linux/tree/rust-next)
   - [`rust-fixes`](https://github.com/Rust-for-Linux/linux/tree/rust-fixes)
-  - [`rust-dev`](https://github.com/Rust-for-Linux/linux/tree/rust-dev)
 
-## Topic branches
+## Subtree branches
 
-  - [`staging/rust-pci`](https://github.com/Rust-for-Linux/linux/tree/staging/rust-pci)
-  - [`staging/rust-net`](https://github.com/Rust-for-Linux/linux/tree/staging/rust-net)
-  - [`staging/rust-device`](https://github.com/Rust-for-Linux/linux/tree/staging/rust-device)
-  - [`staging/dev`](https://github.com/Rust-for-Linux/linux/tree/staging/dev)
+  - [`alloc-next`](https://github.com/Rust-for-Linux/linux/tree/alloc-next)
+  - [`pin-init-next`](https://github.com/Rust-for-Linux/linux/tree/pin-init-next)
+  - [`timekeeping-next`](https://github.com/Rust-for-Linux/linux/tree/timekeeping-next)
+  - [`xarray-next`](https://github.com/Rust-for-Linux/linux/tree/xarray-next)
 
 ## Patchwork
 
