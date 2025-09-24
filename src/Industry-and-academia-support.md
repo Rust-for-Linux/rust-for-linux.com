@@ -71,6 +71,13 @@ A good example is Arm’s RFC contribution to the Rust language which made Linux
 
 — Collabora, 2023-09-22.
 
+
+<blockquote id="CDN77" class="quote-highlight">
+<p>“CDN77 builds most new projects in Rust. This leads to more secure code, fewer critical bugs, and a codebase that scales without breaking existing logic. We’re also testing Rust in the Linux kernel with promising results, and we fully support its inclusion.”</p>
+</blockquote>
+
+— CDN77, 2025-09-24.
+
 ---
 
 If your company, organization, university or team is using or plans to use Rust for Linux and would like to release a statement, then please [contact us](Contact.md). Thank you!
