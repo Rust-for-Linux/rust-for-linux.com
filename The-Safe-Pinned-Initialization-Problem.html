@@ -1,0 +1,406 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>The Safe Pinned Initialization Problem - Rust for Linux</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="Adding support for the Rust language to the Linux kernel">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        
+        <link rel="icon" href="Rust-for-Linux.svg">
+
+        <meta property="og:url" content="https://rust-for-linux.com">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Rust for Linux">
+        <meta property="og:description" content="Adding support for the Rust language to the Linux kernel">
+        <meta property="og:image" content="https://rust-for-linux.com/Rust-for-Linux.svg">
+        <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "CreativeWork",
+            "name": "Rust for Linux",
+            "description": "Adding support for the Rust language to the Linux kernel",
+            "url": "https://rust-for-linux.com",
+            "image": "https://rust-for-linux.com/Rust-for-Linux.svg"
+        }
+        </script>
+        <style>
+        #logo {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .rfl-menu-block {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .rfl-mono-font {
+            font-family: var(--mono-font);
+        }
+
+        .rfl-mobile-links {
+            display: none;
+        }
+
+        @media only screen and (max-width: 1080px) {
+            .rfl-mobile-links {
+                display: block;
+            }
+        }
+
+        .chapter li.chapter-item {
+            margin-top: 0.2em !important;
+            margin-left: 1.5em !important;
+        }
+
+        .chapter li.part-title {
+            margin-bottom: -0.3em !important;
+            margin-top: 1em !important;
+        }
+
+        .quote-highlight:target {
+            /*
+             * `--table-header-bg` is used as an existing color in the themes
+             * that is good enough for highlighting the `blockquote`s.
+             */
+            background-color: var(--table-header-bg);
+        }
+        </style>
+    
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            
+        <div class="sidebar-scrollbox">
+            <a href="/"><img id="logo" src="Rust-for-Linux.svg" alt="Rust for Linux Logo"></a>
+            
+            <p class="rfl-menu-block">The project</p>
+            <ol class="chapter"><li class="chapter-item"><a href="Contact.html" tabindex="0">Contact</a></li><li class="chapter-item"><a href="Contributing.html" tabindex="0">Contributing</a></li><li class="chapter-item"><a href="Rust-kernel-policy.html" tabindex="0">Rust kernel policy</a></li><li class="chapter-item"><a href="Branches.html" tabindex="0">Branches</a></li><li class="chapter-item"><a href="Rust-reference-drivers.html" tabindex="0">Rust reference drivers</a></li><li class="chapter-item"><a href="Rust-version-policy.html" tabindex="0">Rust version policy</a></li><li class="chapter-item"><a href="Unstable-features.html" tabindex="0">Unstable features</a></li><li class="chapter-item"><a href="Backporting-and-stable-LTS-releases.html" tabindex="0">Backporting and stable/LTS releases</a></li><li class="chapter-item"><a href="Third-party-crates.html" tabindex="0">Third-party crates</a></li><li class="chapter-item"><a href="Out-of-tree-modules.html" tabindex="0">Out-of-tree modules</a></li><li class="chapter-item"><a href="Industry-and-academia-support.html" tabindex="0">Industry and academia support</a></li><li class="chapter-item"><a href="Sponsors.html" tabindex="0">Sponsors</a></li><li class="part-title">Subprojects</li><li class="chapter-item"><a href="klint.html" tabindex="0"><span class="rfl-mono-font">klint</span></a></li><li class="chapter-item"><a href="pin-init.html" tabindex="0"><span class="rfl-mono-font">pin-init</span></a></li><li class="part-title">Tools</li><li class="chapter-item"><a href="Coccinelle-for-Rust.html" tabindex="0">Coccinelle for Rust</a></li><li class="chapter-item"><a href="rustc_codegen_gcc.html" tabindex="0"><span class="rfl-mono-font">rustc_codegen_gcc</span></a></li><li class="chapter-item"><a href="gccrs.html" tabindex="0"><span class="rfl-mono-font">gccrs</span></a></li><li class="part-title">Users — in mainline</li><li class="chapter-item"><a href="AMCC-QT2025-PHY-Driver.html" tabindex="0">AMCC QT2025 PHY Driver</a></li><li class="chapter-item"><a href="Android-Binder-Driver.html" tabindex="0">Android Binder Driver</a></li><li class="chapter-item"><a href="ASIX-PHY-Driver.html" tabindex="0">ASIX PHY Driver</a></li><li class="chapter-item"><a href="DRM-Panic-QR-code-generator.html" tabindex="0">DRM Panic QR code generator</a></li><li class="chapter-item"><a href="Nova-GPU-Driver.html" tabindex="0">Nova GPU Driver</a></li><li class="chapter-item"><a href="Null-Block-Driver.html" tabindex="0">Null Block Driver</a></li><li class="chapter-item"><a href="Tyr-GPU-Driver.html" tabindex="0">Tyr GPU Driver</a></li><li class="part-title">Users — outside mainline</li><li class="chapter-item"><a href="Android-`ashmem`.html" tabindex="0">Android <span class="rfl-mono-font">ashmem</span></a></li><li class="chapter-item"><a href="Apple-AGX-GPU-driver.html" tabindex="0">Apple AGX GPU driver</a></li><li class="chapter-item"><a href="NVMe-driver.html" tabindex="0">NVMe Driver</a></li><li class="chapter-item"><a href="PuzzleFS-filesystem-driver.html" tabindex="0">PuzzleFS filesystem driver</a></li></ol>
+        
+            <p class="rfl-menu-block">Links</p>
+            <ol class="chapter"><li class="part-title">Contact</li><li class="chapter-item"><a href="https://lore.kernel.org/rust-for-linux/" tabindex="0">Lore (mailing list archive)</a></li><li class="chapter-item"><a href="https://rust-for-linux.zulipchat.com" tabindex="0">Zulip (chat)</a></li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux" tabindex="0">GitHub Organization</a></li><li class="part-title">Security</li><li class="chapter-item"><a href="https://docs.kernel.org/process/security-bugs.html" tabindex="0">Report a security bug</a></li><li class="part-title">Issue tracking</li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/issues" tabindex="0">Issues</a></li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/issues/2" tabindex="0">Unstable features</a></li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/contribute" tabindex="0">Good first issues</a></li><li class="part-title">Documentation</li><li class="chapter-item"><a href="https://docs.kernel.org/rust/quick-start.html" tabindex="0">Quick Start guide</a></li><li class="chapter-item"><a href="https://docs.kernel.org/rust/" tabindex="0">Kernel documentation (mainline)</a></li><li class="chapter-item"><a href="https://docs.kernel.org/next/rust/" tabindex="0">Kernel documentation (next)</a></li><li class="chapter-item"><a href="https://rust.docs.kernel.org" tabindex="0">Rust code documentation (mainline)</a></li><li class="chapter-item"><a href="https://rust.docs.kernel.org/next/" tabindex="0">Rust code documentation (next)</a></li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/rust-out-of-tree-module" tabindex="0">Out-of-tree module template</a></li><li class="part-title">Main branches</li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/tree/rust-next" tabindex="0"><span class="rfl-mono-font">rust-next</span></a></li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/tree/rust-fixes" tabindex="0"><span class="rfl-mono-font">rust-fixes</span></a></li><li class="part-title">Subtree branches</li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/tree/alloc-next" tabindex="0"><span class="rfl-mono-font">alloc-next</span></a></li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/tree/pin-init-next" tabindex="0"><span class="rfl-mono-font">pin-init-next</span></a></li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/tree/timekeeping-next" tabindex="0"><span class="rfl-mono-font">timekeeping-next</span></a></li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/tree/xarray-next" tabindex="0"><span class="rfl-mono-font">xarray-next</span></a></li><li class="part-title">Patchwork</li><li class="chapter-item"><a href="https://patchwork.kernel.org/project/rust-for-linux/list/" tabindex="0">Patchwork</a></li><li class="part-title">Conferences</li><li class="chapter-item"><a href="https://kangrejos.com" tabindex="0">Kangrejos</a></li><li class="chapter-item"><a href="https://lpc.events" tabindex="0">Linux Plumbers Conference (LPC)</a></li><li class="chapter-item"><a href="https://lpc.events/event/19/sessions/223/" tabindex="0">Rust MC at LPC 2025</a></li><li class="chapter-item"><a href="https://lpc.events/event/18/sessions/186/" tabindex="0">Rust MC at LPC 2024</a></li><li class="chapter-item"><a href="https://lpc.events/event/17/sessions/170/" tabindex="0">Rust MC at LPC 2023</a></li><li class="chapter-item"><a href="https://lpc.events/event/16/sessions/150/" tabindex="0">Rust MC at LPC 2022</a></li><li class="part-title">LWN</li><li class="chapter-item"><a href="https://lwn.net/Kernel/Index/#Development_tools-Rust" tabindex="0">Rust index</a></li><li class="chapter-item"><a href="https://lwn.net/Archives/ConferenceIndex/#Kangrejos" tabindex="0">Kangrejos index</a></li><li class="part-title">Tools and toolchains</li><li class="chapter-item"><a href="https://kernel.org/pub/tools/llvm/rust/" tabindex="0">kernel.org prebuilt LLVM+Rust</a></li><li class="chapter-item"><a href="https://github.com/rust-lang/rustc_codegen_gcc" tabindex="0"><span class="rfl-mono-font">rustc_codegen_gcc</span></a></li><li class="chapter-item"><a href="https://rust-gcc.github.io" tabindex="0">Rust GCC</a></li><li class="chapter-item"><a href="https://github.com/acmel/dwarves" tabindex="0"><span class="rfl-mono-font">pahole</span></a></li><li class="part-title">Other trees</li><li class="chapter-item"><a href="https://git.kernel.org/linus/" tabindex="0">Linus' tree</a></li><li class="chapter-item"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/" tabindex="0">Stable tree</a></li><li class="chapter-item"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/" tabindex="0"><span class="rfl-mono-font">linux-next</span> tree</a></li><li class="part-title">Other resources</li><li class="chapter-item"><a href="https://elixir.bootlin.com/linux/latest/source/rust" tabindex="0">Bootlin's Elixir</a></li><li class="chapter-item"><a href="https://godbolt.org/z/a55MozK6s" tabindex="0">Compiler Explorer</a></li><li class="chapter-item"><a href="https://play.rust-lang.org/?version=nightly&mode=debug&edition=2021" tabindex="0">Rust Playground</a></li><li class="chapter-item"><a href="https://doc.rust-lang.org/core/" tabindex="0">Rust <span class="rfl-mono-font">core</span> docs</a></li></ol>
+        
+        </div>
+    
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Rust for Linux</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/Rust-for-Linux/rust-for-linux.com" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="the-safe-pinned-initialization-problem"><a class="header" href="#the-safe-pinned-initialization-problem">The Safe Pinned Initialization Problem</a></h1>
+<h2 id="introduction-to-pinning"><a class="header" href="#introduction-to-pinning">Introduction to Pinning</a></h2>
+<p>In the kernel many data structures are not allowed to change address, since there exist external pointers to them that would then be invalidated. Since this could cause memory errors, Rust has to <em>somehow</em> guarantee that this cannot happen in safe code. Luckily there already exists the <a href="https://doc.rust-lang.org/core/pin/struct.Pin.html"><code>Pin&lt;P&gt;</code></a> wrapper type for arbitrary pointer types <code>P</code>. For simplicity we will look at <code>P = Box&lt;T&gt;</code>. <a href="https://doc.rust-lang.org/alloc/boxed/struct.Box.html"><code>Box&lt;T&gt;</code></a> is a smart pointer that owns a <code>T</code> (a generic parameter) allocated on the heap. When a <a href="https://doc.rust-lang.org/alloc/boxed/struct.Box.html"><code>Box&lt;T&gt;</code></a> is dropped (destroyed) then it automatically frees the memory.</p>
+<p><code>Pin&lt;Box&lt;T&gt;&gt;</code> behaves similar to <a href="https://doc.rust-lang.org/alloc/boxed/struct.Box.html"><code>Box&lt;T&gt;</code></a>, it is also a smart pointer and allows you to have immutable access to the fields and functions of <code>T</code>. You can also store it just as easily, since it also has the same size as <code>Box&lt;T&gt;</code>.</p>
+<p>One important difference compared to just <code>Box&lt;T&gt;</code> is that <code>Pin</code> prevents mutable access to the underlying <a href="https://doc.rust-lang.org/alloc/boxed/struct.Box.html"><code>Box&lt;T&gt;</code></a> and thus makes it impossible to move the pointee. So users are unable to call e.g. <a href="https://doc.rust-lang.org/core/mem/fn.swap.html"><code>mem::swap</code></a>. This is of course a heavy restriction, so there exist <code>unsafe</code> functions that allow modification and access to <code>&amp;mut T</code> and so called pin-projections to access fields of <code>T</code>. However, when using these functions, it is the caller's responsibility to uphold the pinning guarantee.</p>
+<p>This guarantee also includes that the object is <code>drop</code>ed before the memory is deallocated or repurposed. At first glance, this requirement seems strange. But after this example it will hopefully seem very natural. Let's imagine that we want to design a Rust version of <code>list_head</code><sup class="footnote-reference"><a href="#1">1</a></sup>:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>/// # Invariants
+///
+/// `next` and `prev` always point to a valid `ListHead`.
+struct ListHead {
+    next: *mut ListHead,
+    prev: *mut ListHead,
+}
+<span class="boring">}</span></code></pre></pre>
+<p>Then we need to ensure that as long as an element is in a list, it will stay alive, since it would cause a UAF (use after free) otherwise. A simple way to achieve this, is to remove it from the list, when it gets dropped:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>impl Drop for ListHead {
+    fn drop(&amp;mut self) {
+        let prev = self.prev;
+        let next = self.next;
+        // SAFETY: By the invariant, these pointers are valid.
+        unsafe {
+            (*next).prev = prev;
+            (*prev).next = next;
+        }
+    }
+}
+<span class="boring">}</span></code></pre></pre>
+<p>And this is the important bit, if we were to just deallocate/reuse the memory of a <code>ListHead</code> without dropping it first, by e.g. using <a href="https://doc.rust-lang.org/core/ptr/fn.write.html"><code>ptr::write</code></a>, then we are just begging for a UAF to happen.</p>
+<p>Because the <a href="https://doc.rust-lang.org/alloc/boxed/struct.Box.html"><code>Box&lt;T&gt;</code></a> smart pointer owns its memory, it cannot be used for a function which does not consume the value. For this reason the mutable reference <code>&amp;mut T</code> is used. When dealing with <code>Pin&lt;Box&lt;T&gt;&gt;</code>, we cannot access <code>&amp;mut T</code>. Instead we can access <code>Pin&lt;&amp;mut T&gt;</code> which still upholds the pinning guarantee.</p>
+<h2 id="adding-initialization-into-the-mix"><a class="header" href="#adding-initialization-into-the-mix">Adding Initialization into the mix</a></h2>
+<p>What does initialization have to do with pinning? In the first paragraph nothing suggested that there would be a connection. One important feature of Rust forces this connection. In Rust all values have to be initialized at <em>all</em> times. This is a problem for creating our <code>ListHead</code> the usual Rust way; a <code>new()</code> function that returns the object by value. Since we first need to know its address before we can initialize <code>next</code> and <code>prev</code> to point to itself.</p>
+<p>Rust has a way around the &quot;values are vaild at all times&quot; problem: <code>MaybeUninit&lt;T&gt;</code> is a wrapper that explicitly allows uninitialized values. <code>unsafe</code> functions are then used to access the <code>T</code> once initialized. For our <code>ListHead</code> we could simply allocate a <code>MaybeUninit&lt;ListHead&gt;</code> and then write its address using raw pointers into <code>next</code> and <code>prev</code>. However, as already said above, in Rust the normal way of creating an object is to return it by value. We cannot do this for the <code>ListHead</code>, since that would move it and invalidate its pointers. The alternative of allocating it on the heap, i.e. returning a <code>Pin&lt;Box&lt;ListHead&gt;&gt;</code> also does not work, since this list should be part of a bigger struct.</p>
+<p>This is the reason why Rust-for-Linux chose a two-function approach:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>impl ListHead {
+    /// Creates a new [`ListHead`].
+    ///
+    /// # Safety
+    ///
+    /// Before using this [`ListHead`] the caller has to call [`ListHead::init`].
+    unsafe fn new() -&gt; Self {
+        Self {
+            next: ptr::null_mut(),
+            prev: ptr::null_mut(),
+        }
+    }
+
+    /// Initializes this [`ListHead`].
+    ///
+    /// # Safety
+    ///
+    /// This function is only called once.
+    unsafe fn init(self: Pin&lt;&amp;mut Self&gt;) {
+        // SAFETY: We do not move `self`.
+        let this: &amp;mut Self = unsafe { self.get_unchecked_mut() };
+        let ptr: *mut ListHead = this;
+        unsafe {
+            (*ptr).prev = ptr;
+            (*ptr).next = ptr;
+        }
+    }
+}
+<span class="boring">}</span></code></pre></pre>
+<p>This approach avoids having to allocate and lets the user decide the memory location of the <code>ListHead</code>. It also ensures that a <code>ListHead</code> will be pinned in memory, since the <code>self</code> type of <code>init</code> is <code>Pin&lt;&amp;mut Self&gt;</code>. Both functions have to be marked <code>unsafe</code>, since the safety preconditions cannot be enforced by the compiler. We also have to use two functions, since after a call to <code>new</code> the caller will have to pin the value in memory prior to calling <code>init</code>.</p>
+<p>The biggest problem with this approach is that it exclusively relies on the programmer to ensure safety. It is very easy to forget such an <code>init</code> call when you have a struct with multiple fields that require this treatment. This problem is exacerbated by the fact that this API propagates to all structs that contain a <code>ListHead</code>:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct DoubleList {
+    list_a: ListHead,
+    list_b: ListHead,
+}
+
+impl DoubleList {
+    /// # Safety
+    ///
+    /// Before using this [`DoubleList`] the caller has to call [`DoubleList::init`].
+    unsafe fn new() -&gt; Self {
+        Self {
+            // SAFETY: We call `ListHead::init` in our own initializer.
+            list_a: unsafe { ListHead::new() },
+            // SAFETY: We call `ListHead::init` in our own initializer.
+            list_b: unsafe { ListHead::new() },
+        }
+    }
+
+    /// # Safety
+    ///
+    /// This function is only called once.
+    unsafe fn init(self: Pin&lt;&amp;mut Self&gt;) {
+        // SAFETY: We structurally pin `list_a`.
+        let list_a = unsafe { self.map_unchecked_mut(|s| &amp;mut s.list_a) };
+        // SAFETY: Our function is only called once.
+        unsafe { ListHead::init(list_a) };
+        // SAFETY: We structurally pin `list_b`.
+        let list_b = unsafe { self.map_unchecked_mut(|s| &amp;mut s.list_b) };
+        // SAFETY: Our function is only called once.
+        unsafe { ListHead::init(list_b) };
+    }
+}
+<span class="boring">}</span></code></pre></pre>
+<p>So not only the <code>kernel</code> crate developers have to cope with this API, but <em>everyone</em> who dares to have a <code>Mutex&lt;T&gt;</code> in their struct, or use a struct that transitively contains a <code>Mutex&lt;T&gt;</code>.</p>
+<h2 id="pin-complications"><a class="header" href="#pin-complications">Pin Complications</a></h2>
+<p>The previous example also shows a different, but related issue: pin-projections. These are how we access the fields of pinned structs. And because one can break the pinning guarantee the <code>map_unchecked_mut</code> function has to be <code>unsafe</code>. The requirement for them is consistency, you are only allowed to either structurally pin a field, so you allow the access of <code>Pin&lt;&amp;mut Struct&gt; -&gt; Pin&lt;&amp;mut Field&gt;</code>, or you do not structurally pin the field, i.e. allowing <code>Pin&lt;&amp;mut Struct&gt; -&gt; &amp;mut Field</code>. As long as only one of those options is done, the pinning guarantee is upheld.</p>
+<p>In userland Rust this problem is addressed by using the <a href="https://crates.io/crates/pin-project"><code>pin-project</code></a> crate. This crate generates the pin-projections from the struct definition:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[pin_project]
+struct DoubleList {
+    #[pin]
+    list_a: ListHead,
+    #[pin]
+    list_b: ListHead,
+}
+<span class="boring">}</span></code></pre></pre>
+<p>Now both fields are structurally pinned and can be safely accessed.</p>
+<p>This crate cannot be used in the kernel, since it relies on <a href="https://crates.io/crates/syn"><code>syn</code></a> -- the de facto Rust code parsing library for proc-macros. The problem with including <a href="https://crates.io/crates/syn"><code>syn</code></a> in the kernel is that it consists of over 50k lines of code.</p>
+<p>There is also the <a href="https://crates.io/crates/pin-project-lite"><code>pin-project-lite</code></a> crate that achieves almost the same thing without a proc-macro. It has 5k lines of code and contains a very complex macro that would require further modification to serve this purpose, which would be hard to maintain.</p>
+<p>These reasons ultimately resulted in not using any of the existing approaches. The problem of pin projections also prompted the creation of the <a href="https://github.com/rust-lang/rfcs/pull/3318">field projection RFC</a>.</p>
+<p>If you now want to view how to use the API, then take a look at the <a href="https://rust-for-linux.github.io/docs/pinned-init/kernel/init/">extensive documentation</a>.</p>
+<h2 id="further-resources-on-pinning"><a class="header" href="#further-resources-on-pinning">Further Resources on Pinning</a></h2>
+<ul>
+<li>Rust documentation: <a href="https://doc.rust-lang.org/core/pin/index.html">https://doc.rust-lang.org/core/pin/index.html</a></li>
+<li>Pinning and its problems outlined in the context of futures: <a href="https://fasterthanli.me/articles/pin-and-suffering">https://fasterthanli.me/articles/pin-and-suffering</a></li>
+<li>Pinning in Rust -- Kangrejos Presentation <a href="https://kangrejos.com">https://kangrejos.com</a> Slides: <a href="https://kangrejos.com/Pinning%20in%20Rust.pdf">https://kangrejos.com/Pinning%20in%20Rust.pdf</a></li>
+</ul>
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p>The example presented here, glosses over some very important details. The <code>next</code> and <code>prev</code>
+fields of the <code>ListHead</code> struct should actually be placed in <a href="https://doc.rust-lang.org/core/cell/struct.Cell.html"><code>Cell&lt;T&gt;</code></a>s to allow modification
+through <code>&amp;ListHead</code>, since we cannot have multiple <code>&amp;mut ListHead</code>s at the same time. And we
+need to have multiple when iterating through a list. Also, <code>ListHead</code> should contain a
+<code>PhantomPinned</code> field to ensure it cannot be unpinned.</p>
+</div>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="pin-init.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="Arc-in-the-Linux-kernel.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="pin-init.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="Arc-in-the-Linux-kernel.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>
