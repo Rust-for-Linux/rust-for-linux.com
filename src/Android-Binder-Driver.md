@@ -2,11 +2,8 @@
 
 This project is an effort to rewrite Android's Binder kernel driver in Rust.
 
-The latest version of the Rust implementation can be found in the RFC that was
-submitted to the Linux Kernel mailing list late 2023: [Setting up Binder for
-the future][rfc].
-
-[rfc]: https://lore.kernel.org/rust-for-linux/20231101-rust-binder-v1-0-08ba9197f637@google.com/
+The driver was [merged](https://git.kernel.org/linus/eafedbc7c050c44744fbdf80bdf3315e860b7513)
+into Linux kernel version v6.18-rc1.
 
 ## Motivation
 
