@@ -32,6 +32,7 @@
 ## Users — in mainline
 
   - [AMCC QT2025 PHY Driver](AMCC-QT2025-PHY-Driver.md)
+  - [Android Binder Driver](Android-Binder-Driver.md)
   - [ASIX PHY Driver](ASIX-PHY-Driver.md)
   - [DRM Panic QR code generator](DRM-Panic-QR-code-generator.md)
   - [Nova GPU Driver](Nova-GPU-Driver.md)
@@ -41,7 +42,6 @@
 ## Users — outside mainline
 
   - [Android `ashmem`](Android-`ashmem`.md)
-  - [Android Binder Driver](Android-Binder-Driver.md)
   - [Apple AGX GPU driver](Apple-AGX-GPU-driver.md)
   - [NVMe Driver](NVMe-driver.md)
   - [PuzzleFS filesystem driver](PuzzleFS-filesystem-driver.md)
