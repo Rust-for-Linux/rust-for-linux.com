@@ -102,7 +102,7 @@ The following items apply to every patch in a series. That is, in general, each 
 
   - Please run your patch through the `scripts/checkpatch.pl` script. In particular, the `--codespell` option is useful to check patches for typos.
 
-  - Please format the code by running the `rustfmt` target.
+  - Please format the code by running the `rustfmt` target. Please see the [style guidelines](https://docs.kernel.org/rust/coding-guidelines.html#style-formatting) as well.
 
   - Please keep the code Clippy-clean by compiling with `CLIPPY=1`.
 
