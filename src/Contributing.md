@@ -106,7 +106,7 @@ The following items apply to every patch in a series. That is, in general, each 
 
   - Please keep the code Clippy-clean by compiling with `CLIPPY=1`.
 
-  - When submitting changes to Rust code documentation, please render them using the `rustdoc` target and ensure the result looks as expected.
+  - When submitting changes to Rust code documentation, please render them using the `rustdoc` target and ensure the result looks as expected. The Rust code documentation gets rendered at <https://rust.docs.kernel.org>.
 
   - When submitting changes to examples inside Rust code documentation (i.e. "doctests"), which are transformed into KUnit tests, please test them by [running them](https://docs.kernel.org/rust/testing.html).
 
