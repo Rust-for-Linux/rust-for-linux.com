@@ -98,6 +98,8 @@ For new abstractions and modules, and especially for those that require new kern
 
 ### Submit checklist addendum
 
+The following items apply to every patch in a series. That is, in general, each commit should be clean, not just the end state.
+
   - Please run your patch through the `scripts/checkpatch.pl` script. In particular, the `--codespell` option is useful to check patches for typos.
 
   - Please format the code by running the `rustfmt` target.
