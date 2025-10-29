@@ -110,7 +110,7 @@ The following items apply to every patch in a series. That is, in general, each 
 
   - When submitting changes to examples inside Rust code documentation (i.e. "doctests"), which are transformed into KUnit tests, please test them by [running them](https://docs.kernel.org/rust/testing.html).
 
-  - When submitting changes to the Rust folder of the kernel documentation (i.e. `Documentation/rust/`), which are written in reStructuredText and handled by Sphinx, please [render them](https://docs.kernel.org/doc-guide/sphinx.html) (typically using the `htmldocs` target) to ensure there are no warnings and that the result looks as expected.
+  - When submitting changes to the Rust folder of the kernel documentation (i.e. `Documentation/rust/`), which are written in reStructuredText and handled by Sphinx, please [render them](https://docs.kernel.org/doc-guide/sphinx.html) (typically using the `htmldocs` target) to ensure there are no warnings and that the result looks as expected. The Rust kernel documentation gets rendered at <https://docs.kernel.org/rust/>.
 
   - When submitting changes to `#[test]`s, please test them by running the `rusttest` target.
 
