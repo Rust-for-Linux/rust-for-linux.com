@@ -100,11 +100,9 @@ For new abstractions and modules, and especially for those that require new kern
 
 The following items apply to every patch in a series. That is, in general, each commit should be clean, not just the end state.
 
-  - Please run your patch through the `scripts/checkpatch.pl` script. In particular, the `--codespell` option is useful to check patches for typos.
+  - Please keep the code Clippy-clean by compiling with `CLIPPY=1`.
 
   - Please format the code by running the `rustfmt` target. Please see the [style guidelines](https://docs.kernel.org/rust/coding-guidelines.html#style-formatting) as well.
-
-  - Please keep the code Clippy-clean by compiling with `CLIPPY=1`.
 
   - When submitting changes to Rust code documentation, please render them using the `rustdoc` target and ensure the result looks as expected. The Rust code documentation gets rendered at <https://rust.docs.kernel.org>.
 
@@ -113,6 +111,8 @@ The following items apply to every patch in a series. That is, in general, each 
   - When submitting changes to the Rust folder of the kernel documentation (i.e. `Documentation/rust/`), which are written in reStructuredText and handled by Sphinx, please [render them](https://docs.kernel.org/doc-guide/sphinx.html) (typically using the `htmldocs` target) to ensure there are no warnings and that the result looks as expected. The Rust kernel documentation gets rendered at <https://docs.kernel.org/rust/>.
 
   - Ideally, please check your changes with both the latest stable Rust compiler as well as the minimum supported version (`scripts/min-tool-version.sh rustc`), including Clippy.
+
+  - Please run your patch through the `scripts/checkpatch.pl` script. In particular, the `--codespell` option is useful to check patches for typos.
 
 ### Key cycle dates
 
