@@ -34,4 +34,8 @@ Please see the [Quick Start guide](https://docs.kernel.org/rust/quick-start.html
 
 ## Minimum upgrade policy
 
-We will start with a small window of supported Rust releases and then widen it progressively. However, we are still determining how often we will move the minimum to newer Rust versions, since we will have to balance different factors. For instance, we are [following](https://alioth-lists.debian.net/pipermail/pkg-rust-maintainers/2024-July/044870.html) the evolution of which Rust version the upcoming Debian Stable distribution (i.e. Trixie) will package.
+We have not upgraded the initial minimum yet (Rust 1.78.0, released 2024-05-02).
+
+Our current plan is to propose Debian Stable's Rust versions as the minimum supported versions to use.
+
+For instance, Debian 13 (Trixie)'s Rust version is 1.85.0 (released 2025-02-20), thus we are aiming to have that one as the new minimum.
