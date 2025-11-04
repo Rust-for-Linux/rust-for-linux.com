@@ -19,7 +19,7 @@ In addition, one of the three [flagship goals for 2024H2](https://rust-lang.gith
 The Rust versions currently supported should already be enough for kernel developers in distributions that provide recent Rust compilers routinely, such as:
 
   - Arch Linux.
-  - Debian Testing and Unstable (outside the freeze period).
+  - Debian 13 (Trixie), Debian Testing and Debian Unstable (Sid).
   - Fedora Linux.
   - Gentoo Linux.
   - Nix (unstable).
