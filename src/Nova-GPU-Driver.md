@@ -21,9 +21,11 @@ Available communication channels are:
 The parts that are already in mainline Linux can be found in
 `drivers/gpu/nova-core/` and `drivers/gpu/drm/nova/`
 
-The development repository for the in-tree driver is located on
-[Freedesktop](https://gitlab.freedesktop.org/drm/nova).
-
+Development currently takes place in
+[the drm-rust-next tree](https://gitlab.freedesktop.org/drm/rust/kernel/-/tree/drm-rust-next)
+alongside other DRM Rust drivers, for easier collaboration and integration.
+There's also [a standalone repo for the Nova driver](https://gitlab.freedesktop.org/drm/nova),
+but it's currently unused. 
 
 ## Background
 
