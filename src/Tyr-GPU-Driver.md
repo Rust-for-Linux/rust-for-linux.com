@@ -16,14 +16,25 @@ ecosystem. It will probably take a couple of years for Tyr to fully pick up.
 
 ## Where is Tyr developed?
 
-Tyr is developed both upstream and downstream:
+Tyr is developed both upstream and downstream.
 
 ### Upstream
-The initial skeleton of the Tyr driver is now upstream. Submissions against the upstream Tyr driver should go to the [rust-for-linux](https://lore.kernel.org/rust-for-linux/) mailing list. If the submission is larger and/or needs to be pre-reviewed, open a merge request against the [tyr-for-upstream](https://gitlab.freedesktop.org/panfrost/linux/-/tree/tyr-for-upstream) branch in the [panfrost/linux](https://gitlab.freedesktop.org/panfrost/linux) repository.
-
+The initial skeleton of the Tyr driver is now [upstream](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/gpu/drm/tyr). Submissions against
+the upstream Tyr driver should go to the [`dri-devel`](https://lore.kernel.org/dri-devel/)
+and [`rust-for-linux`](https://lore.kernel.org/rust-for-linux/) mailing lists. If the
+submission is larger and/or needs to be pre-reviewed, open a merge request
+against the
+[`tyr-for-upstream`](https://gitlab.freedesktop.org/panfrost/linux/-/tree/tyr-for-upstream)
+branch in the [`panfrost/linux`](https://gitlab.freedesktop.org/panfrost/linux)
+repository.
 
 ### Downstream
-A more complete implementation of the Tyr driver is also available in the [tyr-dev](https://gitlab.freedesktop.org/panfrost/linux/-/tree/tyr-dev) branch. Make submissions against the downstream Tyr driver by opening a merge request against `tyr-dev`. It's expected that `tyr-dev` will be significantly refactored before upstreaming.
+
+A more complete implementation of the Tyr driver is also available in the
+[`tyr-dev`](https://gitlab.freedesktop.org/panfrost/linux/-/tree/tyr-dev) branch.
+Make submissions against the downstream Tyr driver by opening a merge request
+against `tyr-dev`. It's expected that `tyr-dev` will be significantly
+refactored before upstreaming.
 
 This split is unfortunately necessary as we do not have the required
 infrastructure in upstream yet, although our plan is to eventually migrate to
@@ -77,7 +88,8 @@ board](https://gitlab.freedesktop.org/panfrost/linux/-/issues/?label_name%5B%5D=
 We will be posting good starting tasks at a future point.
 
 To work on any given task, assign it to yourself and follow up with a merge
-request against `tyr-for-upstream` (for patches targeting the upstream driver) or `tyr-dev` (for work in the downstream staging branch).
+request against `tyr-for-upstream` (for patches targeting the upstream driver)
+or `tyr-dev` (for work in the downstream staging branch).
 
 Please also write the IGT tests needed to ensure that your code works.
 
