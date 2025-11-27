@@ -16,10 +16,14 @@ ecosystem. It will probably take a couple of years for Tyr to fully pick up.
 
 ## Where is Tyr developed?
 
-The development of Tyr takes place both upstream, through our [latest
-submission](https://lore.kernel.org/rust-for-linux/20250627-tyr-v1-1-cb5f4c6ced46@collabora.com/)
-— and downstream, on the `tyr-next` branch at the [Panfrost Gitlab
-repository](https://gitlab.freedesktop.org/panfrost/linux).
+Tyr is developed both upstream and downstream:
+
+### Upstream
+The initial skeleton of the Tyr driver is now upstream. Submissions against the upstream Tyr driver should go to the [rust-for-linux](https://lore.kernel.org/rust-for-linux/) mailing list. If the submission is larger and/or needs to be pre-reviewed, open a merge request against the [tyr-for-upstream](https://gitlab.freedesktop.org/panfrost/linux/-/tree/tyr-for-upstream) branch in the [panfrost/linux](https://gitlab.freedesktop.org/panfrost/linux) repository.
+
+
+### Downstream
+A more complete implementation of the Tyr driver is also available in the [tyr-dev](https://gitlab.freedesktop.org/panfrost/linux/-/tree/tyr-dev) branch. Make submissions against the downstream Tyr driver by opening a merge request against `tyr-dev`. It's expected that `tyr-dev` will be significantly refactored before upstreaming.
 
 This split is unfortunately necessary as we do not have the required
 infrastructure in upstream yet, although our plan is to eventually migrate to
@@ -41,7 +45,7 @@ functional driver with the abstractions that are currently being proposed.
 
 ## What is the current status of the driver?
 
-The current upstream submission can power up the GPU and probe the device on an
+The current upstream driver can power up the GPU and probe the device on an
 RK3588 system-on-chip. This lets us read a few sections of ROM in the GPU,
 which in turn lets us provide this information to userspace by means of a
 `DRM_IOCTL_PANTHOR_DEV_QUERY` call.
@@ -49,12 +53,7 @@ which in turn lets us provide this information to userspace by means of a
 This is all that can be done for now in upstream code, at least until the Micro
 Controller Unit can be made to work.
 
-Our downstream branch (`tyr-next`) can submit small parcels of work to the GPU,
-and we will soon be able to submit more elaborate workflows. We hope to see
-[VkCube](https://github.com/KhronosGroup/Vulkan-Tools) running on Tyr soon.
-
-In any case, there is no power management and little error recovery. We will be
-working on that in the coming months.
+Our downstream branch (`tyr-dev`) provides a full, working prototype that can run GNOME, Weston, and full-screen 3D games like SuperTuxKart: see [Racing karts on a Rust GPU kernel driver](https://www.collabora.com/news-and-blog/news-and-events/racing-karts-on-a-rust-gpu-kernel-driver.html).
 
 ## Can I try it out?
 
@@ -65,7 +64,7 @@ replacing Panthor yet. A good candidate device is Radxa's
 A good starting point is to run our [IGT
 tests](https://gitlab.freedesktop.org/dwlsalmeida/igt-gpu-tools/-/tree/panthor?ref_type=heads).
 While only a subset of the tests pass on the upstream code for the reasons
-highlighted above, they should all pass if run on `tyr-next`.
+highlighted above, they should all pass if run on `tyr-dev`.
 
 Note that Mali GPUs are found in a vast array of devices, and that we will
 support more hardware as we progress in the implementation.
@@ -78,7 +77,8 @@ board](https://gitlab.freedesktop.org/panfrost/linux/-/issues/?label_name%5B%5D=
 We will be posting good starting tasks at a future point.
 
 To work on any given task, assign it to yourself and follow up with a merge
-request against `tyr-next`. Please also write the IGT tests needed to ensure that
-your code works.
+request against `tyr-for-upstream` (for patches targeting the upstream driver) or `tyr-dev` (for work in the downstream staging branch).
+
+Please also write the IGT tests needed to ensure that your code works.
 
 Happy hacking!
