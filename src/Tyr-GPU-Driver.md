@@ -19,6 +19,7 @@ ecosystem. It will probably take a couple of years for Tyr to fully pick up.
 Tyr is developed both upstream and downstream.
 
 ### Upstream
+
 The initial skeleton of the Tyr driver is now [upstream](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/gpu/drm/tyr). Submissions against
 the upstream Tyr driver should go to the [`dri-devel`](https://lore.kernel.org/dri-devel/)
 and [`rust-for-linux`](https://lore.kernel.org/rust-for-linux/) mailing lists. If the
@@ -72,8 +73,8 @@ Anyone with a RK3588 SoC can test Tyr, but the driver is not capable of
 replacing Panthor yet. A good candidate device is Radxa's
 [ROCK 5B](https://radxa.com/products/rock5/5b/) Single Board Computer.
 
-A good starting point is to run our [IGT
-tests](https://gitlab.freedesktop.org/dwlsalmeida/igt-gpu-tools/-/tree/panthor?ref_type=heads).
+A good starting point is to use the Tyr driver to run the Panthor [IGT
+tests](https://gitlab.freedesktop.org/drm/igt-gpu-tools/-/tree/master/tests/panthor).
 While only a subset of the tests pass on the upstream code for the reasons
 highlighted above, they should all pass if run on `tyr-dev`.
 
