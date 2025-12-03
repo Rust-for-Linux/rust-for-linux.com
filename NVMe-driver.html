@@ -1,0 +1,718 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>NVMe Driver - Rust for Linux</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="Adding support for the Rust language to the Linux kernel">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        
+        <link rel="icon" href="Rust-for-Linux.svg">
+
+        <meta property="og:url" content="https://rust-for-linux.com">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Rust for Linux">
+        <meta property="og:description" content="Adding support for the Rust language to the Linux kernel">
+        <meta property="og:image" content="https://rust-for-linux.com/Rust-for-Linux.svg">
+        <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "CreativeWork",
+            "name": "Rust for Linux",
+            "description": "Adding support for the Rust language to the Linux kernel",
+            "url": "https://rust-for-linux.com",
+            "image": "https://rust-for-linux.com/Rust-for-Linux.svg"
+        }
+        </script>
+        <style>
+        #logo {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .rfl-menu-block {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .rfl-mono-font {
+            font-family: var(--mono-font);
+        }
+
+        .rfl-mobile-links {
+            display: none;
+        }
+
+        @media only screen and (max-width: 1080px) {
+            .rfl-mobile-links {
+                display: block;
+            }
+        }
+
+        .chapter li.chapter-item {
+            margin-top: 0.2em !important;
+            margin-left: 1.5em !important;
+        }
+
+        .chapter li.part-title {
+            margin-bottom: -0.3em !important;
+            margin-top: 1em !important;
+        }
+
+        .quote-highlight:target {
+            /*
+             * `--table-header-bg` is used as an existing color in the themes
+             * that is good enough for highlighting the `blockquote`s.
+             */
+            background-color: var(--table-header-bg);
+        }
+        </style>
+    
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            
+        <div class="sidebar-scrollbox">
+            <a href="/"><img id="logo" src="Rust-for-Linux.svg" alt="Rust for Linux Logo"></a>
+            
+            <p class="rfl-menu-block">The project</p>
+            <ol class="chapter"><li class="chapter-item"><a href="Contact.html" tabindex="0">Contact</a></li><li class="chapter-item"><a href="Contributing.html" tabindex="0">Contributing</a></li><li class="chapter-item"><a href="Rust-kernel-policy.html" tabindex="0">Rust kernel policy</a></li><li class="chapter-item"><a href="Branches.html" tabindex="0">Branches</a></li><li class="chapter-item"><a href="Rust-reference-drivers.html" tabindex="0">Rust reference drivers</a></li><li class="chapter-item"><a href="Rust-version-policy.html" tabindex="0">Rust version policy</a></li><li class="chapter-item"><a href="Unstable-features.html" tabindex="0">Unstable features</a></li><li class="chapter-item"><a href="Backporting-and-stable-LTS-releases.html" tabindex="0">Backporting and stable/LTS releases</a></li><li class="chapter-item"><a href="Third-party-crates.html" tabindex="0">Third-party crates</a></li><li class="chapter-item"><a href="Out-of-tree-modules.html" tabindex="0">Out-of-tree modules</a></li><li class="chapter-item"><a href="Industry-and-academia-support.html" tabindex="0">Industry and academia support</a></li><li class="chapter-item"><a href="Sponsors.html" tabindex="0">Sponsors</a></li><li class="part-title">Subprojects</li><li class="chapter-item"><a href="klint.html" tabindex="0"><span class="rfl-mono-font">klint</span></a></li><li class="chapter-item"><a href="pin-init.html" tabindex="0"><span class="rfl-mono-font">pin-init</span></a></li><li class="part-title">Tools</li><li class="chapter-item"><a href="Coccinelle-for-Rust.html" tabindex="0">Coccinelle for Rust</a></li><li class="chapter-item"><a href="rustc_codegen_gcc.html" tabindex="0"><span class="rfl-mono-font">rustc_codegen_gcc</span></a></li><li class="chapter-item"><a href="gccrs.html" tabindex="0"><span class="rfl-mono-font">gccrs</span></a></li><li class="part-title">Users — in mainline</li><li class="chapter-item"><a href="AMCC-QT2025-PHY-Driver.html" tabindex="0">AMCC QT2025 PHY Driver</a></li><li class="chapter-item"><a href="Android-Binder-Driver.html" tabindex="0">Android Binder Driver</a></li><li class="chapter-item"><a href="ASIX-PHY-Driver.html" tabindex="0">ASIX PHY Driver</a></li><li class="chapter-item"><a href="DRM-Panic-QR-code-generator.html" tabindex="0">DRM Panic QR code generator</a></li><li class="chapter-item"><a href="Nova-GPU-Driver.html" tabindex="0">Nova GPU Driver</a></li><li class="chapter-item"><a href="Null-Block-Driver.html" tabindex="0">Null Block Driver</a></li><li class="chapter-item"><a href="Tyr-GPU-Driver.html" tabindex="0">Tyr GPU Driver</a></li><li class="part-title">Users — outside mainline</li><li class="chapter-item"><a href="Android-`ashmem`.html" tabindex="0">Android <span class="rfl-mono-font">ashmem</span></a></li><li class="chapter-item"><a href="Apple-AGX-GPU-driver.html" tabindex="0">Apple AGX GPU driver</a></li><li class="chapter-item"><a href="NVMe-driver.html" tabindex="0">NVMe Driver</a></li><li class="chapter-item"><a href="PuzzleFS-filesystem-driver.html" tabindex="0">PuzzleFS filesystem driver</a></li></ol>
+        
+            <p class="rfl-menu-block">Links</p>
+            <ol class="chapter"><li class="part-title">Contact</li><li class="chapter-item"><a href="https://lore.kernel.org/rust-for-linux/" tabindex="0">Lore (mailing list archive)</a></li><li class="chapter-item"><a href="https://rust-for-linux.zulipchat.com" tabindex="0">Zulip (chat)</a></li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux" tabindex="0">GitHub Organization</a></li><li class="part-title">Security</li><li class="chapter-item"><a href="https://docs.kernel.org/process/security-bugs.html" tabindex="0">Report a security bug</a></li><li class="part-title">Issue tracking</li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/issues" tabindex="0">Issues</a></li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/issues/2" tabindex="0">Unstable features</a></li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/contribute" tabindex="0">Good first issues</a></li><li class="part-title">Documentation</li><li class="chapter-item"><a href="https://docs.kernel.org/rust/quick-start.html" tabindex="0">Quick Start guide</a></li><li class="chapter-item"><a href="https://docs.kernel.org/rust/" tabindex="0">Kernel documentation (mainline)</a></li><li class="chapter-item"><a href="https://docs.kernel.org/next/rust/" tabindex="0">Kernel documentation (next)</a></li><li class="chapter-item"><a href="https://rust.docs.kernel.org" tabindex="0">Rust code documentation (mainline)</a></li><li class="chapter-item"><a href="https://rust.docs.kernel.org/next/" tabindex="0">Rust code documentation (next)</a></li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/rust-out-of-tree-module" tabindex="0">Out-of-tree module template</a></li><li class="part-title">Main branches</li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/tree/rust-next" tabindex="0"><span class="rfl-mono-font">rust-next</span></a></li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/tree/rust-fixes" tabindex="0"><span class="rfl-mono-font">rust-fixes</span></a></li><li class="part-title">Subtree branches</li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/tree/alloc-next" tabindex="0"><span class="rfl-mono-font">alloc-next</span></a></li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/tree/pin-init-next" tabindex="0"><span class="rfl-mono-font">pin-init-next</span></a></li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/tree/timekeeping-next" tabindex="0"><span class="rfl-mono-font">timekeeping-next</span></a></li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/tree/xarray-next" tabindex="0"><span class="rfl-mono-font">xarray-next</span></a></li><li class="part-title">Patchwork</li><li class="chapter-item"><a href="https://patchwork.kernel.org/project/rust-for-linux/list/" tabindex="0">Patchwork</a></li><li class="part-title">Conferences</li><li class="chapter-item"><a href="https://kangrejos.com" tabindex="0">Kangrejos</a></li><li class="chapter-item"><a href="https://lpc.events" tabindex="0">Linux Plumbers Conference (LPC)</a></li><li class="chapter-item"><a href="https://lpc.events/event/19/sessions/223/" tabindex="0">Rust MC at LPC 2025</a></li><li class="chapter-item"><a href="https://lpc.events/event/18/sessions/186/" tabindex="0">Rust MC at LPC 2024</a></li><li class="chapter-item"><a href="https://lpc.events/event/17/sessions/170/" tabindex="0">Rust MC at LPC 2023</a></li><li class="chapter-item"><a href="https://lpc.events/event/16/sessions/150/" tabindex="0">Rust MC at LPC 2022</a></li><li class="part-title">LWN</li><li class="chapter-item"><a href="https://lwn.net/Kernel/Index/#Development_tools-Rust" tabindex="0">Rust index</a></li><li class="chapter-item"><a href="https://lwn.net/Archives/ConferenceIndex/#Kangrejos" tabindex="0">Kangrejos index</a></li><li class="part-title">Tools and toolchains</li><li class="chapter-item"><a href="https://kernel.org/pub/tools/llvm/rust/" tabindex="0">kernel.org prebuilt LLVM+Rust</a></li><li class="chapter-item"><a href="https://github.com/rust-lang/rustc_codegen_gcc" tabindex="0"><span class="rfl-mono-font">rustc_codegen_gcc</span></a></li><li class="chapter-item"><a href="https://rust-gcc.github.io" tabindex="0">Rust GCC</a></li><li class="chapter-item"><a href="https://github.com/acmel/dwarves" tabindex="0"><span class="rfl-mono-font">pahole</span></a></li><li class="part-title">Other trees</li><li class="chapter-item"><a href="https://git.kernel.org/linus/" tabindex="0">Linus' tree</a></li><li class="chapter-item"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/" tabindex="0">Stable tree</a></li><li class="chapter-item"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/" tabindex="0"><span class="rfl-mono-font">linux-next</span> tree</a></li><li class="part-title">Other resources</li><li class="chapter-item"><a href="https://elixir.bootlin.com/linux/latest/source/rust" tabindex="0">Bootlin's Elixir</a></li><li class="chapter-item"><a href="https://godbolt.org/z/a55MozK6s" tabindex="0">Compiler Explorer</a></li><li class="chapter-item"><a href="https://play.rust-lang.org/?version=nightly&mode=debug&edition=2021" tabindex="0">Rust Playground</a></li><li class="chapter-item"><a href="https://doc.rust-lang.org/core/" tabindex="0">Rust <span class="rfl-mono-font">core</span> docs</a></li></ol>
+        
+        </div>
+    
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Rust for Linux</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/Rust-for-Linux/rust-for-linux.com" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="nvme-driver"><a class="header" href="#nvme-driver">NVMe Driver</a></h1>
+<p>The Rust NVMe driver is an effort to implement a PCI NVMe driver in safe Rust
+for use in the Linux Kernel. The purpose of the driver is to provide a vehicle
+for development of safe Rust abstractions and to prove feasibility of Rust as an
+implementation language for high performance device drivers.</p>
+<p>The Linux Rust NVMe driver lives
+<a href="https://git.kernel.org/pub/scm/linux/kernel/git/a.hindborg/linux.git/log/?h=rnvme">here</a>.
+This branch is routinely rebased on upstream Linux releases. Please be aware
+that the <code>rnvme</code> branch is force pushed without notice. The version based on the
+deprecated <code>rust</code> branch is available
+<a href="https://github.com/metaspace/linux/tree/nvme-rust">here</a>.</p>
+<p>The Rust NVMe driver was originally
+authored by Wedson Almeida Filho and is now maintained by Andreas Hindborg
+(Samsung).</p>
+<p>The driver is not currently suitable for general use.</p>
+<h2 id="resources"><a class="header" href="#resources">Resources</a></h2>
+<ul>
+<li>LPC 2022
+<a href="https://lpc.events/event/16/contributions/1180/attachments/1017/1961/deck.pdf">slides</a>
+and <a href="https://lpc.events/event/16/contributions/1180/attachments/1017/2249/go">video</a></li>
+</ul>
+<h2 id="615-rebase-performance-rnvme-v615"><a class="header" href="#615-rebase-performance-rnvme-v615">6.15 Rebase Performance (<a href="https://git.kernel.org/pub/scm/linux/kernel/git/a.hindborg/linux.git/log/?h=rnvme-v6.15"><code>rnvme-v6.15</code></a>)</a></h2>
+<h3 id="setup"><a class="header" href="#setup">Setup</a></h3>
+<ul>
+<li>AMD Ryzen 5 7600</li>
+<li>32 GB 4800 MT/s DDR5 on one channel</li>
+<li>1x Samsung 990 Pro 1TB (PCIe 4.0 x4 16 GT/S)</li>
+<li>NixOS 24.11</li>
+</ul>
+<h3 id="results"><a class="header" href="#results">Results</a></h3>
+<ul>
+<li>40 samples</li>
+<li>Difference of means modeled with t-distribution</li>
+<li>P95 confidence intervals</li>
+</ul>
+<p><img src="rnvme/nvme-v6.15-absolute.svg" alt="" /></p>
+<p><img src="rnvme/nvme-v6.15-relative.svg" alt="" /></p>
+<p>The graph shows
+<math>
+<mfrac>
+<mrow>
+<mi>R</mi>
+<mo>-</mo>
+<mi>C</mi>
+</mrow>
+<mrow>
+<mi>C</mi>
+</mrow>
+</mfrac>
+</math>
+where C is IO/s for the C driver and R is IO/s for the Rust driver. Thus, negative
+means the C driver is faster while positive means the Rust driver is faster.</p>
+<h2 id="614-rc5-rebase-performance-rnvme-v614-rc5"><a class="header" href="#614-rc5-rebase-performance-rnvme-v614-rc5">6.14-rc5 Rebase Performance (<a href="https://git.kernel.org/pub/scm/linux/kernel/git/a.hindborg/linux.git/log/?h=rnvme-v6.14-rc5"><code>rnvme-v6.14-rc5</code></a>)</a></h2>
+<h3 id="setup-1"><a class="header" href="#setup-1">Setup</a></h3>
+<ul>
+<li>AMD Ryzen 5 7600</li>
+<li>32 GB 4800 MT/s DDR5 on one channel</li>
+<li>1x Samsung 990 Pro 1TB (PCIe 4.0 x4 16 GT/S)</li>
+<li>NixOS 24.11</li>
+</ul>
+<h3 id="results-1"><a class="header" href="#results-1">Results</a></h3>
+<ul>
+<li>40 samples</li>
+<li>Difference of means modeled with t-distribution</li>
+<li>P95 confidence intervals</li>
+</ul>
+<p><img src="rnvme/nvme-v6.14-rc5-absolute.svg" alt="" /></p>
+<p><img src="rnvme/nvme-v6.14-rc5-relative.svg" alt="" /></p>
+<p>The graph shows
+<math>
+<mfrac>
+<mrow>
+<mi>R</mi>
+<mo>-</mo>
+<mi>C</mi>
+</mrow>
+<mrow>
+<mi>C</mi>
+</mrow>
+</mfrac>
+</math>
+where C is IO/s for the C driver and R is IO/s for the Rust driver. Thus, negative
+means the C driver is faster while positive means the Rust driver is faster.</p>
+<h2 id="613-rebase-performance-rnvme-v613"><a class="header" href="#613-rebase-performance-rnvme-v613">6.13 Rebase Performance (<a href="https://git.kernel.org/pub/scm/linux/kernel/git/a.hindborg/linux.git/log/?h=rnvme-v6.13"><code>rnvme-v6.13</code></a>)</a></h2>
+<h3 id="setup-2"><a class="header" href="#setup-2">Setup</a></h3>
+<ul>
+<li>AMD Ryzen 5 7600</li>
+<li>32 GB 4800 MT/s DDR5 on one channel</li>
+<li>1x Samsung 990 Pro 1TB (PCIe 4.0 x4 16 GT/S)</li>
+<li>NixOS 24.11</li>
+</ul>
+<h3 id="results-2"><a class="header" href="#results-2">Results</a></h3>
+<ul>
+<li>40 samples</li>
+<li>Difference of means modeled with t-distribution</li>
+<li>P95 confidence intervals</li>
+</ul>
+<p><img src="rnvme/nvme-v6.13-absolute.svg" alt="" /></p>
+<p><img src="rnvme/nvme-v6.13-relative.svg" alt="" /></p>
+<p>The graph shows
+<math>
+<mfrac>
+<mrow>
+<mi>R</mi>
+<mo>-</mo>
+<mi>C</mi>
+</mrow>
+<mrow>
+<mi>C</mi>
+</mrow>
+</mfrac>
+</math>
+where C is IO/s for the C driver and R is IO/s for the Rust driver. Thus, negative
+means the C driver is faster while positive means the Rust driver is faster.</p>
+<h2 id="612-rebase-performance-rnvme-v612"><a class="header" href="#612-rebase-performance-rnvme-v612">6.12 Rebase Performance (<a href="https://git.kernel.org/pub/scm/linux/kernel/git/a.hindborg/linux.git/log/?h=rnvme-v6.12"><code>rnvme-v6.12</code></a>)</a></h2>
+<h3 id="setup-3"><a class="header" href="#setup-3">Setup</a></h3>
+<ul>
+<li>AMD Ryzen 5 7600</li>
+<li>32 GB 4800 MT/s DDR5 on one channel</li>
+<li>1x Samsung 990 Pro 1TB (PCIe 4.0 x4 16 GT/S)</li>
+<li>NixOS 24.04</li>
+</ul>
+<h3 id="results-3"><a class="header" href="#results-3">Results</a></h3>
+<ul>
+<li>40 samples</li>
+<li>Difference of means modeled with t-distribution</li>
+<li>P95 confidence intervals</li>
+</ul>
+<p><img src="rnvme/nvme-v6.12-absolute.svg" alt="" /></p>
+<p><img src="rnvme/nvme-v6.12-relative.svg" alt="" /></p>
+<p>The graph shows
+<math>
+<mfrac>
+<mrow>
+<mi>R</mi>
+<mo>-</mo>
+<mi>C</mi>
+</mrow>
+<mrow>
+<mi>C</mi>
+</mrow>
+</mfrac>
+</math>
+where C is IO/s for the C driver and R is IO/s for the Rust driver. Thus, negative
+means the C driver is faster while positive means the Rust driver is faster.</p>
+<h2 id="612-rc2-rebase-performance-rnvme-v612-rc2"><a class="header" href="#612-rc2-rebase-performance-rnvme-v612-rc2">6.12-rc2 Rebase Performance (<a href="https://git.kernel.org/pub/scm/linux/kernel/git/a.hindborg/linux.git/log/?h=rnvme-v6.12-rc2"><code>rnvme-v6.12-rc2</code></a>)</a></h2>
+<h3 id="setup-4"><a class="header" href="#setup-4">Setup</a></h3>
+<ul>
+<li>AMD Ryzen 5 7600</li>
+<li>32 GB 4800 MT/s DDR5 on one channel</li>
+<li>1x Samsung 990 Pro 1TB (PCIe 4.0 x4 16 GT/S)</li>
+<li>NixOS 24.05</li>
+</ul>
+<h3 id="results-4"><a class="header" href="#results-4">Results</a></h3>
+<ul>
+<li>40 samples</li>
+<li>Difference of means modeled with t-distribution</li>
+<li>P95 confidence intervals</li>
+</ul>
+<p><img src="rnvme/nvme-v6.12-rc2-absolute.svg" alt="" /></p>
+<p><img src="rnvme/nvme-v6.12-rc2-relative.svg" alt="" /></p>
+<p>The graph shows
+<math>
+<mfrac>
+<mrow>
+<mi>R</mi>
+<mo>-</mo>
+<mi>C</mi>
+</mrow>
+<mrow>
+<mi>C</mi>
+</mrow>
+</mfrac>
+</math>
+where C is IO/s for the C driver and R is IO/s for the Rust driver. Thus, negative
+means the C driver is faster while positive means the Rust driver is faster.</p>
+<h2 id="611-rebase-performance-rnvme-v611"><a class="header" href="#611-rebase-performance-rnvme-v611">6.11 Rebase Performance (<a href="https://git.kernel.org/pub/scm/linux/kernel/git/a.hindborg/linux.git/log/?h=rnvme-v6.11"><code>rnvme-v6.11</code></a>)</a></h2>
+<h3 id="setup-5"><a class="header" href="#setup-5">Setup</a></h3>
+<ul>
+<li>AMD Ryzen 5 7600</li>
+<li>32 GB 4800 MT/s DDR5 on one channel</li>
+<li>1x Samsung 990 Pro 1TB (PCIe 4.0 x4 16 GT/S)</li>
+<li>NixOS 24.05</li>
+</ul>
+<h3 id="results-5"><a class="header" href="#results-5">Results</a></h3>
+<ul>
+<li>40 samples</li>
+<li>Difference of means modeled with t-distribution</li>
+<li>P95 confidence intervals</li>
+</ul>
+<p><img src="rnvme/nvme-v6.11-absolute.svg" alt="" /></p>
+<p><img src="rnvme/nvme-v6.11-relative.svg" alt="" /></p>
+<p>The graph shows
+<math>
+<mfrac>
+<mrow>
+<mi>R</mi>
+<mo>-</mo>
+<mi>C</mi>
+</mrow>
+<mrow>
+<mi>C</mi>
+</mrow>
+</mfrac>
+</math>
+where C is IO/s for the C driver and R is IO/s for the Rust driver. Thus, negative
+means the C driver is faster while positive means the Rust driver is faster.</p>
+<h2 id="611-rc2-rebase-performance-rnvme-v611-rc2"><a class="header" href="#611-rc2-rebase-performance-rnvme-v611-rc2">6.11-rc2 Rebase Performance (<a href="https://git.kernel.org/pub/scm/linux/kernel/git/a.hindborg/linux.git/log/?h=rnvme-v6.11-rc2"><code>rnvme-v6.11-rc2</code></a>)</a></h2>
+<h3 id="setup-6"><a class="header" href="#setup-6">Setup</a></h3>
+<ul>
+<li>AMD Ryzen 5 7600</li>
+<li>32 GB 4800 MT/s DDR5 on one channel</li>
+<li>1x Samsung 990 Pro 1TB (PCIe 4.0 x4 16 GT/S)</li>
+<li>NixOS 24.05</li>
+</ul>
+<h3 id="results-6"><a class="header" href="#results-6">Results</a></h3>
+<ul>
+<li>40 samples</li>
+<li>Difference of means modeled with t-distribution</li>
+<li>P95 confidence intervals</li>
+</ul>
+<p><img src="rnvme/nvme-v6.11-rc2-absolute.svg" alt="" /></p>
+<p><img src="rnvme/nvme-v6.11-rc2-relative.svg" alt="" /></p>
+<p>The graph shows
+<math>
+<mfrac>
+<mrow>
+<mi>R</mi>
+<mo>-</mo>
+<mi>C</mi>
+</mrow>
+<mrow>
+<mi>C</mi>
+</mrow>
+</mfrac>
+</math>
+where C is IO/s for the C driver and R is IO/s for the Rust driver. Thus, negative
+means the C driver is faster while positive means the Rust driver is faster.</p>
+<h2 id="610-rebase-performance-rnvme-v610"><a class="header" href="#610-rebase-performance-rnvme-v610">6.10 Rebase Performance (<a href="https://git.kernel.org/pub/scm/linux/kernel/git/a.hindborg/linux.git/log/?h=rnvme-v6.10"><code>rnvme-v6.10</code></a>)</a></h2>
+<h3 id="setup-7"><a class="header" href="#setup-7">Setup</a></h3>
+<ul>
+<li>AMD Ryzen 5 7600</li>
+<li>32 GB 4800 MT/s DDR5 on one channel</li>
+<li>1x Samsung 990 Pro 1TB (PCIe 4.0 x4 16 GT/S)</li>
+<li>NixOS 24.05</li>
+</ul>
+<h3 id="results-7"><a class="header" href="#results-7">Results</a></h3>
+<ul>
+<li>40 samples</li>
+<li>Difference of means modeled with t-distribution</li>
+<li>P95 confidence intervals</li>
+</ul>
+<p><img src="rnvme/nvme-v6.10-absolute.svg" alt="" /></p>
+<p><img src="rnvme/nvme-v6.10-relative.svg" alt="" /></p>
+<p>The graph shows
+<math>
+<mfrac>
+<mrow>
+<mi>R</mi>
+<mo>-</mo>
+<mi>C</mi>
+</mrow>
+<mrow>
+<mi>C</mi>
+</mrow>
+</mfrac>
+</math>
+where C is IO/s for the C driver and R is IO/s for the Rust driver. Thus, negative
+means the C driver is faster while positive means the Rust driver is faster.</p>
+<h2 id="610-rc5-rebase-performance-rnvme-v610-rc5"><a class="header" href="#610-rc5-rebase-performance-rnvme-v610-rc5">6.10-rc5 Rebase Performance (<a href="https://github.com/metaspace/linux/tree/rnvme-v6.10-rc5"><code>rnvme-v6.10-rc5</code></a>)</a></h2>
+<h3 id="setup-8"><a class="header" href="#setup-8">Setup</a></h3>
+<ul>
+<li>AMD Ryzen 5 7600</li>
+<li>32 GB 4800 MT/s DDR5 on one channel</li>
+<li>1x Samsung 990 Pro 1TB (PCIe 4.0 x4 16 GT/S)</li>
+<li>NixOS 24.05</li>
+</ul>
+<h3 id="results-8"><a class="header" href="#results-8">Results</a></h3>
+<ul>
+<li>40 samples</li>
+<li>Difference of means modeled with t-distribution</li>
+<li>P95 confidence intervals</li>
+</ul>
+<p><img src="rnvme/nvme-v6.10-rc5-absolute.svg" alt="" /></p>
+<p><img src="rnvme/nvme-v6.10-rc5-relative.svg" alt="" /></p>
+<p>The graph shows
+<math>
+<mfrac>
+<mrow>
+<mi>R</mi>
+<mo>-</mo>
+<mi>C</mi>
+</mrow>
+<mrow>
+<mi>C</mi>
+</mrow>
+</mfrac>
+</math>
+where C is IO/s for the C driver and R is IO/s for the Rust driver. Thus, negative
+means the C driver is faster while positive means the Rust driver is faster.</p>
+<h2 id="69-rebase-performance-rnvme-v69"><a class="header" href="#69-rebase-performance-rnvme-v69">6.9 Rebase Performance (<a href="https://github.com/metaspace/linux/tree/rnvme-v6.9"><code>rnvme-v6.9</code></a>)</a></h2>
+<h3 id="setup-9"><a class="header" href="#setup-9">Setup</a></h3>
+<ul>
+<li>AMD Ryzen 5 7600</li>
+<li>32 GB 4800 MT/s DDR5 on one channel</li>
+<li>1x Samsung 990 Pro 1TB (PCIe 4.0 x4 16 GT/S)</li>
+<li>NixOS 24.05</li>
+</ul>
+<h3 id="results-9"><a class="header" href="#results-9">Results</a></h3>
+<ul>
+<li>40 samples</li>
+<li>Difference of means modeled with t-distribution</li>
+<li>P95 confidence intervals</li>
+</ul>
+<p><img src="rnvme/nvme-v6.9-absolute.svg" alt="" /></p>
+<p><img src="rnvme/nvme-v6.9-relative.svg" alt="" /></p>
+<p>The graph shows
+<math>
+<mfrac>
+<mrow>
+<mi>R</mi>
+<mo>-</mo>
+<mi>C</mi>
+</mrow>
+<mrow>
+<mi>C</mi>
+</mrow>
+</mfrac>
+</math>
+where C is IO/s for the C driver and R is IO/s for the Rust driver. Thus, negative
+means the C driver is faster while positive means the Rust driver is faster.</p>
+<h2 id="68-rebase-performance-rnvme-v68"><a class="header" href="#68-rebase-performance-rnvme-v68">6.8 Rebase Performance (<a href="https://github.com/metaspace/linux/tree/rnvme-v6.8"><code>rnvme-v6.8</code></a>)</a></h2>
+<h3 id="setup-10"><a class="header" href="#setup-10">Setup</a></h3>
+<ul>
+<li>AMD Ryzen 5 7600</li>
+<li>32 GB 4800 MT/s DDR5 on one channel</li>
+<li>1x Samsung 990 Pro 1TB (PCIe 4.0 x4 16 GT/S)</li>
+<li>NixOS 23.11</li>
+</ul>
+<h3 id="results-10"><a class="header" href="#results-10">Results</a></h3>
+<ul>
+<li>40 samples</li>
+<li>Difference of means modeled with t-distribution</li>
+<li>P95 confidence intervals</li>
+</ul>
+<p><img src="rnvme/nvme-v6.8-absolute.svg" alt="" /></p>
+<p><img src="rnvme/nvme-v6.8-relative.svg" alt="" /></p>
+<p>The graph shows
+<math>
+<mfrac>
+<mrow>
+<mi>R</mi>
+<mo>-</mo>
+<mi>C</mi>
+</mrow>
+<mrow>
+<mi>C</mi>
+</mrow>
+</mfrac>
+</math>
+where C is IO/s for the C driver and R is IO/s for the Rust driver. Thus, negative
+means the C driver is faster while positive means the Rust driver is faster.</p>
+<h2 id="67-rebase-performance-nvme-67"><a class="header" href="#67-rebase-performance-nvme-67">6.7 Rebase Performance (<a href="https://github.com/metaspace/linux/tree/nvme-6.7"><code>nvme-6.7</code></a>)</a></h2>
+<h3 id="setup-11"><a class="header" href="#setup-11">Setup</a></h3>
+<ul>
+<li>12th Gen Intel(R) Core(TM) i5-12600</li>
+<li>32 GB DRAM</li>
+<li>1x INTEL MEMPEK1W016GA (PCIe 3.0 x2)</li>
+<li>Debian Bullseye userspace</li>
+<li>LTO results are enabled by a build system patch (a hack) that was not yet published.</li>
+</ul>
+<h3 id="results-11"><a class="header" href="#results-11">Results</a></h3>
+<ul>
+<li>30 samples</li>
+<li>Difference of means modeled with t-distribution</li>
+<li>P99 confidence intervals</li>
+</ul>
+<p><img src="rnvme/nvme-all-6.7.svg" alt="" /></p>
+<h4 id="difference-relative"><a class="header" href="#difference-relative">Difference Relative</a></h4>
+<p>Plot shows <code>(mean_iops_r - mean_iops_c) / mean_iops_c</code>'</p>
+<p><img src="rnvme/nvme-diff-relative-6.7.svg" alt="" /></p>
+<h2 id="performance-november-2023-nvme-66"><a class="header" href="#performance-november-2023-nvme-66">Performance November 2023 (<a href="https://github.com/metaspace/linux/tree/nvme-6.6"><code>nvme-6.6</code></a>)</a></h2>
+<h3 id="setup-12"><a class="header" href="#setup-12">Setup</a></h3>
+<ul>
+<li>12th Gen Intel(R) Core(TM) i5-12600</li>
+<li>32 GB DRAM</li>
+<li>1x INTEL MEMPEK1W016GA (PCIe 3.0 x2)</li>
+<li>Debian Bullseye userspace</li>
+<li>LTO results are enabled by a build system patch (a hack) that was not yet published.</li>
+</ul>
+<h3 id="results-12"><a class="header" href="#results-12">Results</a></h3>
+<ul>
+<li>30 samples</li>
+<li>Difference of means modeled with t-distribution</li>
+<li>P99 confidence intervals</li>
+</ul>
+<p><img src="rnvme/nvme-all-6.6.svg" alt="" /></p>
+<h4 id="difference"><a class="header" href="#difference">Difference</a></h4>
+<p><img src="rnvme/nvme-diff-6.6.svg" alt="" /></p>
+<h4 id="difference-relative-1"><a class="header" href="#difference-relative-1">Difference Relative</a></h4>
+<p>Plot shows <code>(mean_iops_r - mean_iops_c) / mean_iops_c</code>'</p>
+<p><img src="rnvme/nvme-diff-relative-6.6.svg" alt="" /></p>
+<h2 id="performance-september-2023"><a class="header" href="#performance-september-2023">Performance September 2023</a></h2>
+<p>The driver was
+<a href="https://github.com/metaspace/linux/tree/7353a81d566510080f91099b1a2b31895c716c9d">rebased</a>
+on top of
+<a href="https://github.com/Rust-for-Linux/linux/commit/37152d4a7c6400a4250134e601eca8be1a2bbc16"><code>rust-next</code></a>
+PR for 6.6 in September 2023.</p>
+<h3 id="setup-13"><a class="header" href="#setup-13">Setup</a></h3>
+<ul>
+<li>12th Gen Intel(R) Core(TM) i5-12600</li>
+<li>32 GB DRAM</li>
+<li>1x INTEL MEMPEK1W016GA (PCIe 3.0 x2)</li>
+<li>Debian Bullseye userspace</li>
+</ul>
+<h3 id="results-13"><a class="header" href="#results-13">Results</a></h3>
+<p><img src="./rnvme/nvme-512-sep23.svg" alt="iops-512" />
+<img src="./rnvme/nvme-all-sep23.svg" alt="iops-all" /></p>
+<h2 id="performance-january-2023"><a class="header" href="#performance-january-2023">Performance January 2023</a></h2>
+<p>Performance evaluation as of January 2023.</p>
+<h3 id="setup-14"><a class="header" href="#setup-14">Setup</a></h3>
+<ul>
+<li>Dell PowerEdge R6525</li>
+<li>1 CPU socket populated - EPYC 7313, 16 cores</li>
+<li>128 GB DRAM</li>
+<li>3x P5800x 16GT/s x4 7.88 GB/s (PCIe 4)</li>
+<li>Debian bullseye (linux 5.19.0+)</li>
+</ul>
+<h3 id="results-14"><a class="header" href="#results-14">Results</a></h3>
+<p><img src="./rnvme/iops-jan23.svg" alt="iops" />
+<img src="./rnvme/relative-jan23.svg" alt="relative" /></p>
+<h3 id="analysis"><a class="header" href="#analysis">Analysis</a></h3>
+<p>For 4 KiB block size, the Rust NVMe driver performs similar to the C driver. For
+this configuration the target drive is bandwidth limited.</p>
+<p>For 512 B block size, the C driver outperforms the Rust driver by up to 6%. In
+this configuration the drive is not bandwidth limited, but the benchmark becomes
+compute limited. The Rust driver has a higher overhead and thus performs worse.</p>
+<h2 id="work-items"><a class="header" href="#work-items">Work Items</a></h2>
+<ul>
+<li>Remove all unsafe code from the driver</li>
+<li>Support device removal</li>
+<li>Verify functionality by executing <code>blktests</code> and <code>xfstests</code> in CI</li>
+<li>Add sys-fs nodes to allow use of <code>nvme-cli</code> with Rust NVMe driver</li>
+<li>Support more kernel configurations by deferring initialization to a task queue</li>
+<li>Improve performance of Rust NVMe driver</li>
+</ul>
+<h2 id="contact"><a class="header" href="#contact">Contact</a></h2>
+<p>Please contact Andreas Hindborg through
+<a href="Contact.html#zulip-chat">Zulip</a>.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="Apple-AGX-GPU-driver.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="PuzzleFS-filesystem-driver.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="Apple-AGX-GPU-driver.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="PuzzleFS-filesystem-driver.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

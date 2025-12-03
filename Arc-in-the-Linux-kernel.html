@@ -1,0 +1,371 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Arc in the Linux kernel - Rust for Linux</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="Adding support for the Rust language to the Linux kernel">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        
+        <link rel="icon" href="Rust-for-Linux.svg">
+
+        <meta property="og:url" content="https://rust-for-linux.com">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Rust for Linux">
+        <meta property="og:description" content="Adding support for the Rust language to the Linux kernel">
+        <meta property="og:image" content="https://rust-for-linux.com/Rust-for-Linux.svg">
+        <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "CreativeWork",
+            "name": "Rust for Linux",
+            "description": "Adding support for the Rust language to the Linux kernel",
+            "url": "https://rust-for-linux.com",
+            "image": "https://rust-for-linux.com/Rust-for-Linux.svg"
+        }
+        </script>
+        <style>
+        #logo {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .rfl-menu-block {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .rfl-mono-font {
+            font-family: var(--mono-font);
+        }
+
+        .rfl-mobile-links {
+            display: none;
+        }
+
+        @media only screen and (max-width: 1080px) {
+            .rfl-mobile-links {
+                display: block;
+            }
+        }
+
+        .chapter li.chapter-item {
+            margin-top: 0.2em !important;
+            margin-left: 1.5em !important;
+        }
+
+        .chapter li.part-title {
+            margin-bottom: -0.3em !important;
+            margin-top: 1em !important;
+        }
+
+        .quote-highlight:target {
+            /*
+             * `--table-header-bg` is used as an existing color in the themes
+             * that is good enough for highlighting the `blockquote`s.
+             */
+            background-color: var(--table-header-bg);
+        }
+        </style>
+    
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            
+        <div class="sidebar-scrollbox">
+            <a href="/"><img id="logo" src="Rust-for-Linux.svg" alt="Rust for Linux Logo"></a>
+            
+            <p class="rfl-menu-block">The project</p>
+            <ol class="chapter"><li class="chapter-item"><a href="Contact.html" tabindex="0">Contact</a></li><li class="chapter-item"><a href="Contributing.html" tabindex="0">Contributing</a></li><li class="chapter-item"><a href="Rust-kernel-policy.html" tabindex="0">Rust kernel policy</a></li><li class="chapter-item"><a href="Branches.html" tabindex="0">Branches</a></li><li class="chapter-item"><a href="Rust-reference-drivers.html" tabindex="0">Rust reference drivers</a></li><li class="chapter-item"><a href="Rust-version-policy.html" tabindex="0">Rust version policy</a></li><li class="chapter-item"><a href="Unstable-features.html" tabindex="0">Unstable features</a></li><li class="chapter-item"><a href="Backporting-and-stable-LTS-releases.html" tabindex="0">Backporting and stable/LTS releases</a></li><li class="chapter-item"><a href="Third-party-crates.html" tabindex="0">Third-party crates</a></li><li class="chapter-item"><a href="Out-of-tree-modules.html" tabindex="0">Out-of-tree modules</a></li><li class="chapter-item"><a href="Industry-and-academia-support.html" tabindex="0">Industry and academia support</a></li><li class="chapter-item"><a href="Sponsors.html" tabindex="0">Sponsors</a></li><li class="part-title">Subprojects</li><li class="chapter-item"><a href="klint.html" tabindex="0"><span class="rfl-mono-font">klint</span></a></li><li class="chapter-item"><a href="pin-init.html" tabindex="0"><span class="rfl-mono-font">pin-init</span></a></li><li class="part-title">Tools</li><li class="chapter-item"><a href="Coccinelle-for-Rust.html" tabindex="0">Coccinelle for Rust</a></li><li class="chapter-item"><a href="rustc_codegen_gcc.html" tabindex="0"><span class="rfl-mono-font">rustc_codegen_gcc</span></a></li><li class="chapter-item"><a href="gccrs.html" tabindex="0"><span class="rfl-mono-font">gccrs</span></a></li><li class="part-title">Users — in mainline</li><li class="chapter-item"><a href="AMCC-QT2025-PHY-Driver.html" tabindex="0">AMCC QT2025 PHY Driver</a></li><li class="chapter-item"><a href="Android-Binder-Driver.html" tabindex="0">Android Binder Driver</a></li><li class="chapter-item"><a href="ASIX-PHY-Driver.html" tabindex="0">ASIX PHY Driver</a></li><li class="chapter-item"><a href="DRM-Panic-QR-code-generator.html" tabindex="0">DRM Panic QR code generator</a></li><li class="chapter-item"><a href="Nova-GPU-Driver.html" tabindex="0">Nova GPU Driver</a></li><li class="chapter-item"><a href="Null-Block-Driver.html" tabindex="0">Null Block Driver</a></li><li class="chapter-item"><a href="Tyr-GPU-Driver.html" tabindex="0">Tyr GPU Driver</a></li><li class="part-title">Users — outside mainline</li><li class="chapter-item"><a href="Android-`ashmem`.html" tabindex="0">Android <span class="rfl-mono-font">ashmem</span></a></li><li class="chapter-item"><a href="Apple-AGX-GPU-driver.html" tabindex="0">Apple AGX GPU driver</a></li><li class="chapter-item"><a href="NVMe-driver.html" tabindex="0">NVMe Driver</a></li><li class="chapter-item"><a href="PuzzleFS-filesystem-driver.html" tabindex="0">PuzzleFS filesystem driver</a></li></ol>
+        
+            <p class="rfl-menu-block">Links</p>
+            <ol class="chapter"><li class="part-title">Contact</li><li class="chapter-item"><a href="https://lore.kernel.org/rust-for-linux/" tabindex="0">Lore (mailing list archive)</a></li><li class="chapter-item"><a href="https://rust-for-linux.zulipchat.com" tabindex="0">Zulip (chat)</a></li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux" tabindex="0">GitHub Organization</a></li><li class="part-title">Security</li><li class="chapter-item"><a href="https://docs.kernel.org/process/security-bugs.html" tabindex="0">Report a security bug</a></li><li class="part-title">Issue tracking</li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/issues" tabindex="0">Issues</a></li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/issues/2" tabindex="0">Unstable features</a></li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/contribute" tabindex="0">Good first issues</a></li><li class="part-title">Documentation</li><li class="chapter-item"><a href="https://docs.kernel.org/rust/quick-start.html" tabindex="0">Quick Start guide</a></li><li class="chapter-item"><a href="https://docs.kernel.org/rust/" tabindex="0">Kernel documentation (mainline)</a></li><li class="chapter-item"><a href="https://docs.kernel.org/next/rust/" tabindex="0">Kernel documentation (next)</a></li><li class="chapter-item"><a href="https://rust.docs.kernel.org" tabindex="0">Rust code documentation (mainline)</a></li><li class="chapter-item"><a href="https://rust.docs.kernel.org/next/" tabindex="0">Rust code documentation (next)</a></li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/rust-out-of-tree-module" tabindex="0">Out-of-tree module template</a></li><li class="part-title">Main branches</li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/tree/rust-next" tabindex="0"><span class="rfl-mono-font">rust-next</span></a></li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/tree/rust-fixes" tabindex="0"><span class="rfl-mono-font">rust-fixes</span></a></li><li class="part-title">Subtree branches</li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/tree/alloc-next" tabindex="0"><span class="rfl-mono-font">alloc-next</span></a></li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/tree/pin-init-next" tabindex="0"><span class="rfl-mono-font">pin-init-next</span></a></li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/tree/timekeeping-next" tabindex="0"><span class="rfl-mono-font">timekeeping-next</span></a></li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/tree/xarray-next" tabindex="0"><span class="rfl-mono-font">xarray-next</span></a></li><li class="part-title">Patchwork</li><li class="chapter-item"><a href="https://patchwork.kernel.org/project/rust-for-linux/list/" tabindex="0">Patchwork</a></li><li class="part-title">Conferences</li><li class="chapter-item"><a href="https://kangrejos.com" tabindex="0">Kangrejos</a></li><li class="chapter-item"><a href="https://lpc.events" tabindex="0">Linux Plumbers Conference (LPC)</a></li><li class="chapter-item"><a href="https://lpc.events/event/19/sessions/223/" tabindex="0">Rust MC at LPC 2025</a></li><li class="chapter-item"><a href="https://lpc.events/event/18/sessions/186/" tabindex="0">Rust MC at LPC 2024</a></li><li class="chapter-item"><a href="https://lpc.events/event/17/sessions/170/" tabindex="0">Rust MC at LPC 2023</a></li><li class="chapter-item"><a href="https://lpc.events/event/16/sessions/150/" tabindex="0">Rust MC at LPC 2022</a></li><li class="part-title">LWN</li><li class="chapter-item"><a href="https://lwn.net/Kernel/Index/#Development_tools-Rust" tabindex="0">Rust index</a></li><li class="chapter-item"><a href="https://lwn.net/Archives/ConferenceIndex/#Kangrejos" tabindex="0">Kangrejos index</a></li><li class="part-title">Tools and toolchains</li><li class="chapter-item"><a href="https://kernel.org/pub/tools/llvm/rust/" tabindex="0">kernel.org prebuilt LLVM+Rust</a></li><li class="chapter-item"><a href="https://github.com/rust-lang/rustc_codegen_gcc" tabindex="0"><span class="rfl-mono-font">rustc_codegen_gcc</span></a></li><li class="chapter-item"><a href="https://rust-gcc.github.io" tabindex="0">Rust GCC</a></li><li class="chapter-item"><a href="https://github.com/acmel/dwarves" tabindex="0"><span class="rfl-mono-font">pahole</span></a></li><li class="part-title">Other trees</li><li class="chapter-item"><a href="https://git.kernel.org/linus/" tabindex="0">Linus' tree</a></li><li class="chapter-item"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/" tabindex="0">Stable tree</a></li><li class="chapter-item"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/" tabindex="0"><span class="rfl-mono-font">linux-next</span> tree</a></li><li class="part-title">Other resources</li><li class="chapter-item"><a href="https://elixir.bootlin.com/linux/latest/source/rust" tabindex="0">Bootlin's Elixir</a></li><li class="chapter-item"><a href="https://godbolt.org/z/a55MozK6s" tabindex="0">Compiler Explorer</a></li><li class="chapter-item"><a href="https://play.rust-lang.org/?version=nightly&mode=debug&edition=2021" tabindex="0">Rust Playground</a></li><li class="chapter-item"><a href="https://doc.rust-lang.org/core/" tabindex="0">Rust <span class="rfl-mono-font">core</span> docs</a></li></ol>
+        
+        </div>
+    
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Rust for Linux</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/Rust-for-Linux/rust-for-linux.com" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="arc-in-the-linux-kernel"><a class="header" href="#arc-in-the-linux-kernel"><code>Arc</code> in the Linux kernel</a></h1>
+<p>This document outlines how the Linux kernel is using the unstable features <a href="https://github.com/rust-lang/rust/issues/44874"><code>arbitrary_self_types</code></a> and <code>dispatch_from_dyn</code>/<a href="https://github.com/rust-lang/rust/issues/18598"><code>unsize</code></a>.</p>
+<p>But first, an introduction to the custom types that the kernel is using.</p>
+<h2 id="the-kernels-custom-arc"><a class="header" href="#the-kernels-custom-arc">The kernel's custom <code>Arc</code></a></h2>
+<p>The Linux kernel needs to use a <a href="https://rust-for-linux.github.io/docs/v6.8/kernel/sync/struct.Arc.html">custom implementation of <code>Arc</code></a>. The most important reason is that we need to use the kernel's <code>refcount_t</code> type for the atomic instructions on the refcount. There are two reasons for this:</p>
+<ol>
+<li>
+<p>The <a href="https://doc.rust-lang.org/std/sync/struct.Arc.html">standard Rust <code>Arc</code></a> will call <code>abort</code> on overflow. This is not acceptable in the kernel; instead we want to saturate the count when it hits <code>isize::MAX</code>. This effectively leaks the <code>Arc</code>.</p>
+</li>
+<li>
+<p>Using Rust atomics raises various issues with the memory model. We are using the LKMM rather than the usual C++ model, which means that all atomic operations should be implemented with an <code>asm!</code> block or similar that matches what kernel C does, rather than an LLVM intrinsic.</p>
+</li>
+</ol>
+<p>We also make a few other changes to our <code>Arc</code>:</p>
+<ol>
+<li>
+<p>We need to interact with a lot of different C types that need to be pinned, so our custom <code>Arc</code> is implicitly pinned.</p>
+</li>
+<li>
+<p>We do not need weak references, so our refcount can be half the size.</p>
+</li>
+</ol>
+<p>Our <code>Arc</code> also comes with two utility types:</p>
+<ol>
+<li>
+<p><a href="https://rust-for-linux.github.io/docs/v6.8/kernel/sync/struct.ArcBorrow.html"><code>ArcBorrow&lt;'a, T&gt;</code></a>. Similar to <code>&amp;'a Arc&lt;T&gt;</code>, but only one level of indirection.</p>
+</li>
+<li>
+<p><a href="https://rust-for-linux.github.io/docs/v6.8/kernel/sync/struct.UniqueArc.html"><code>UniqueArc&lt;T&gt;</code></a>. Mutable access to an <code>Arc</code>. Used to split allocation and initialization into two steps, which is important since we cannot allocate memory while holding a spinlock.</p>
+</li>
+</ol>
+<h2 id="intrusive-linked-lists"><a class="header" href="#intrusive-linked-lists">Intrusive linked lists</a></h2>
+<p>The kernel uses a lot of intrusive linked lists, which are extremely rare in userspace Rust. This is a consequence of a unique limitation in kernel code related to memory allocations:</p>
+<ol>
+<li>
+<p>Memory allocations are always fallible and failures must be handled gracefully.</p>
+</li>
+<li>
+<p>When you are in an atomic context (e.g. when holding a spinlock), you are not allowed to allocate memory at all.</p>
+</li>
+</ol>
+<p>(Technically there are special ways to allocate memory in atomic context, but it should be used sparingly.)</p>
+<p>These limitations greatly affect how we design code in the kernel. There are some functions where having a failure path is not acceptable (e.g. destroying something), and other places where we cannot allocate at all. This means that we need data structures that do not need to allocate. Or where the allocation and insert steps are separate. Imagine a map protected by a spinlock. How do you implement that if <code>insert</code> simply cannot allocate memory?</p>
+<p>One answer to this is to use a linked list (and similar, e.g. a red/black tree can work with the same idea). The value you wish to insert takes this form:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct MyValue {
+    // In practice, these are wrapped into one field using a struct.
+    next: *mut MyValue,
+    prev: *mut MyValue,
+    foo: Foo,
+    bar: Bar,
+}
+<span class="boring">}</span></code></pre></pre>
+<p>Then, given an <code>Arc&lt;MyValue&gt;</code>, you can insert that into a linked list without having to allocate memory. The only thing you have to do is adjust the <code>next</code>/<code>prev</code> pointers.</p>
+<p>Additionally, there are a bunch of C APIs that work using the same principle, so we are also forced into this pattern when we want to use those C APIs. For example, this includes the workqueue which stores the list of tasks to run in a linked list.</p>
+<h3 id="the-listarc-type"><a class="header" href="#the-listarc-type">The <code>ListArc</code> type</a></h3>
+<p>You may have noticed one problem with the above design: The value we are inserting is an <code>Arc&lt;MyValue&gt;</code>, so how can you get mutable access to <code>next</code>/<code>prev</code>? And how do you know that it's not already in a linked list? What about data races — someone could attempt to push (two clones of) the same <code>Arc&lt;MyValue&gt;</code> to two different linked lists, which would constitute a data race on the <code>next</code>/<code>prev</code> fields.</p>
+<p>You could solve these issues by adding an <code>AtomicBool</code> for keeping track of whether it is in a list, but this isn't great. We really want to avoid the <code>AtomicBool</code>.</p>
+<p>Our answer is another custom smart pointer type: <code>ListArc</code>. The <code>ListArc</code> type is just a newtype wrapper around <code>Arc</code> with the invariant that each <code>MyStruct</code> has at most one <code>ListArc</code> reference. However, unlike <code>UniqueArc</code>, you are allowed to have <code>Arc</code> references to a value that also has an <code>ListArc</code>. This way, the <code>ListArc</code> reference can be given exclusive access to the <code>next</code>/<code>prev</code> fields, which is enough to design a safe API for intrusive linked lists containing reference counted values.</p>
+<p>One consequence of this is that (unlike <code>Arc</code>), we are using a smart pointer where ownership of the pointer is extremely important. You cannot just <code>clone</code> a <code>ListArc</code>.</p>
+<p>Our <code>ListArc</code> type also has a second generic parameter, which allows you to have multiple <code>next</code>/<code>prev</code> pairs. So <code>ListArc&lt;T, 1&gt;</code> has exclusive access to the first <code>next</code>/<code>prev</code> pair, and <code>ListArc&lt;T, 2&gt;</code> has exclusive access to the second such pair. This means that you can have multiple list arcs as long as their parameter is different (one per value of the extra generic parameter).</p>
+<h3 id="nextprev-pointers-and-dynamic-dispatch"><a class="header" href="#nextprev-pointers-and-dynamic-dispatch"><code>next</code>/<code>prev</code> pointers and dynamic dispatch</a></h3>
+<p>We want to be able to use linked lists with <code>dyn Trait</code>. However, the offset of the <code>next</code>/<code>prev</code> fields needs to be uniform no matter what the concrete type is. To do that, we use a wrapper type:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct Wrapper&lt;T: ?Sized&gt; {
+    next: *mut Wrapper&lt;T&gt;,
+    prev: *mut Wrapper&lt;T&gt;,
+    value: T,
+}
+<span class="boring">}</span></code></pre></pre>
+<p>And the actual type ends up being <code>Arc&lt;Wrapper&lt;dyn Trait&gt;&gt;</code>.</p>
+<h2 id="arbitrary-self-types"><a class="header" href="#arbitrary-self-types">Arbitrary self types</a></h2>
+<p>We wish to use arbitrary self types in various places. Some examples:</p>
+<ol>
+<li>
+<p>Many methods need to call <code>self.clone()</code> and get a new <code>Arc</code> to the current struct. To do that, we need <code>self: &amp;Arc&lt;T&gt;</code> or <code>self: ArcBorrow&lt;'_, T&gt;</code>.</p>
+</li>
+<li>
+<p>We often need to do <code>linked_list.push(self)</code>. To do that, we need <code>self: ListArc&lt;T&gt;</code>.</p>
+</li>
+</ol>
+<p>For the struct methods, we <em>could</em> work around this by not using <code>self</code> parameters, and calling <code>MyStruct::foo(my_arc)</code>. However, we also need to do these things in traits where we perform dynamic dispatch on the value. For example:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>trait WorkItem {
+    fn run1(self: ListArc&lt;Self&gt;);
+
+    // or, actually:
+    fn run2(self: ListArc&lt;Wrapper&lt;Self&gt;&gt;);
+}
+<span class="boring">}</span></code></pre></pre>
+<p>This use-case needs both arbitrary self types and the dynamic dispatch feature mentioned in the next section. Arbitrary self types are needed because dynamic dispatch is only performed on self parameters.</p>
+<h2 id="dynamic-dispatch"><a class="header" href="#dynamic-dispatch">Dynamic dispatch</a></h2>
+<p>We wish to use these linked lists to store dynamic trait objects. This is used for a &quot;todo list&quot; of events that need to be delivered to userspace. There are many different event types, and we use a trait object to store a queue of them.</p>
+<p>There is a need to have both <code>Arc&lt;MyStruct&gt;</code> and <code>Arc&lt;dyn MyTrait&gt;</code> references to the same object.</p>
+<p>All of the smart pointers that we want to use dynamic dispatch with are newtype wrappers around either <code>NonNull</code> or other smart pointers (e.g. <code>ListArc</code> is a wrapper around <code>Arc</code>). They may also have a <code>PhantomData</code> field. These requirements match what is listed on <a href="https://doc.rust-lang.org/stable/std/ops/trait.DispatchFromDyn.html"><code>DispatchFromDyn</code></a>.</p>
+<p>A related feature is the <a href="https://doc.rust-lang.org/stable/std/marker/trait.Unsize.html"><code>Unsize</code></a> trait. Most likely, adding the <code>DispatchFromDyn</code> trait depends on also having <code>Unsize</code>, so we need it for that reason. But we do not otherwise need the <code>Unsize</code> trait.</p>
+<h3 id="c-to-rust-dynamic-dispatch"><a class="header" href="#c-to-rust-dynamic-dispatch">C-to-Rust dynamic dispatch</a></h3>
+<p>The kernel also has some other uses of dynamic dispatch that trait objects don't help with. Mainly, these are cases where C defines a vtable using a struct with function pointers. Here, we must match the vtable layout that C dictates, so we will manually implement the vtable unsafely to handle these cases. We still use a trait for providing a safe API to these things, but the implementation needs only generics and not trait objects.</p>
+<p>However, for Rust-to-Rust dynamic dispatch, trait objects appear to satisfy our needs. As long as we are able to use them with our smart pointers, that is.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="The-Safe-Pinned-Initialization-Problem.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="Ksquirrel.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="The-Safe-Pinned-Initialization-Problem.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="Ksquirrel.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

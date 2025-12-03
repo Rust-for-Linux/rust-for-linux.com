@@ -1,0 +1,349 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Nova GPU Driver - Rust for Linux</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="Adding support for the Rust language to the Linux kernel">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        
+        <link rel="icon" href="Rust-for-Linux.svg">
+
+        <meta property="og:url" content="https://rust-for-linux.com">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Rust for Linux">
+        <meta property="og:description" content="Adding support for the Rust language to the Linux kernel">
+        <meta property="og:image" content="https://rust-for-linux.com/Rust-for-Linux.svg">
+        <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "CreativeWork",
+            "name": "Rust for Linux",
+            "description": "Adding support for the Rust language to the Linux kernel",
+            "url": "https://rust-for-linux.com",
+            "image": "https://rust-for-linux.com/Rust-for-Linux.svg"
+        }
+        </script>
+        <style>
+        #logo {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .rfl-menu-block {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .rfl-mono-font {
+            font-family: var(--mono-font);
+        }
+
+        .rfl-mobile-links {
+            display: none;
+        }
+
+        @media only screen and (max-width: 1080px) {
+            .rfl-mobile-links {
+                display: block;
+            }
+        }
+
+        .chapter li.chapter-item {
+            margin-top: 0.2em !important;
+            margin-left: 1.5em !important;
+        }
+
+        .chapter li.part-title {
+            margin-bottom: -0.3em !important;
+            margin-top: 1em !important;
+        }
+
+        .quote-highlight:target {
+            /*
+             * `--table-header-bg` is used as an existing color in the themes
+             * that is good enough for highlighting the `blockquote`s.
+             */
+            background-color: var(--table-header-bg);
+        }
+        </style>
+    
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            
+        <div class="sidebar-scrollbox">
+            <a href="/"><img id="logo" src="Rust-for-Linux.svg" alt="Rust for Linux Logo"></a>
+            
+            <p class="rfl-menu-block">The project</p>
+            <ol class="chapter"><li class="chapter-item"><a href="Contact.html" tabindex="0">Contact</a></li><li class="chapter-item"><a href="Contributing.html" tabindex="0">Contributing</a></li><li class="chapter-item"><a href="Rust-kernel-policy.html" tabindex="0">Rust kernel policy</a></li><li class="chapter-item"><a href="Branches.html" tabindex="0">Branches</a></li><li class="chapter-item"><a href="Rust-reference-drivers.html" tabindex="0">Rust reference drivers</a></li><li class="chapter-item"><a href="Rust-version-policy.html" tabindex="0">Rust version policy</a></li><li class="chapter-item"><a href="Unstable-features.html" tabindex="0">Unstable features</a></li><li class="chapter-item"><a href="Backporting-and-stable-LTS-releases.html" tabindex="0">Backporting and stable/LTS releases</a></li><li class="chapter-item"><a href="Third-party-crates.html" tabindex="0">Third-party crates</a></li><li class="chapter-item"><a href="Out-of-tree-modules.html" tabindex="0">Out-of-tree modules</a></li><li class="chapter-item"><a href="Industry-and-academia-support.html" tabindex="0">Industry and academia support</a></li><li class="chapter-item"><a href="Sponsors.html" tabindex="0">Sponsors</a></li><li class="part-title">Subprojects</li><li class="chapter-item"><a href="klint.html" tabindex="0"><span class="rfl-mono-font">klint</span></a></li><li class="chapter-item"><a href="pin-init.html" tabindex="0"><span class="rfl-mono-font">pin-init</span></a></li><li class="part-title">Tools</li><li class="chapter-item"><a href="Coccinelle-for-Rust.html" tabindex="0">Coccinelle for Rust</a></li><li class="chapter-item"><a href="rustc_codegen_gcc.html" tabindex="0"><span class="rfl-mono-font">rustc_codegen_gcc</span></a></li><li class="chapter-item"><a href="gccrs.html" tabindex="0"><span class="rfl-mono-font">gccrs</span></a></li><li class="part-title">Users — in mainline</li><li class="chapter-item"><a href="AMCC-QT2025-PHY-Driver.html" tabindex="0">AMCC QT2025 PHY Driver</a></li><li class="chapter-item"><a href="Android-Binder-Driver.html" tabindex="0">Android Binder Driver</a></li><li class="chapter-item"><a href="ASIX-PHY-Driver.html" tabindex="0">ASIX PHY Driver</a></li><li class="chapter-item"><a href="DRM-Panic-QR-code-generator.html" tabindex="0">DRM Panic QR code generator</a></li><li class="chapter-item"><a href="Nova-GPU-Driver.html" tabindex="0">Nova GPU Driver</a></li><li class="chapter-item"><a href="Null-Block-Driver.html" tabindex="0">Null Block Driver</a></li><li class="chapter-item"><a href="Tyr-GPU-Driver.html" tabindex="0">Tyr GPU Driver</a></li><li class="part-title">Users — outside mainline</li><li class="chapter-item"><a href="Android-`ashmem`.html" tabindex="0">Android <span class="rfl-mono-font">ashmem</span></a></li><li class="chapter-item"><a href="Apple-AGX-GPU-driver.html" tabindex="0">Apple AGX GPU driver</a></li><li class="chapter-item"><a href="NVMe-driver.html" tabindex="0">NVMe Driver</a></li><li class="chapter-item"><a href="PuzzleFS-filesystem-driver.html" tabindex="0">PuzzleFS filesystem driver</a></li></ol>
+        
+            <p class="rfl-menu-block">Links</p>
+            <ol class="chapter"><li class="part-title">Contact</li><li class="chapter-item"><a href="https://lore.kernel.org/rust-for-linux/" tabindex="0">Lore (mailing list archive)</a></li><li class="chapter-item"><a href="https://rust-for-linux.zulipchat.com" tabindex="0">Zulip (chat)</a></li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux" tabindex="0">GitHub Organization</a></li><li class="part-title">Security</li><li class="chapter-item"><a href="https://docs.kernel.org/process/security-bugs.html" tabindex="0">Report a security bug</a></li><li class="part-title">Issue tracking</li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/issues" tabindex="0">Issues</a></li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/issues/2" tabindex="0">Unstable features</a></li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/contribute" tabindex="0">Good first issues</a></li><li class="part-title">Documentation</li><li class="chapter-item"><a href="https://docs.kernel.org/rust/quick-start.html" tabindex="0">Quick Start guide</a></li><li class="chapter-item"><a href="https://docs.kernel.org/rust/" tabindex="0">Kernel documentation (mainline)</a></li><li class="chapter-item"><a href="https://docs.kernel.org/next/rust/" tabindex="0">Kernel documentation (next)</a></li><li class="chapter-item"><a href="https://rust.docs.kernel.org" tabindex="0">Rust code documentation (mainline)</a></li><li class="chapter-item"><a href="https://rust.docs.kernel.org/next/" tabindex="0">Rust code documentation (next)</a></li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/rust-out-of-tree-module" tabindex="0">Out-of-tree module template</a></li><li class="part-title">Main branches</li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/tree/rust-next" tabindex="0"><span class="rfl-mono-font">rust-next</span></a></li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/tree/rust-fixes" tabindex="0"><span class="rfl-mono-font">rust-fixes</span></a></li><li class="part-title">Subtree branches</li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/tree/alloc-next" tabindex="0"><span class="rfl-mono-font">alloc-next</span></a></li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/tree/pin-init-next" tabindex="0"><span class="rfl-mono-font">pin-init-next</span></a></li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/tree/timekeeping-next" tabindex="0"><span class="rfl-mono-font">timekeeping-next</span></a></li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/tree/xarray-next" tabindex="0"><span class="rfl-mono-font">xarray-next</span></a></li><li class="part-title">Patchwork</li><li class="chapter-item"><a href="https://patchwork.kernel.org/project/rust-for-linux/list/" tabindex="0">Patchwork</a></li><li class="part-title">Conferences</li><li class="chapter-item"><a href="https://kangrejos.com" tabindex="0">Kangrejos</a></li><li class="chapter-item"><a href="https://lpc.events" tabindex="0">Linux Plumbers Conference (LPC)</a></li><li class="chapter-item"><a href="https://lpc.events/event/19/sessions/223/" tabindex="0">Rust MC at LPC 2025</a></li><li class="chapter-item"><a href="https://lpc.events/event/18/sessions/186/" tabindex="0">Rust MC at LPC 2024</a></li><li class="chapter-item"><a href="https://lpc.events/event/17/sessions/170/" tabindex="0">Rust MC at LPC 2023</a></li><li class="chapter-item"><a href="https://lpc.events/event/16/sessions/150/" tabindex="0">Rust MC at LPC 2022</a></li><li class="part-title">LWN</li><li class="chapter-item"><a href="https://lwn.net/Kernel/Index/#Development_tools-Rust" tabindex="0">Rust index</a></li><li class="chapter-item"><a href="https://lwn.net/Archives/ConferenceIndex/#Kangrejos" tabindex="0">Kangrejos index</a></li><li class="part-title">Tools and toolchains</li><li class="chapter-item"><a href="https://kernel.org/pub/tools/llvm/rust/" tabindex="0">kernel.org prebuilt LLVM+Rust</a></li><li class="chapter-item"><a href="https://github.com/rust-lang/rustc_codegen_gcc" tabindex="0"><span class="rfl-mono-font">rustc_codegen_gcc</span></a></li><li class="chapter-item"><a href="https://rust-gcc.github.io" tabindex="0">Rust GCC</a></li><li class="chapter-item"><a href="https://github.com/acmel/dwarves" tabindex="0"><span class="rfl-mono-font">pahole</span></a></li><li class="part-title">Other trees</li><li class="chapter-item"><a href="https://git.kernel.org/linus/" tabindex="0">Linus' tree</a></li><li class="chapter-item"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/" tabindex="0">Stable tree</a></li><li class="chapter-item"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/" tabindex="0"><span class="rfl-mono-font">linux-next</span> tree</a></li><li class="part-title">Other resources</li><li class="chapter-item"><a href="https://elixir.bootlin.com/linux/latest/source/rust" tabindex="0">Bootlin's Elixir</a></li><li class="chapter-item"><a href="https://godbolt.org/z/a55MozK6s" tabindex="0">Compiler Explorer</a></li><li class="chapter-item"><a href="https://play.rust-lang.org/?version=nightly&mode=debug&edition=2021" tabindex="0">Rust Playground</a></li><li class="chapter-item"><a href="https://doc.rust-lang.org/core/" tabindex="0">Rust <span class="rfl-mono-font">core</span> docs</a></li></ol>
+        
+        </div>
+    
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Rust for Linux</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/Rust-for-Linux/rust-for-linux.com" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="nova-gpu-driver"><a class="header" href="#nova-gpu-driver">Nova GPU Driver</a></h1>
+<p>Nova is a driver for GSP (GPU system processor) based Nvidia GPUs. It is
+intended to become the successor of Nouveau as the mainline driver for Nvidia
+(GSP) GPUs in Linux.</p>
+<p>It will support all Nvidia GPUs beginning with the GeForce RTX20 (Turing family)
+series and newer.</p>
+<h2 id="contact"><a class="header" href="#contact">Contact</a></h2>
+<p>Available communication channels are:</p>
+<ul>
+<li>The mailing list: nouveau@lists.freedesktop.org</li>
+<li>IRC: #nouveau on OFTC</li>
+<li><a href="https://rust-for-linux.zulipchat.com/#narrow/channel/509436-Nova">Zulip Chat</a></li>
+</ul>
+<h2 id="resources"><a class="header" href="#resources">Resources</a></h2>
+<p>The parts that are already in mainline Linux can be found in
+<code>drivers/gpu/nova-core/</code> and <code>drivers/gpu/drm/nova/</code></p>
+<p>Development currently takes place in
+<a href="https://gitlab.freedesktop.org/drm/rust/kernel/-/tree/drm-rust-next">the drm-rust-next tree</a>
+alongside other DRM Rust drivers, for easier collaboration and integration.
+There's also <a href="https://gitlab.freedesktop.org/drm/nova">a standalone repo for the Nova driver</a>,
+but it's currently unused. </p>
+<h2 id="background"><a class="header" href="#background">Background</a></h2>
+<h3 id="why-a-new-driver"><a class="header" href="#why-a-new-driver">Why a new driver?</a></h3>
+<p>Nouveau was, for the most part, designed for pre-GSP hardware. The driver exists
+since ~2009 and its authors back in the day had to reverse engineer a lot about
+the hardware's internals, resulting in a relatively difficult to maintain
+codebase.</p>
+<p>Moreover, Nouveau's maintainers concluded that a new driver, exclusively for
+GSP hardware, would allow for significantly simplifying the driver design: Most
+of the hardware internals that Nouveau had to reverse engineer reside in the
+GSP firmware. Hereby, the GSP takes up the role of a hardware abstraction layer
+which communicates with the host kernel through IPC. Thereby, a lot of the
+stack's complexity is moved from the GPU driver into the GSP firmware.</p>
+<p>This, in consequence, enables better maintainability. Another chance with a new
+driver is to obtain active community participation from the very beginning.</p>
+<h3 id="why-write-it-in-rust"><a class="header" href="#why-write-it-in-rust">Why write it in Rust?</a></h3>
+<p>Besides Rust's built-in ownership and lifetime model, its powerful type system
+allows us to avoid a large portion of a whole class of bugs (i.e. memory safety
+bugs).</p>
+<p>Additionally, the same features allow us to model APIs in a way that also
+certain logic errors can be caught at compile time already.</p>
+<p>Especially GPU drivers can benefit a lot from Rust's ownership and lifetime
+model, given their highly concurrent and asynchronous design.</p>
+<p>Since Nova is a new driver, written from scratch, it is an opportunity to try to
+leverage the advantages of Rust and obtain a more reliable, maintainable driver.</p>
+<h2 id="architecture"><a class="header" href="#architecture">Architecture</a></h2>
+<p><img src="./nova-core-vm.png" alt="Nova Architecture with vGPUs" /></p>
+<p>The overall GPU driver is split into two parts:</p>
+<ol>
+<li>&quot;Nova-Core&quot;, living in <code>drivers/gpu/nova-core/</code>. Nova-Core implements
+the fundamental interaction with the hardware (through PCI etc.) and,
+notably, boots up the GSP and interacts with it through a command queue.</li>
+<li>&quot;Nova-DRM&quot; (the official name is actually just &quot;Nova&quot;, but to avoid
+confusion developers usually call it &quot;Nova-DRM&quot;), living in
+<code>drivers/gpu/drm/nova/</code>. This is the actual graphics driver,
+implementing all the typical DRM interfaces for userspace.</li>
+</ol>
+<p>This split architecture allows for different drivers building on top of the
+abstraction layer provided by Nova-Core. Besides Nova-DRM, for instance, a VFIO
+driver to virtualize the GPU can be built on top of Nova-Core. Through this
+driver Nova-Core can be used to instruct the GPU's firmware to spawn new PCI
+virtual functions (through
+<a href="https://docs.kernel.org/PCI/pci-iov-howto.html">SR-IOV</a>), representing virtual
+GPUs. Those virtual functions (or vGPUs) can be used by virtual machines. Such
+a virtual machine running Linux may run Nova-Core and Nova-DRM as conventional
+GPU drivers on top of this vGPU.</p>
+<p>A main advantage of this design is that the amount of software running on the
+host (where crashes would be far more fatal than inside of a VM) is kept small,
+which contributes to stability.</p>
+<p>It is also possible to use Nova-Core + Nova-DRM on one physical machine (not
+depicted in the diagram) in order to expose a DRM compatible uAPI to the host
+userspace.</p>
+<p>For more details about vGPUs, take a look at
+<a href="https://lore.kernel.org/nouveau/20240922124951.1946072-1-zhiw@nvidia.com/">Zhi's announcement email</a>.</p>
+<h2 id="status-and-contributing"><a class="header" href="#status-and-contributing">Status and Contributing</a></h2>
+<p>The necessary Rust infrastructure has been progressing a lot. Current work now
+focuses more on the actual driver. In case you want to contribute, take a look
+at the
+<a href="https://docs.kernel.org/gpu/nova/core/todo.html">NOVA TODO List</a>.</p>
+<p>Don't hesitate reaching out on the aforementioned community channels.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="DRM-Panic-QR-code-generator.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="Null-Block-Driver.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="DRM-Panic-QR-code-generator.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="Null-Block-Driver.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>
