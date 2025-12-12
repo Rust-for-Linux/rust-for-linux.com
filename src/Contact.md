@@ -34,7 +34,7 @@ It takes place once every kernel cycle, the first Wednesday after `-rc1` is tagg
   - [Unstable features list](https://github.com/Rust-for-Linux/linux/issues/2).
   - [Good first issues](https://github.com/Rust-for-Linux/linux/contribute).
 
-Please do ___not___ report security bugs in the GitHub issue tracker. Instead, please read the [Security bugs](https://docs.kernel.org/admin-guide/security-bugs.html) page in the kernel documentation.
+Please do ___not___ report security bugs in the GitHub issue tracker. Instead, please read the [Security bugs](https://docs.kernel.org/process/security-bugs.html) page in the kernel documentation.
 
 For general questions, please use the Zulip chat instead.
 
