@@ -12,7 +12,7 @@ When unstable features are deemed mature enough, they may get promoted into stab
 
 ## Usage in the kernel
 
-The unstable features used in the kernel are tracked at [issue #2](https://github.com/Rust-for-Linux/linux/issues/2).
+The unstable features used (or needed, or expected to be needed) in the kernel are tracked at [issue #2](https://github.com/Rust-for-Linux/linux/issues/2).
 
 Most of the features are only allowed within the `kernel` crate, i.e. for abstractions. Elsewhere (e.g. drivers), only a minimal set is allowed (see the `rust_allowed_features` variable in [`scripts/Makefile.build`](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/scripts/Makefile.build)).
 
