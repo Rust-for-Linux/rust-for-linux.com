@@ -51,10 +51,6 @@ Implemented features:
  - Dynamic device creation/destruction
  - Queue count configuration
  - Per node hctx
-
-Features available in the C `null_blk` driver that are currently not implemented
-in this work:
-
  - Queue depth configuration
  - Discard operation support
  - Cache emulation
@@ -62,8 +58,12 @@ in this work:
  - IO scheduler configuration
  - Blocking submission mode
  - Shared tags configuration (for >1 device)
- - Zoned storage support
  - Bad block simulation
+
+Features available in the C `null_blk` driver that are currently not implemented
+in this work:
+
+ - Zoned storage support
  - Poll queues
 
 ## Resources
@@ -72,6 +72,106 @@ in this work:
  - [Original RFC Patches](https://github.com/metaspace/linux/tree/null_block-RFC)
  - [Mailing List Post](https://lore.kernel.org/all/20230503090708.2524310-1-nmi@metaspace.dk/)
  - [Subset merged in v6.11-rc1](https://lore.kernel.org/all/20240611114551.228679-1-nmi@metaspace.dk/)
+
+## 6.18-rc5, Rebase ([`rnull-v6.18-rc5`](https://git.kernel.org/pub/scm/linux/kernel/git/a.hindborg/linux.git/log/?h=rnull-v6.18-rc5))
+
+Changes from `rnull-v6.17.7`:
+
+ - Add bandwidth throttling
+ - Add blocking queue mode
+ - Add shared tags support
+ - Add queue depth configuration option
+
+### Performance
+
+#### Setup
+
+ - AMD Ryzen 5 7600
+ - 32 GB 4800 MT/s DDR5 on one channel
+ - 1x Samsung 990 Pro 1TB (PCIe 4.0 x4 16 GT/S)
+ - NixOS 24.11
+
+#### Results
+
+- Plot shows `(mean_iops_r - mean_iops_c) / mean_iops_c`
+- 40 samples for each configuration
+- Difference of means modeled with t-distribution
+- P95 confidence intervals
+
+![](rnull/rnull-v6.18-rc5.svg)
+
+##### Sample Distribution
+
+- C left bounded by blue line.
+- Rust right bounded by orange line.
+
+![](rnull/rnull-v6.18-rc5-density.svg)
+
+## 6.17 Rebase ([`rnull-v6.17.7`](https://git.kernel.org/pub/scm/linux/kernel/git/a.hindborg/linux.git/log/?h=rnull-v6.17.7))
+
+Changes from `rnull-v6.16`:
+
+ - Add discard support
+ - Add no_sched support
+ - Add badblocks emulation
+ - Add volatile cache emulation
+
+### Performance
+
+#### Setup
+
+ - AMD Ryzen 5 7600
+ - 32 GB 4800 MT/s DDR5 on one channel
+ - 1x Samsung 990 Pro 1TB (PCIe 4.0 x4 16 GT/S)
+ - NixOS 24.11
+
+#### Results
+
+- Plot shows `(mean_iops_r - mean_iops_c) / mean_iops_c`
+- 40 samples for each configuration
+- Difference of means modeled with t-distribution
+- P95 confidence intervals
+
+![](rnull/rnull-v6.17.7.svg)
+
+##### Sample Distribution
+
+- C left bounded by blue line.
+- Rust right bounded by orange line.
+
+![](rnull/rnull-v6.17.7-density.svg)
+
+## 6.16 Rebase ([`rnull-v6.16`](https://git.kernel.org/pub/scm/linux/kernel/git/a.hindborg/linux.git/log/?h=rnull-v6.16))
+
+Changes from `rnull-v6.15`:
+
+ - No changes
+
+### Performance
+
+#### Setup
+
+ - AMD Ryzen 5 7600
+ - 32 GB 4800 MT/s DDR5 on one channel
+ - 1x Samsung 990 Pro 1TB (PCIe 4.0 x4 16 GT/S)
+ - NixOS 24.11
+
+#### Results
+
+- Plot shows `(mean_iops_r - mean_iops_c) / mean_iops_c`
+- 40 samples for each configuration
+- Difference of means modeled with t-distribution
+- P95 confidence intervals
+
+![](rnull/rnull-v6.16.svg)
+
+
+##### Sample Distribution
+
+- C left bounded by blue line.
+- Rust right bounded by orange line.
+
+![](rnull/rnull-v6.16-density.svg)
 
 ## 6.15 Rebase ([`rnull-v6.15`](https://git.kernel.org/pub/scm/linux/kernel/git/a.hindborg/linux.git/log/?h=rnull-v6.15))
 
