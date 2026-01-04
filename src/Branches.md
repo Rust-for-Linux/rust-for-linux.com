@@ -84,20 +84,6 @@ Changes to these branches land via GitHub PRs. Nevertheless, contributions shoul
 
 If you are interested in maintaining a new topic branch, then please [contact us](Contact.md). Thank you!
 
-#### `staging/dev`
-
-[`staging/dev`](https://github.com/Rust-for-Linux/linux/tree/staging/dev) is a branch intended to integrate the other topic branches (similar to the role of `rust-dev` for the main branches).
-
-It is maintained by Danilo Krummrich and Philipp Stanner. Please contact them through [Zulip](Contact.md#zulip-chat).
-
-#### `staging/rust-device`
-
-[`staging/rust-device`](https://github.com/Rust-for-Linux/linux/tree/staging/rust-device) is dedicated to device/driver-related abstractions.
-
-The branch is kept in a compilable state (rebased regularly on top of `rust-next` or mainline). Fixes and features are welcome.
-
-It is maintained by Danilo Krummrich and Philipp Stanner. Please contact them through [Zulip](Contact.md#zulip-chat).
-
 #### `staging/rust-net`
 
 [`staging/rust-net`](https://github.com/Rust-for-Linux/linux/tree/staging/rust-net) is dedicated to networking-related abstractions.
@@ -105,11 +91,3 @@ It is maintained by Danilo Krummrich and Philipp Stanner. Please contact them th
 The branch is kept in a compilable state (rebased regularly on top of `rust-next` or mainline). Fixes and features are welcome.
 
 It is maintained by Trevor Gross and Valentin Obst. Please contact them through [Zulip](Contact.md#zulip-chat).
-
-#### `staging/rust-pci`
-
-[`staging/rust-pci`](https://github.com/Rust-for-Linux/linux/tree/staging/rust-pci) is dedicated to PCI-related abstractions, which are used by e.g. the [NVMe driver](NVMe-driver.md).
-
-The branch is kept in a compilable state (rebased regularly on top of `rust-next` or mainline). Fixes and features are welcome.
-
-Danilo Krummrich is `rust-pci`'s maintainer. You can also contact him through [Zulip](Contact.md#zulip-chat).
