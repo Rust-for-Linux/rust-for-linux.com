@@ -1,0 +1,416 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Contributing - Rust for Linux</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="Adding support for the Rust language to the Linux kernel">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        
+        <link rel="icon" href="Rust-for-Linux.svg">
+
+        <meta property="og:url" content="https://rust-for-linux.com">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Rust for Linux">
+        <meta property="og:description" content="Adding support for the Rust language to the Linux kernel">
+        <meta property="og:image" content="https://rust-for-linux.com/Rust-for-Linux.svg">
+        <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "CreativeWork",
+            "name": "Rust for Linux",
+            "description": "Adding support for the Rust language to the Linux kernel",
+            "url": "https://rust-for-linux.com",
+            "image": "https://rust-for-linux.com/Rust-for-Linux.svg"
+        }
+        </script>
+        <style>
+        #logo {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .rfl-menu-block {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .rfl-mono-font {
+            font-family: var(--mono-font);
+        }
+
+        .rfl-mobile-links {
+            display: none;
+        }
+
+        @media only screen and (max-width: 1080px) {
+            .rfl-mobile-links {
+                display: block;
+            }
+        }
+
+        .chapter li.chapter-item {
+            margin-top: 0.2em !important;
+            margin-left: 1.5em !important;
+        }
+
+        .chapter li.part-title {
+            margin-bottom: -0.3em !important;
+            margin-top: 1em !important;
+        }
+
+        .quote-highlight:target {
+            /*
+             * `--table-header-bg` is used as an existing color in the themes
+             * that is good enough for highlighting the `blockquote`s.
+             */
+            background-color: var(--table-header-bg);
+        }
+        </style>
+    
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            
+        <div class="sidebar-scrollbox">
+            <a href="/"><img id="logo" src="Rust-for-Linux.svg" alt="Rust for Linux Logo"></a>
+            
+            <p class="rfl-menu-block">The project</p>
+            <ol class="chapter"><li class="chapter-item"><a href="Contact.html" tabindex="0">Contact</a></li><li class="chapter-item"><a href="Contributing.html" tabindex="0">Contributing</a></li><li class="chapter-item"><a href="Rust-kernel-policy.html" tabindex="0">Rust kernel policy</a></li><li class="chapter-item"><a href="Branches.html" tabindex="0">Branches</a></li><li class="chapter-item"><a href="Rust-reference-drivers.html" tabindex="0">Rust reference drivers</a></li><li class="chapter-item"><a href="Rust-version-policy.html" tabindex="0">Rust version policy</a></li><li class="chapter-item"><a href="Unstable-features.html" tabindex="0">Unstable features</a></li><li class="chapter-item"><a href="Backporting-and-stable-LTS-releases.html" tabindex="0">Backporting and stable/LTS releases</a></li><li class="chapter-item"><a href="Third-party-crates.html" tabindex="0">Third-party crates</a></li><li class="chapter-item"><a href="Out-of-tree-modules.html" tabindex="0">Out-of-tree modules</a></li><li class="chapter-item"><a href="Industry-and-academia-support.html" tabindex="0">Industry and academia support</a></li><li class="chapter-item"><a href="Sponsors.html" tabindex="0">Sponsors</a></li><li class="part-title">Subprojects</li><li class="chapter-item"><a href="klint.html" tabindex="0"><span class="rfl-mono-font">klint</span></a></li><li class="chapter-item"><a href="pin-init.html" tabindex="0"><span class="rfl-mono-font">pin-init</span></a></li><li class="part-title">Tools</li><li class="chapter-item"><a href="Coccinelle-for-Rust.html" tabindex="0">Coccinelle for Rust</a></li><li class="chapter-item"><a href="rustc_codegen_gcc.html" tabindex="0"><span class="rfl-mono-font">rustc_codegen_gcc</span></a></li><li class="chapter-item"><a href="gccrs.html" tabindex="0"><span class="rfl-mono-font">gccrs</span></a></li><li class="part-title">Users — in mainline</li><li class="chapter-item"><a href="AMCC-QT2025-PHY-Driver.html" tabindex="0">AMCC QT2025 PHY Driver</a></li><li class="chapter-item"><a href="Android-Binder-Driver.html" tabindex="0">Android Binder Driver</a></li><li class="chapter-item"><a href="ASIX-PHY-Driver.html" tabindex="0">ASIX PHY Driver</a></li><li class="chapter-item"><a href="DRM-Panic-QR-code-generator.html" tabindex="0">DRM Panic QR code generator</a></li><li class="chapter-item"><a href="Nova-GPU-Driver.html" tabindex="0">Nova GPU Driver</a></li><li class="chapter-item"><a href="Null-Block-Driver.html" tabindex="0">Null Block Driver</a></li><li class="chapter-item"><a href="Tyr-GPU-Driver.html" tabindex="0">Tyr GPU Driver</a></li><li class="part-title">Users — outside mainline</li><li class="chapter-item"><a href="Android-`ashmem`.html" tabindex="0">Android <span class="rfl-mono-font">ashmem</span></a></li><li class="chapter-item"><a href="Apple-AGX-GPU-driver.html" tabindex="0">Apple AGX GPU driver</a></li><li class="chapter-item"><a href="NVMe-driver.html" tabindex="0">NVMe Driver</a></li><li class="chapter-item"><a href="PuzzleFS-filesystem-driver.html" tabindex="0">PuzzleFS filesystem driver</a></li></ol>
+        
+            <p class="rfl-menu-block">Links</p>
+            <ol class="chapter"><li class="part-title">Contact</li><li class="chapter-item"><a href="https://lore.kernel.org/rust-for-linux/" tabindex="0">Lore (mailing list archive)</a></li><li class="chapter-item"><a href="https://rust-for-linux.zulipchat.com" tabindex="0">Zulip (chat)</a></li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux" tabindex="0">GitHub Organization</a></li><li class="part-title">Security</li><li class="chapter-item"><a href="https://docs.kernel.org/process/security-bugs.html" tabindex="0">Report a security bug</a></li><li class="part-title">Issue tracking</li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/issues" tabindex="0">Issues</a></li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/issues/2" tabindex="0">Unstable features</a></li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/contribute" tabindex="0">Good first issues</a></li><li class="part-title">Documentation</li><li class="chapter-item"><a href="https://docs.kernel.org/rust/quick-start.html" tabindex="0">Quick Start guide</a></li><li class="chapter-item"><a href="https://docs.kernel.org/rust/" tabindex="0">Kernel documentation (mainline)</a></li><li class="chapter-item"><a href="https://docs.kernel.org/next/rust/" tabindex="0">Kernel documentation (next)</a></li><li class="chapter-item"><a href="https://rust.docs.kernel.org" tabindex="0">Rust code documentation (mainline)</a></li><li class="chapter-item"><a href="https://rust.docs.kernel.org/next/" tabindex="0">Rust code documentation (next)</a></li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/rust-out-of-tree-module" tabindex="0">Out-of-tree module template</a></li><li class="part-title">Main branches</li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/tree/rust-next" tabindex="0"><span class="rfl-mono-font">rust-next</span></a></li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/tree/rust-fixes" tabindex="0"><span class="rfl-mono-font">rust-fixes</span></a></li><li class="part-title">Subtree branches</li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/tree/alloc-next" tabindex="0"><span class="rfl-mono-font">alloc-next</span></a></li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/tree/pin-init-next" tabindex="0"><span class="rfl-mono-font">pin-init-next</span></a></li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/tree/timekeeping-next" tabindex="0"><span class="rfl-mono-font">timekeeping-next</span></a></li><li class="chapter-item"><a href="https://github.com/Rust-for-Linux/linux/tree/xarray-next" tabindex="0"><span class="rfl-mono-font">xarray-next</span></a></li><li class="part-title">Patchwork</li><li class="chapter-item"><a href="https://patchwork.kernel.org/project/rust-for-linux/list/" tabindex="0">Patchwork</a></li><li class="part-title">Conferences</li><li class="chapter-item"><a href="https://kangrejos.com" tabindex="0">Kangrejos</a></li><li class="chapter-item"><a href="https://lpc.events" tabindex="0">Linux Plumbers Conference (LPC)</a></li><li class="chapter-item"><a href="https://lpc.events/event/19/sessions/223/" tabindex="0">Rust MC at LPC 2025</a></li><li class="chapter-item"><a href="https://lpc.events/event/18/sessions/186/" tabindex="0">Rust MC at LPC 2024</a></li><li class="chapter-item"><a href="https://lpc.events/event/17/sessions/170/" tabindex="0">Rust MC at LPC 2023</a></li><li class="chapter-item"><a href="https://lpc.events/event/16/sessions/150/" tabindex="0">Rust MC at LPC 2022</a></li><li class="part-title">LWN</li><li class="chapter-item"><a href="https://lwn.net/Kernel/Index/#Development_tools-Rust" tabindex="0">Rust index</a></li><li class="chapter-item"><a href="https://lwn.net/Archives/ConferenceIndex/#Kangrejos" tabindex="0">Kangrejos index</a></li><li class="part-title">Tools and toolchains</li><li class="chapter-item"><a href="https://kernel.org/pub/tools/llvm/rust/" tabindex="0">kernel.org prebuilt LLVM+Rust</a></li><li class="chapter-item"><a href="https://github.com/rust-lang/rustc_codegen_gcc" tabindex="0"><span class="rfl-mono-font">rustc_codegen_gcc</span></a></li><li class="chapter-item"><a href="https://rust-gcc.github.io" tabindex="0">Rust GCC</a></li><li class="chapter-item"><a href="https://github.com/acmel/dwarves" tabindex="0"><span class="rfl-mono-font">pahole</span></a></li><li class="part-title">Other trees</li><li class="chapter-item"><a href="https://git.kernel.org/linus/" tabindex="0">Linus' tree</a></li><li class="chapter-item"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/" tabindex="0">Stable tree</a></li><li class="chapter-item"><a href="https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/" tabindex="0"><span class="rfl-mono-font">linux-next</span> tree</a></li><li class="part-title">Other resources</li><li class="chapter-item"><a href="https://elixir.bootlin.com/linux/latest/source/rust" tabindex="0">Bootlin's Elixir</a></li><li class="chapter-item"><a href="https://godbolt.org/z/a55MozK6s" tabindex="0">Compiler Explorer</a></li><li class="chapter-item"><a href="https://play.rust-lang.org/?version=nightly&mode=debug&edition=2021" tabindex="0">Rust Playground</a></li><li class="chapter-item"><a href="https://doc.rust-lang.org/core/" tabindex="0">Rust <span class="rfl-mono-font">core</span> docs</a></li></ol>
+        
+        </div>
+    
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Rust for Linux</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/Rust-for-Linux/rust-for-linux.com" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="contributing"><a class="header" href="#contributing">Contributing</a></h1>
+<p>There are many ways to contribute to Rust for Linux. One way is to contribute to the kernel itself — the rest of this page focuses on that. But there are other ways as well:</p>
+<ul>
+<li>
+<p>In Rust:</p>
+<ul>
+<li>
+<p>Helping to stabilize <a href="Unstable-features.html">unstable features</a> the kernel requires.</p>
+</li>
+<li>
+<p>Adding support for features we would like in the kernel: in the language, in the standard library, in the compiler, in <code>rustdoc</code>, in Clippy, in <code>bindgen</code>... Please see the various <a href="https://github.com/Rust-for-Linux/linux/issues/2">&quot;wanted features &amp; bugfixes&quot; lists</a> for each topic.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Contributing to the subprojects: <a href="klint.html"><code>klint</code></a> and <a href="pin-init.html"><code>pin-init</code></a>.</p>
+</li>
+<li>
+<p>Contributing to the <a href="Coccinelle-for-Rust.html">Coccinelle for Rust</a> project.</p>
+</li>
+<li>
+<p>Contributing to the <a href="rustc_codegen_gcc.html"><code>rustc_codegen_gcc</code></a> project, which will be used by the kernel for GCC builds.</p>
+</li>
+<li>
+<p>Contributing to the <a href="gccrs.html"><code>gccrs</code></a> project, which eventually will provide a second toolchain for GCC builds.</p>
+</li>
+<li>
+<p>Improve support for Rust in <a href="https://github.com/acmel/dwarves"><code>pahole</code></a>.</p>
+</li>
+</ul>
+<h2 id="the-kernel-development-process"><a class="header" href="#the-kernel-development-process">The kernel development process</a></h2>
+<p>The Rust support is part of the Linux kernel, and thus contributing works the same way as for the latter. That implies, among other things:</p>
+<ul>
+<li>
+<p>A patch-based workflow is used.</p>
+</li>
+<li>
+<p>Reviews take place in the different mailing lists of the kernel.</p>
+</li>
+<li>
+<p>Contributions are signed under the <a href="https://docs.kernel.org/process/submitting-patches.html#developer-s-certificate-of-origin-1-1">Developer's Certificate of Origin</a>.</p>
+</li>
+</ul>
+<p>To learn more about the kernel development process, please read the documentation under <a href="https://docs.kernel.org/process/"><code>Documentation/process</code></a>. In particular, please make sure to read <a href="https://docs.kernel.org/process/submitting-patches.html"><code>submitting-patches.rst</code></a>.</p>
+<p>In addition, it may be a good idea to contribute a small cleanup or fix somewhere in the kernel (not necessarily to Rust code), in order to get accustomed to the patch-based workflow. From time to time we add <a href="https://github.com/Rust-for-Linux/linux/contribute">&quot;good first issues&quot;</a> to our GitHub issue tracker for that purpose.</p>
+<h2 id="ways-to-contribute"><a class="header" href="#ways-to-contribute">Ways to contribute</a></h2>
+<p>There are many ways to contribute to the Rust support in the kernel:</p>
+<ul>
+<li>
+<p>Submitting changes, of course, whether it is new code or improvements to existing code. Please see the details below on this option.</p>
+</li>
+<li>
+<p>Reviewing patches, especially if you have experience with unsafe Rust and have an eye to spot unsoundness issues or with Rust API design in general. Reviewers can get credited within commits messages via the <code>Reviewed-by</code> tag.</p>
+</li>
+<li>
+<p>Testing patches. Like reviewing, running meaningful testing increases the confidence that the patch is OK. Testers can get credited within commits messages via the <code>Tested-by</code> tag.</p>
+</li>
+<li>
+<p>Reporting issues you find. Reporters can get credited within commits messages via the <code>Reported-by</code> tag.</p>
+</li>
+<li>
+<p>Suggesting improvements. Good ideas that end up being implemented can get credited within commit messages via the <code>Suggested-by</code> tag.</p>
+</li>
+<li>
+<p>Helping others on Zulip. For instance, getting them started with the Rust support in the kernel.</p>
+</li>
+</ul>
+<h2 id="getting-started-with-rust-kernel-development"><a class="header" href="#getting-started-with-rust-kernel-development">Getting started with Rust kernel development</a></h2>
+<p>Please read the documentation under <a href="https://docs.kernel.org/rust/"><code>Documentation/rust</code></a>. In particular, the <a href="https://docs.kernel.org/rust/quick-start.html">Quick Start guide</a>.</p>
+<p>Reading the rest of this website is also recommended.</p>
+<h2 id="the-rust-subsystem"><a class="header" href="#the-rust-subsystem">The Rust subsystem</a></h2>
+<p>The Rust subsystem takes care of the core Rust abstractions as well as the general infrastructure for Rust in the kernel. It is a bit special in that it potentially intersects with every other subsystem in the kernel, especially in the beginning of the Rust support in the kernel.</p>
+<p>For this reason, early on, there are a few extra notes to have in mind when contributing Rust code to the kernel.</p>
+<h3 id="submitting-changes-to-existing-code"><a class="header" href="#submitting-changes-to-existing-code">Submitting changes to existing code</a></h3>
+<p>All patches containing Rust code should be sent to both the maintainers/reviewers/mailing lists of the relevant kernel subsystem they touch as well as the Rust one.</p>
+<p>This applies even if the files that the patch modifies are all under <code>rust/</code> (e.g. currently all abstractions live under <code>rust/</code>, but the plan is to change this in the future as Rust grows in the kernel) and the files are referenced by the <code>MAINTAINERS</code> entry of the relevant subsystem. Scripts like <code>scripts/get_maintainers.pl</code> may not provide the complete list.</p>
+<p>The goal with this procedure is that everybody interested in Rust can follow what is going on with Rust in the entire kernel in the early stages, to avoid duplicate work, and to make it easier for everybody to coordinate.</p>
+<p>For instance, if a patch modifies <code>rust/kernel/time.rs</code>, then the patch should be sent to both &quot;TIMEKEEPING&quot; and &quot;RUST&quot;.</p>
+<p>Ideally, the maintainers of the particular subsystem will take the changes through their tree, instead of going through the Rust one.</p>
+<p>Please make sure your code is properly documented, that the code compiles warning-free under <code>CLIPPY=1</code>, that the code documentation tests pass and that the code is formatted.</p>
+<h3 id="submitting-new-abstractions-and-modules"><a class="header" href="#submitting-new-abstractions-and-modules">Submitting new abstractions and modules</a></h3>
+<p>For new abstractions and modules, and especially for those that require new kernel subsystems/maintainers to be involved, please follow the approach outlined here.</p>
+<ul>
+<li>
+<p>Kernel maintainers and developers interested in using Rust should take the lead in developing missing abstractions/modules for the subsystems they need.</p>
+</li>
+<li>
+<p>Part of the work may be already done or in the process of being upstreamed, thus please first check the <a href="https://lore.kernel.org/rust-for-linux/">mailing list archive</a> as well as the <a href="https://github.com/Rust-for-Linux/linux/pulls">PRs submitted to GitHub</a>. It is also a good idea to ask on our <a href="https://rust-for-linux.zulipchat.com">Zulip chat</a>.</p>
+</li>
+<li>
+<p>As early as possible, please get in touch with the maintainers of the relevant subsystem in order to make them aware of the work you are doing or planning to do. That way, they can give you input and feedback on the process. Please feel free to Cc the Rust maintainers too.</p>
+</li>
+<li>
+<p>Consider whether a <a href="Rust-reference-drivers.html">Rust reference driver</a> could be a good idea to bootstrap Rust into the subsystem.</p>
+</li>
+<li>
+<p>When you are getting closer to patch submission, please consider sending an RFC series first, especially if it is a major contribution, or if it is a long patch series, or if you require a lot of prerequisite patches (e.g. for abstractions of other subsystems) that are not yet upstreamed.</p>
+<p>The RFC can be based on top of a branch placed somewhere else that contains the prerequisite patches, so that the RFC patches themselves do not cover those, and therefore is focused on the parts that the maintainers will eventually review.</p>
+<p>This way, you can get early design feedback before the actual patch submission later, and the discussion is focused on the given subsystem (rather than the prerequisites).</p>
+</li>
+<li>
+<p>In general, the kernel does not allow to integrate code without users, but exceptions can potentially be made for Rust code to simplify the upstreaming process early on. That is, upstreaming some dependencies first so that it is easier to upstream expected in-tree users later on. However, note that this is not meant to be a way to justify upstreaming APIs that do not have agreed upon in-tree users. In particular, <a href="Out-of-tree-modules.html">out-of-tree modules</a> do not constitute a user in this context.</p>
+<p>Please contact the Rust maintainers for help, especially if you find yourself with a lot of dependencies or patches for unrelated subsystems.</p>
+</li>
+</ul>
+<h3 id="submit-checklist-addendum"><a class="header" href="#submit-checklist-addendum">Submit checklist addendum</a></h3>
+<p>The following items apply to every patch in a series. That is, in general, each commit should be clean, not just the end state.</p>
+<ul>
+<li>
+<p>Please keep the code Clippy-clean by compiling with <code>CLIPPY=1</code>.</p>
+</li>
+<li>
+<p>Please format the code by running the <code>rustfmt</code> target. Please see the <a href="https://docs.kernel.org/rust/coding-guidelines.html#style-formatting">style guidelines</a> as well.</p>
+</li>
+<li>
+<p>When submitting changes to Rust code documentation, please render them using the <code>rustdoc</code> target and ensure the result looks as expected. The Rust code documentation gets rendered at <a href="https://rust.docs.kernel.org">https://rust.docs.kernel.org</a>.</p>
+</li>
+<li>
+<p>When submitting changes to tests, including <code>#[test]</code>s, Kselftests and examples inside Rust code documentation (i.e. &quot;doctests&quot;, which are transformed into KUnit tests), please <a href="https://docs.kernel.org/rust/testing.html">test them</a>.</p>
+</li>
+<li>
+<p>When submitting changes to the Rust folder of the kernel documentation (i.e. <code>Documentation/rust/</code>), which are written in reStructuredText and handled by Sphinx, please <a href="https://docs.kernel.org/doc-guide/sphinx.html">render them</a> (typically using the <code>htmldocs</code> target) to ensure there are no warnings and that the result looks as expected. The Rust kernel documentation gets rendered at <a href="https://docs.kernel.org/rust/">https://docs.kernel.org/rust/</a>.</p>
+</li>
+<li>
+<p>Ideally, please check your changes with both the latest stable Rust compiler as well as the minimum supported version (<code>scripts/min-tool-version.sh rustc</code>), including Clippy.</p>
+</li>
+<li>
+<p>Please run your patch through the <code>scripts/checkpatch.pl</code> script. In particular, the <code>--codespell</code> option is useful to check patches for typos.</p>
+</li>
+</ul>
+<h3 id="key-cycle-dates"><a class="header" href="#key-cycle-dates">Key cycle dates</a></h3>
+<ul>
+<li>
+<p>Patches can be sent anytime.</p>
+</li>
+<li>
+<p>We aim to send early PRs to Linus, to have patches for at least a week in linux-next and to give patches at least a week of review time.</p>
+<p>Therefore, in general, the last version of a patch series with new features (i.e. aimed at the next merge window) should arrive before -rc5.</p>
+</li>
+</ul>
+<h2 id="submitting-patches"><a class="header" href="#submitting-patches">Submitting patches</a></h2>
+<p>If you are using a CLI tool like <a href="https://git-scm.com/docs/git-send-email"><code>git-send-email</code></a> or <a href="https://b4.docs.kernel.org"><code>b4</code></a>, then you may find the following commands useful for generating the options needed for submitting patches to the Rust subsystem:</p>
+<pre><code class="language-sh">awk '/^RUST$/,/^$/' MAINTAINERS | grep '^M:'    | cut -f2- | xargs -IP echo --to \'P\' \\
+awk '/^RUST$/,/^$/' MAINTAINERS | grep '^[RL]:' | cut -f2- | xargs -IP echo --cc \'P\' \\
+</code></pre>
+<p>This list includes the maintainers (<code>M:</code>), reviewers (<code>R:</code>) and mailing list (<code>L:</code>) of the <a href="https://docs.kernel.org/process/maintainers.html#rust">&quot;RUST&quot; subsystem</a> in the <code>MAINTAINERS</code> file.</p>
+<p>However, please keep in mind that this does not cover additional subsystems that you may need to submit your patches to, as explained in the other sections.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="Contact.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="Rust-kernel-policy.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="Contact.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="Rust-kernel-policy.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>
