@@ -38,15 +38,11 @@ Changes to these branches landed via GitHub PRs. Nevertheless, contributions sho
 
 `staging/dev` was a branch intended to integrate the other topic branches (similar to the role of `rust-dev` for the main branches).
 
-It was maintained by Danilo Krummrich and Philipp Stanner. You could contact them through [Zulip](Contact.md#zulip-chat).
-
 ### `staging/rust-device`
 
 `staging/rust-device` was dedicated to device/driver-related abstractions.
 
 The branch was kept in a compilable state (rebased regularly on top of `rust-next` or mainline). Fixes and features were welcome.
-
-It was maintained by Danilo Krummrich and Philipp Stanner. You could contact them through [Zulip](Contact.md#zulip-chat).
 
 ### `staging/rust-net`
 
@@ -61,5 +57,3 @@ It was maintained by Trevor Gross and Valentin Obst. You could contact them thro
 `staging/rust-pci` was dedicated to PCI-related abstractions, which were used by e.g. the [NVMe driver](NVMe-driver.md).
 
 The branch was kept in a compilable state (rebased regularly on top of `rust-next` or mainline). Fixes and features were welcome.
-
-It was maintained by Danilo Krummrich. You could contact him through [Zulip](Contact.md#zulip-chat).
