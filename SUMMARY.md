@@ -6,6 +6,7 @@
   - [Contributing](Contributing.md)
   - [Rust kernel policy](Rust-kernel-policy.md)
   - [Branches](Branches.md)
+  - Hidden [Past branches](Past-branches.md)
   - [Rust reference drivers](Rust-reference-drivers.md)
   - [Rust version policy](Rust-version-policy.md)
   - [Unstable features](Unstable-features.md)
