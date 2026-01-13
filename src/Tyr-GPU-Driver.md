@@ -22,12 +22,7 @@ Tyr is developed both upstream and downstream.
 
 The initial skeleton of the Tyr driver is now [upstream](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/gpu/drm/tyr). Submissions against
 the upstream Tyr driver should go to the [`dri-devel`](https://lore.kernel.org/dri-devel/)
-and [`rust-for-linux`](https://lore.kernel.org/rust-for-linux/) mailing lists. If the
-submission is larger and/or needs to be pre-reviewed, open a merge request
-against the
-[`tyr-for-upstream`](https://gitlab.freedesktop.org/panfrost/linux/-/tree/tyr-for-upstream)
-branch in the [`panfrost/linux`](https://gitlab.freedesktop.org/panfrost/linux)
-repository.
+and [`rust-for-linux`](https://lore.kernel.org/rust-for-linux/) mailing lists.
 
 ### Downstream
 
@@ -88,9 +83,8 @@ can check our [issue
 board](https://gitlab.freedesktop.org/panfrost/linux/-/issues/?label_name%5B%5D=tyr).
 We will be posting good starting tasks at a future point.
 
-To work on any given task, assign it to yourself and follow up with a merge
-request against `tyr-for-upstream` (for patches targeting the upstream driver)
-or `tyr-dev` (for work in the downstream staging branch).
+To work on any given task, assign it to yourself. For patches targeting the downstream
+staging branch, open a merge request against `tyr-dev`.
 
 Please also write the IGT tests needed to ensure that your code works.
 
