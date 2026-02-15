@@ -114,6 +114,14 @@ The following items apply to every patch in a series. That is, in general, each 
 
   - Please run your patch through the `scripts/checkpatch.pl` script. In particular, the `--codespell` option is useful to check patches for typos.
 
+#### Soundness issues and backporting
+
+In general, fixes for Rust soundness issues should be marked for backport, unless there is a reason not to (such as situations where the backport may require a lot of effort but the risk of users hitting UB is low).
+
+For context, while the stable kernel rules mention "theoretical issues" should not be backported (which one could argue Rust soundness issues are if no existing users hit UB), we discussed the topic of Rust soundness issues with the stable team and decided that we would do our best to backport them.
+
+The goal is to help to prevent actual issues for downstream users, distributions and vendors that patch the kernel further or even add completely new code on top, since those modifications could hit UB. In other words, the idea is to maintain the "extra layer" of protection in stable kernels too, as much as reasonably possible.
+
 ### Key cycle dates
 
   - Patches can be sent anytime.
