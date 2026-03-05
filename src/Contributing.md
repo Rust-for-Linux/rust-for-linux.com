@@ -30,7 +30,7 @@ The Rust support is part of the Linux kernel, and thus contributing works the sa
 
 To learn more about the kernel development process, please read the documentation under [`Documentation/process`](https://docs.kernel.org/process/). In particular, please make sure to read [`submitting-patches.rst`](https://docs.kernel.org/process/submitting-patches.html).
 
-In addition, it may be a good idea to contribute a small cleanup or fix somewhere in the kernel (not necessarily to Rust code), in order to get accustomed to the patch-based workflow. From time to time we add ["good first issues"](https://github.com/Rust-for-Linux/linux/contribute) to our GitHub issue tracker for that purpose.
+In addition, it may be a good idea to contribute a small cleanup or fix somewhere in the kernel (not necessarily to Rust code), in order to get accustomed to the patch-based workflow. Please see the section below on ["Finding tasks and issues to work on"](#finding-tasks-and-issues-to-work-on).
 
 ## Ways to contribute
 
@@ -47,6 +47,14 @@ There are many ways to contribute to the Rust support in the kernel:
   - Suggesting improvements. Good ideas that end up being implemented can get credited within commit messages via the `Suggested-by` tag.
 
   - Helping others on Zulip. For instance, getting them started with the Rust support in the kernel.
+
+### Finding tasks and issues to work on
+
+From time to time we add ["good first issues"](https://github.com/Rust-for-Linux/linux/contribute) to our GitHub issue tracker, which are intended to get started with Rust kernel development.
+
+In addition, we also have a list of [Other tasks and "good first issues"](https://github.com/Rust-for-Linux/linux/issues/1058) from our users (e.g. drivers) and other projects.
+
+Finally, reviewing code and subscribing to the mailing list in general are very good ways to identify code you could improve one way or another.
 
 ## Getting started with Rust kernel development
 
