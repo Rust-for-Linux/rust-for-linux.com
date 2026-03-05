@@ -33,6 +33,7 @@ It takes place once every kernel cycle, the first Wednesday after `-rc1` is tagg
   - [Submit a new issue](https://github.com/Rust-for-Linux/linux/issues/new/choose).
   - [Unstable features list](https://github.com/Rust-for-Linux/linux/issues/2).
   - [Good first issues](https://github.com/Rust-for-Linux/linux/contribute).
+  - [Other tasks and "good first issues"](https://github.com/Rust-for-Linux/linux/issues/1058).
 
 Please do ___not___ report security bugs in the GitHub issue tracker. Instead, please read the [Security bugs](https://docs.kernel.org/process/security-bugs.html) page in the kernel documentation.
 

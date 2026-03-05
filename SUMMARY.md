@@ -64,6 +64,7 @@
   - [Issues](https://github.com/Rust-for-Linux/linux/issues)
   - [Unstable features](https://github.com/Rust-for-Linux/linux/issues/2)
   - [Good first issues](https://github.com/Rust-for-Linux/linux/contribute)
+  - [Other tasks and "good first issues"](https://github.com/Rust-for-Linux/linux/issues/1058)
 
 ## Documentation
 
