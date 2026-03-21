@@ -87,7 +87,7 @@
   - [`timekeeping-next`](https://github.com/Rust-for-Linux/linux/tree/timekeeping-next)
   - [`xarray-next`](https://github.com/Rust-for-Linux/linux/tree/xarray-next)
 
-## Patchwork
+## Review tooling
 
   - [Patchwork](https://patchwork.kernel.org/project/rust-for-linux/list/)
 
