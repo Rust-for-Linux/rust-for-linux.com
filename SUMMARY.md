@@ -90,6 +90,7 @@
 ## Review tooling
 
   - [Patchwork](https://patchwork.kernel.org/project/rust-for-linux/list/)
+  - [Sashiko](https://sashiko.dev/#/?list=org.kernel.vger.rust-for-linux)
 
 ## Conferences
 
