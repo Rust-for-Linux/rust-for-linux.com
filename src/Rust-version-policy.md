@@ -4,7 +4,7 @@
 
 The kernel documents the [minimal requirements](https://docs.kernel.org/process/changes.html) to compile it. Since v6.11, the kernel supports a minimum version of Rust. The initial minimum was Rust 1.78.0, and the next one will be Rust 1.85.0 (expected in Linux v7.1), following Debian 13 (Trixie)'s Rust toolchain version — please see ["Minimum upgrade policy"](Rust-version-policy.md#minimum-upgrade-policy) below for details.
 
-For the moment, we cannot guarantee newer Rust versions will always work due to the [unstable features](Unstable-features.md) in use[^rust-is-stable]. Removing the need for them is a priority of the project.
+For the moment, we cannot guarantee newer Rust versions will always work due to the [unstable features](Unstable-features.md) in use[^rust-is-stable]. In practice, so far, it has worked across every version released since the initial minimum. Removing the need for the unstable features is a priority of the project.
 
 To ameliorate that, the kernel is now being [build-tested](https://rustc-dev-guide.rust-lang.org/tests/rust-for-linux.html) in Rust's pre-merge CI. That is, every change that is attempting to land into the Rust compiler is tested against the kernel, and it is merged only if it passes. Similarly, the `bindgen` tool is also [build-testing](https://github.com/rust-lang/rust-bindgen/pull/2851) the kernel in their pre-merge CI.
 
