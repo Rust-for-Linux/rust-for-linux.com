@@ -18,15 +18,15 @@ In addition, getting Linux to build on stable Rust was a "flagship goal" of the 
 
 ## Supported toolchains
 
-The Rust versions currently supported should already be enough for kernel developers in distributions that provide recent Rust compilers routinely, such as:
+The Rust versions currently supported should already be enough for kernel developers in recent distributions, such as:
 
   - Arch Linux.
   - Debian 13 (Trixie), Debian Testing and Debian Unstable (Sid).
   - Fedora Linux.
   - Gentoo Linux.
-  - Nix (unstable).
-  - openSUSE Slowroll and Tumbleweed.
-  - Ubuntu LTS (20.04, 22.04, 24.04) and non-LTS (interim).
+  - Nix.
+  - openSUSE Slowroll and openSUSE Tumbleweed.
+  - Ubuntu 25.10 and 26.04 LTS. In addition, 24.04 LTS using versioned packages.
 
 In addition, we support the toolchains distributed by Rust, installed via [`rustup`](https://rust-lang.github.io/rustup/) or the [standalone installers](https://forge.rust-lang.org/infra/other-installation-methods.html#standalone-installers).
 
