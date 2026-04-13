@@ -36,6 +36,8 @@ monitoring the situation going forward.
 
 ## Features
 
+The Rust null block driver has feature parity with the C null block driver.
+
 Implemented features:
 
  - `blk-mq` support
@@ -59,12 +61,9 @@ Implemented features:
  - Blocking submission mode
  - Shared tags configuration (for >1 device)
  - Bad block simulation
-
-Features available in the C `null_blk` driver that are currently not implemented
-in this work:
-
  - Zoned storage support
  - Poll queues
+
 
 ## Resources
 
@@ -72,6 +71,45 @@ in this work:
  - [Original RFC Patches](https://github.com/metaspace/linux/tree/null_block-RFC)
  - [Mailing List Post](https://lore.kernel.org/all/20230503090708.2524310-1-nmi@metaspace.dk/)
  - [Subset merged in v6.11-rc1](https://lore.kernel.org/all/20240611114551.228679-1-nmi@metaspace.dk/)
+
+
+## 6.19-rc5, Rebase ([`rnull-v6.19-rc5`](https://git.kernel.org/pub/scm/linux/kernel/git/a.hindborg/linux.git/log/?h=rnull-v6.19-rc5))
+
+Changes from `rnull-v6.18`:
+ - Add global tag set support.
+ - Add fault-injection support.
+ - Add zoned device emulation.
+ - Add poll queue support.
+ - Add `REQ_OP_FLUSH` handling.
+ - Add FUA support.
+ - Add support for dynamic queue configuration.
+ - Add `queue_rqs` support for batch request queuing.
+ - Add max IO size configuration.
+ - Add virt_boundary option.
+ - Add shared_tag_bitmap` option.### Performance
+
+#### Setup
+
+ - AMD Ryzen 5 7600
+ - 32 GB 4800 MT/s DDR5 on one channel
+ - 1x Samsung 990 Pro 1TB (PCIe 4.0 x4 16 GT/S)
+ - NixOS 24.11
+
+#### Results
+
+- Plot shows `(mean_iops_r - mean_iops_c) / mean_iops_c`
+- 40 samples for each configuration
+- Difference of means modeled with t-distribution
+- P95 confidence intervals
+
+![](rnull/rnull-v6.19-rc5.svg)
+
+##### Sample Distribution
+
+- C left bounded by blue line.
+- Rust right bounded by orange line.
+
+![](rnull/rnull-v6.19-rc5-density.svg)
 
 ## 6.18-rc5, Rebase ([`rnull-v6.18-rc5`](https://git.kernel.org/pub/scm/linux/kernel/git/a.hindborg/linux.git/log/?h=rnull-v6.18-rc5))
 
