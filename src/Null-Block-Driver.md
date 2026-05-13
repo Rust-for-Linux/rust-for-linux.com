@@ -86,7 +86,9 @@ Changes from `rnull-v6.18`:
  - Add `queue_rqs` support for batch request queuing.
  - Add max IO size configuration.
  - Add virt_boundary option.
- - Add shared_tag_bitmap` option.### Performance
+ - Add shared_tag_bitmap` option.
+
+### Performance
 
 #### Setup
 
