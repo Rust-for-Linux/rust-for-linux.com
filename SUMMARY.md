@@ -96,6 +96,7 @@
 
   - [Kangrejos](https://kangrejos.com)
   - [Linux Plumbers Conference (LPC)](https://lpc.events)
+  - [Rust MC at LPC 2026](https://lpc.events/event/20/sessions/257/)
   - [Rust MC at LPC 2025](https://lpc.events/event/19/sessions/223/)
   - [Rust MC at LPC 2024](https://lpc.events/event/18/sessions/186/)
   - [Rust MC at LPC 2023](https://lpc.events/event/17/sessions/170/)
