@@ -1,5 +1,7 @@
 # The Safe Pinned Initialization Problem
 
+> **Note:** This document is a historical article from 2022/2023. It contains outdated information.
+
 ## Introduction to Pinning
 
 In the kernel many data structures are not allowed to change address, since there exist external pointers to them that would then be invalidated. Since this could cause memory errors, Rust has to *somehow* guarantee that this cannot happen in safe code. Luckily there already exists the [`Pin<P>`] wrapper type for arbitrary pointer types `P`. For simplicity we will look at `P = Box<T>`. [`Box<T>`] is a smart pointer that owns a `T` (a generic parameter) allocated on the heap. When a [`Box<T>`] is dropped (destroyed) then it automatically frees the memory.
