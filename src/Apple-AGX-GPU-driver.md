@@ -13,7 +13,6 @@ The current development team is:
     helping with OpenGL.
   - [Dougall Johnson](https://mastodon.social/@dougall) is reverse-engineering
     the instruction set with Alyssa.
-  - [Ella Stanforth](https://tech.lgbt/@ella) is working on a Vulkan driver.
 
 ## References
 
